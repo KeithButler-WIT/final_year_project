@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dcw0brpcli3la"
+path="res://.godot/imported/machinegunLauncher.obj-b3a72906afeb45aa7ab85e561eb7bc96.mesh"
+
+[deps]
+
+files=["res://.godot/imported/machinegunLauncher.obj-b3a72906afeb45aa7ab85e561eb7bc96.mesh"]
+
+source_file="res://Assets/kenney_weapon-pack/Models/machinegunLauncher.obj"
+dest_files=["res://.godot/imported/machinegunLauncher.obj-b3a72906afeb45aa7ab85e561eb7bc96.mesh", "res://.godot/imported/machinegunLauncher.obj-b3a72906afeb45aa7ab85e561eb7bc96.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

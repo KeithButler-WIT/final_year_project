@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://vyjqu0cnwc1u"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_r67k7"]
+[ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Scenes/HealthComponent.tscn" id="2_lln4s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_db7wn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jsq5"]
+albedo_color = Color(0.545098, 0.462745, 0.329412, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pi2vg"]
+size = Vector3(0.502869, 0.498535, 0.496582)
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_r67k7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_db7wn")
+surface_material_override/0 = SubResource("StandardMaterial3D_1jsq5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00311279, 0.00415033, -0.000488281)
+shape = SubResource("BoxShape3D_pi2vg")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+max_speed = 40.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_lln4s")]
+max_health = 30
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="died_signal" from="HealthComponent" to="." method="_on_health_died_signal"]

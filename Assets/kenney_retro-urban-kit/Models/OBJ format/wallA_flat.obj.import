@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dsynhn82va6fe"
+path="res://.godot/imported/wallA_flat.obj-26d8a0962d5a835bde668817e7d45d7e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallA_flat.obj-26d8a0962d5a835bde668817e7d45d7e.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/wallA_flat.obj"
+dest_files=["res://.godot/imported/wallA_flat.obj-26d8a0962d5a835bde668817e7d45d7e.mesh", "res://.godot/imported/wallA_flat.obj-26d8a0962d5a835bde668817e7d45d7e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

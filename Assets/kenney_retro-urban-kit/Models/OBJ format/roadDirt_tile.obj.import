@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cudba714xkoff"
+path="res://.godot/imported/roadDirt_tile.obj-bedfbec26202e33fe7ed1fe02f09b97e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/roadDirt_tile.obj-bedfbec26202e33fe7ed1fe02f09b97e.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/roadDirt_tile.obj"
+dest_files=["res://.godot/imported/roadDirt_tile.obj-bedfbec26202e33fe7ed1fe02f09b97e.mesh", "res://.godot/imported/roadDirt_tile.obj-bedfbec26202e33fe7ed1fe02f09b97e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c5kgifyr1wox7"
+path="res://.godot/imported/wallA_door.obj-146eb961e0e74b83f3da2f50cff6fd0f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallA_door.obj-146eb961e0e74b83f3da2f50cff6fd0f.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/wallA_door.obj"
+dest_files=["res://.godot/imported/wallA_door.obj-146eb961e0e74b83f3da2f50cff6fd0f.mesh", "res://.godot/imported/wallA_door.obj-146eb961e0e74b83f3da2f50cff6fd0f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

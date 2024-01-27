@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dd6ko7bjpx6y5"
+path="res://.godot/imported/roadAsphalt_cornerOuter.obj-69d6a27ef4234759ed8cf6333dd661de.mesh"
+
+[deps]
+
+files=["res://.godot/imported/roadAsphalt_cornerOuter.obj-69d6a27ef4234759ed8cf6333dd661de.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/roadAsphalt_cornerOuter.obj"
+dest_files=["res://.godot/imported/roadAsphalt_cornerOuter.obj-69d6a27ef4234759ed8cf6333dd661de.mesh", "res://.godot/imported/roadAsphalt_cornerOuter.obj-69d6a27ef4234759ed8cf6333dd661de.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6rtj6786bw60"
+path="res://.godot/imported/wallB_roof.obj-510a9f8755b841841a02642f0d995549.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallB_roof.obj-510a9f8755b841841a02642f0d995549.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/wallB_roof.obj"
+dest_files=["res://.godot/imported/wallB_roof.obj-510a9f8755b841841a02642f0d995549.mesh", "res://.godot/imported/wallB_roof.obj-510a9f8755b841841a02642f0d995549.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
