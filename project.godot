@@ -72,6 +72,7 @@ primary_action={
 3d_physics/layer_4="Material"
 3d_physics/layer_5="Objective"
 3d_physics/layer_6="Collectable"
+3d_physics/layer_7="Ground"
 
 [rendering]
 

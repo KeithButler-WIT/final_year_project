@@ -43,7 +43,7 @@ shader = ExtResource("4_xq8cp")
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.505591, 0)
-collision_mask = 63
+collision_mask = 255
 script = ExtResource("1_pj4ig")
 packet_turret = ExtResource("2_tgj4n")
 metadata/_edit_group_ = true

@@ -13,15 +13,15 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	print("Object completed")
+	print("Objective completed")
 	queue_free()
 
 
 func _on_area_3d_body_entered(body):
-	print("Timer started")
+	print("Objective timer started")
 	$Timer.start()
 
 
 func _on_area_3d_body_exited(body):
-	print("Timer stopped")
+	print("Objective timer stopped")
 	$Timer.stop()

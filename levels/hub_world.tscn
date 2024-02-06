@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=9 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Scenes/player.tscn" id="1_0ba3e"]
 [ext_resource type="Script" path="res://Scripts/hubworld.gd" id="1_1b0wb"]
@@ -7,6 +7,12 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yyh2v"]
 height = 4.0
 radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eo8uv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqpbo"]
+transparency = 1
+blend_mode = 1
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_nsxpk"]
 vertices = PackedVector3Array(-9.5, -0.5, -9.5, -9.5, -0.5, 9.5, 9.5, -0.5, 9.5, 9.5, -0.5, -9.5)
@@ -23,15 +29,24 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_0ba3e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
+collision_mask = 255
 
 [node name="LevelStartTimer" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
 
 [node name="LevelStartArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelStartArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_yyh2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelStartArea"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("CylinderMesh_eo8uv")
+surface_material_override/0 = SubResource("StandardMaterial3D_bqpbo")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
@@ -40,6 +55,8 @@ navigation_mesh = SubResource("NavigationMesh_nsxpk")
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.5, 0)
 use_collision = true
+collision_layer = 64
+collision_mask = 103
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_45ylu")
 
