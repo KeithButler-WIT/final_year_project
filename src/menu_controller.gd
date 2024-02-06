@@ -76,7 +76,7 @@ func _ready():
 
 
 
-var simultaneous_scene = preload("res://levels/sandbox.tscn")
+var simultaneous_scene = preload("res://levels/hub_world.tscn")
 
 func _on_start_button_pressed():
 	# Put your load scene here

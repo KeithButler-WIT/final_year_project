@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://co4engn5l2q3u"]
+[gd_scene load_steps=16 format=3 uid="uid://co4engn5l2q3u"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vpvr0"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Scenes/player.tscn" id="2_fkka8"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Scenes/enemy.tscn" id="3_pkqfi"]
 [ext_resource type="Script" path="res://Scripts/Wave.gd" id="5_p1r37"]
 [ext_resource type="PackedScene" uid="uid://vyjqu0cnwc1u" path="res://Scenes/DroneEnemy.tscn" id="6_4dt1v"]
+[ext_resource type="PackedScene" uid="uid://6b5i0ese6itq" path="res://Scenes/crt_effect.tscn" id="7_h42i5"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Analog_Monochrome.gdshader" id="8_ornif"]
+[ext_resource type="Script" path="res://Scripts/Objective.gd" id="9_mrbkt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_nsxpk"]
 vertices = PackedVector3Array(-499, 0, -1, -11.25, 0, -0.75, -11.25, 0, -2.25, -499, 0, -1, -11.25, 0, -2.25, -10.25, 0, -2.5, -10.25, 0, -499.5, -499, 0, -499.5, -9.25, 0, -2.5, -9, 0, -1.5, -5.75, 0, -1.75, -5.5, 0, -3, -5.5, 0, -3, -3.5, 0, -3, -3.5, 0, -499.5, -10.25, 0, -2.5, -9.25, 0, -2.5, -5.5, 0, -3, -3.5, 0, -499.5, -10.25, 0, -499.5, -3.5, 0, -3, -0.75, 0, -3, -0.75, 0, -499.5, -3.5, 0, -499.5, 1.25, 0, -3, 1.5, 0, -1.25, 4.75, 0, 0, 9.25, 0, 0, 9.25, 0, -499.5, -0.75, 0, -499.5, -0.75, 0, -499.5, -0.75, 0, -3, 1.25, 0, -3, 11.25, 0, 0, 11.5, 0, 1, 500, 0, 1, 500, 0, -499.5, 9.25, 0, -499.5, 9.25, 0, -499.5, 9.25, 0, 0, 11.25, 0, 0, 1.75, 0, 3.5, 4.75, 0, 2.25, 4.25, 0, 2, 1.5, 0, 3, -5.5, 0, -0.75, -5.75, 0, -1.75, -9, 0, -1.5, -9, 0, 4, -5.5, 0, 4, -5.25, 0, 3, 4.25, 0, 0.25, 4.75, 0, 0, 1.5, 0, -1.25, 1.25, 0, -0.75, 1.5, 0, 3, 4.25, 0, 2, 4.25, 0, 0.25, 1.25, 0, -0.75, -5.5, 0, -0.75, -5.25, 0, 3, -499, 0, 3.25, -11.25, 0, 3, -11.25, 0, -0.75, -499, 0, -1, 500, 0, 1, 11.5, 0, 1, 11.25, 0, 2.25, 10, 0, 499.5, 500, 0, 499.5, 11.25, 0, 2.25, 9.75, 0, 2.25, 10, 0, 499.5, 4.75, 0, 2.25, 1.75, 0, 3.5, 1.75, 0, 4.75, 4.75, 0, 2.25, 1.75, 0, 4.75, 1.25, 0, 5.25, 0, 0, 499.5, 10, 0, 499.5, 9.75, 0, 2.25, 1.25, 0, 5.25, -0.25, 0, 5.25, 0, 0, 499.5, -11.25, 0, 4.25, -11.25, 0, 3, -499, 0, 3.25, -499, 0, 499.5, -11.5, 0, 499.5, -5.5, 0, 4, -9, 0, 4, -9.25, 0, 4.75, -5.25, 0, 5.25, -11.25, 0, 4.25, -11.5, 0, 499.5, -11, 0, 4.75, -5.25, 0, 5.25, -9.25, 0, 4.75, -11, 0, 4.75, -11.5, 0, 499.5, -4, 0, 499.5, -4, 0, 499.5, -3.75, 0, 5.25, -5.25, 0, 5.25, -4, 0, 499.5, 0, 0, 499.5, -0.25, 0, 5.25, -3.75, 0, 5.25)
@@ -13,6 +16,31 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgnst"]
 albedo_color = Color(0.321569, 0.243137, 0.176471, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtfp"]
+shader = ExtResource("8_ornif")
+shader_parameter/opacity = 0.0
+shader_parameter/pixel_size = 0.01
+shader_parameter/greyscale = true
+shader_parameter/contrast = null
+shader_parameter/pixel_colors = null
+shader_parameter/background_color = null
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_01arm"]
+height = 4.0
+radius = 7.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dpnk"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mmuip"]
+material = SubResource("StandardMaterial3D_2dpnk")
+top_radius = 7.0
+bottom_radius = 7.0
+height = 4.0
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_vpvr0")
@@ -76,145 +104,34 @@ seconds_between_spawns = 0.5
 [node name="Enemy" parent="." instance=ExtResource("6_4dt1v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 
-[node name="Enemy2" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
+[node name="crt effect" parent="." instance=ExtResource("7_h42i5")]
+visible = false
 
-[node name="Enemy4" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
+[node name="crt effect2" parent="." instance=ExtResource("7_h42i5")]
+visible = false
+material = SubResource("ShaderMaterial_yhtfp")
 
-[node name="Enemy5" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+[node name="Objective" type="Node3D" parent="."]
+script = ExtResource("9_mrbkt")
 
-[node name="Enemy6" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 1)
+[node name="Area3D" type="Area3D" parent="Objective"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+collision_layer = 16
 
-[node name="Enemy7" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -7)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D"]
+shape = SubResource("CylinderShape3D_01arm")
 
-[node name="Enemy8" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objective/Area3D"]
+mesh = SubResource("CylinderMesh_mmuip")
 
-[node name="Enemy3" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 10)
+[node name="Timer" type="Timer" parent="Objective"]
+wait_time = 10.0
+one_shot = true
 
-[node name="Enemy9" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 13)
-
-[node name="Enemy10" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 16)
-
-[node name="Enemy11" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 18)
-
-[node name="Enemy12" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 10)
-
-[node name="Enemy13" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 7)
-
-[node name="Enemy14" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -1)
-
-[node name="Enemy15" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 1)
-
-[node name="Enemy16" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 16)
-
-[node name="Enemy17" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 16)
-
-[node name="Enemy18" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 19)
-
-[node name="Enemy19" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 21)
-
-[node name="Enemy20" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 13)
-
-[node name="Enemy21" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 10)
-
-[node name="Enemy22" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, 2)
-
-[node name="Enemy23" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 4)
-
-[node name="Enemy24" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19)
-
-[node name="Enemy25" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
-
-[node name="Enemy26" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -13)
-
-[node name="Enemy27" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -11)
-
-[node name="Enemy28" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -19)
-
-[node name="Enemy29" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -22)
-
-[node name="Enemy30" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -30)
-
-[node name="Enemy31" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -28)
-
-[node name="Enemy32" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -13)
-
-[node name="Enemy33" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -15)
-
-[node name="Enemy34" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -12)
-
-[node name="Enemy35" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -10)
-
-[node name="Enemy36" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -18)
-
-[node name="Enemy37" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -21)
-
-[node name="Enemy38" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -29)
-
-[node name="Enemy39" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -27)
-
-[node name="Enemy40" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -12)
-
-[node name="Enemy41" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -10)
-
-[node name="Enemy42" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -7)
-
-[node name="Enemy43" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -5)
-
-[node name="Enemy44" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -13)
-
-[node name="Enemy45" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -16)
-
-[node name="Enemy46" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -24)
-
-[node name="Enemy47" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -22)
-
-[node name="Enemy48" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -7)
+[node name="Enemy49" parent="." instance=ExtResource("3_pkqfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -4)
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Objective/Timer" to="Objective" method="_on_timer_timeout"]

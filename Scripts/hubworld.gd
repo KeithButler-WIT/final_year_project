@@ -20,5 +20,13 @@ func _physics_process(delta):
 		$Player/Body.look_at(look_at_me, Vector3.UP)
 
 
-# Spawn a single objective randomly in the world
-# after objective completed spawn exit
+func _on_level_start_timer_timeout():
+	pass # Replace with function body.
+
+
+func _on_level_start_area_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_level_start_area_body_exited(body):
+	pass # Replace with function body.

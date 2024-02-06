@@ -40,7 +40,7 @@ func _on_timer_timeout():
 	if enemies_remaining_to_spawn:
 		var new_enemy = packed_enemy.instantiate()
 		new_enemy.position = get_random_position_off_screen()
-		print(new_enemy.position)
+		#print(new_enemy.position)
 		connect_to_enemy_signals(new_enemy)
 		var scene_root = get_parent()
 		scene_root.add_child(new_enemy)
