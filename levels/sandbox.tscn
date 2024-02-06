@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://co4engn5l2q3u"]
+[gd_scene load_steps=17 format=3 uid="uid://co4engn5l2q3u"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vpvr0"]
+[ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Scenes/player_aiming_component.tscn" id="2_eavse"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Scenes/player.tscn" id="2_fkka8"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_517dx"]
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Scenes/enemy.tscn" id="3_pkqfi"]
@@ -44,6 +45,8 @@ height = 4.0
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_vpvr0")
+
+[node name="PlayerAimingComponent" parent="." instance=ExtResource("2_eavse")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.75225, 0)
