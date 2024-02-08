@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cufi5h2uu5sfn"
+path="res://.godot/imported/detailBricks_typeB.obj-89ba7a2318ddcc11563d9c90cf5f11be.mesh"
+
+[deps]
+
+files=["res://.godot/imported/detailBricks_typeB.obj-89ba7a2318ddcc11563d9c90cf5f11be.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/detailBricks_typeB.obj"
+dest_files=["res://.godot/imported/detailBricks_typeB.obj-89ba7a2318ddcc11563d9c90cf5f11be.mesh", "res://.godot/imported/detailBricks_typeB.obj-89ba7a2318ddcc11563d9c90cf5f11be.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

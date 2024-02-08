@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bnjx0a8rli813"
+path="res://.godot/imported/wallSteps_typeB.obj-d0229c77335f0f8dad29222bc33e9cf4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallSteps_typeB.obj-d0229c77335f0f8dad29222bc33e9cf4.mesh"]
+
+source_file="res://Assets/kenney_retro-urban-kit/Models/OBJ format/wallSteps_typeB.obj"
+dest_files=["res://.godot/imported/wallSteps_typeB.obj-d0229c77335f0f8dad29222bc33e9cf4.mesh", "res://.godot/imported/wallSteps_typeB.obj-d0229c77335f0f8dad29222bc33e9cf4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

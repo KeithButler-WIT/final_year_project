@@ -1,0 +1,85 @@
+[gd_scene load_steps=18 format=3 uid="uid://b2sf6pmwefh8o"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_pj4ig"]
+[ext_resource type="PackedScene" uid="uid://c8mhbkgily14y" path="res://Scenes/Turret.tscn" id="2_tgj4n"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/3d_pixelation.gdshader" id="3_8nnlj"]
+[ext_resource type="PackedScene" uid="uid://giu8xupwwgxp" path="res://Scenes/gun_controller.tscn" id="3_txidj"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/walkingParticle.gdshader" id="4_xq8cp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jndjh"]
+render_priority = 0
+shader = ExtResource("3_8nnlj")
+shader_parameter/pixel_size = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilory"]
+next_pass = SubResource("ShaderMaterial_jndjh")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8c5om"]
+material = SubResource("StandardMaterial3D_ilory")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tb11n"]
+albedo_color = Color(1, 0.376471, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pyhmp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8smkj"]
+albedo_color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_il5k3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wapkd"]
+albedo_color = Color(1, 0.376471, 0.0588235, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_417lt"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_0fcq3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2krx"]
+render_priority = 0
+next_pass = SubResource("FogMaterial_0fcq3")
+shader = ExtResource("4_xq8cp")
+
+[sub_resource type="BoxMesh" id="BoxMesh_l6iob"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.505591, 0)
+collision_mask = 255
+script = ExtResource("1_pj4ig")
+packet_turret = ExtResource("2_tgj4n")
+metadata/_edit_group_ = true
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_8c5om")
+surface_material_override/0 = SubResource("StandardMaterial3D_tb11n")
+
+[node name="Eyes" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.60041, 0, 0, 0, 0.204517, 0, 0, 0, 0.377427, 0, 0.435307, -0.407264)
+mesh = SubResource("BoxMesh_pyhmp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8smkj")
+
+[node name="Hand" type="Marker3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, -0.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/Hand"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("SphereMesh_il5k3")
+surface_material_override/0 = SubResource("StandardMaterial3D_wapkd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_417lt")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 3.55271e-15, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 6)
+
+[node name="GunController" parent="." instance=ExtResource("3_txidj")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transparency = 0.7
+visibility_range_fade_mode = 1
+emitting = false
+collision_base_size = 0.0
+draw_order = 2
+trail_enabled = true
+process_material = SubResource("ShaderMaterial_l2krx")
+draw_pass_1 = SubResource("BoxMesh_l6iob")
