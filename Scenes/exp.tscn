@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg5juf0ykl0rd"]
+
+[ext_resource type="Texture2D" uid="uid://dja28abtr2teg" path="res://Assets/exp.png" id="1_3u0dg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xj726"]
+size = Vector3(1, 0.998962, 1)
+
+[node name="Exp" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0, 1, 1, 1)
+pixel_size = 0.2
+billboard = 1
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_3u0dg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+omni_range = 0.601144
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 32
+collision_mask = 65
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.000259399, 0)
+shape = SubResource("BoxShape3D_xj726")

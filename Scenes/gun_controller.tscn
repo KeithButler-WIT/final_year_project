@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://giu8xupwwgxp"]
-
-[ext_resource type="Script" path="res://Scripts/GunController.gd" id="1_07kor"]
-[ext_resource type="PackedScene" uid="uid://dh1kgwaqfr24i" path="res://Scenes/Shotgun.tscn" id="2_r0lo0"]
-
-[node name="GunController" type="Node"]
-script = ExtResource("1_07kor")
-StartingWeapon = ExtResource("2_r0lo0")

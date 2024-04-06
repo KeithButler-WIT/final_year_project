@@ -3,9 +3,12 @@ extends Node3D
 const LEVEL_SCENE_PATH : String = "res://levels/sandbox.tscn"
 
 
+# Save when loading into level
+
 func _on_level_start_timer_timeout():
-	print("LOAD THE LEVEL TIMER TIMEOUT")
+	print("LOAD THE LEVEL: TIMER TIMEOUT")
 	# Obtain the resource now that we need it
+	# Save player stats
 	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(LEVEL_SCENE_PATH))
 
 
