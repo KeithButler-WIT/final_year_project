@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbhl3vg4rafl2"]
+
+[ext_resource type="Script" path="res://src/menu_controller.gd" id="1_cqpwh"]
+[ext_resource type="PackedScene" uid="uid://0vplimxr7v7e" path="res://Scenes/level_up_card.tscn" id="2_yc6ty"]
+
+[node name="main" type="Node"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cqpwh")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MainMenu"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 480.0
+
+[node name="MainContainer" type="HBoxContainer" parent="MainMenu/AspectRatioContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VContainer1" parent="MainMenu/AspectRatioContainer/MainContainer" instance=ExtResource("2_yc6ty")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MainMenu/AspectRatioContainer/MainContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VContainer2" parent="MainMenu/AspectRatioContainer/MainContainer" instance=ExtResource("2_yc6ty")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="MainMenu/AspectRatioContainer/MainContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VContainer3" parent="MainMenu/AspectRatioContainer/MainContainer" instance=ExtResource("2_yc6ty")]
+layout_mode = 2

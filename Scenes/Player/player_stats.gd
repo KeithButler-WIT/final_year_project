@@ -20,6 +20,17 @@ var deaths = 0
 var turrets_placed = 0
 var highest_level = 0
 var total_experience_gained = 0
+var missions_completed = 0
+
+enum MISSION {
+	LOOTING,
+	SHOOTING,
+	SAVING,
+	SURVIVE,
+	NONE,
+}
+
+var current_mission = MISSION.NONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
