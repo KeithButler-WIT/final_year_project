@@ -75,7 +75,7 @@ func move_and_attack():
 
 	velocity = current_agent_position.direction_to(attack_position) * movement_speed  * attack_speed_multiplier
 	move_and_slide()
-	print(current_agent_position.direction_to(attack_position))
+	#print(current_agent_position.direction_to(attack_position))
 	
 	if global_transform.origin.distance_to(attack_position) < 1:
 		match current_state:
@@ -102,7 +102,7 @@ func _on_AttackRadius_body_entered(body):
 		attack_target = player.global_transform.origin
 		current_state = state.ATTACKING
 		return_target = global_transform.origin
-		print("Player in range:  ", body)
+		#print("Player in range:  ", body)
 
 
 func _on_attack_timer_timeout():

@@ -8,7 +8,7 @@ var ray_target = Vector3()
 @onready var camera = $"../Player/Camera"
 @onready var player_body = $"../Player/Body"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var mouse_position = get_viewport().get_mouse_position()
 	#print("Mouse Position: ", mouse_position)
 	

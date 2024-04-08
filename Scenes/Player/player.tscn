@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2sf6pmwefh8o"]
+[gd_scene load_steps=29 format=3 uid="uid://b2sf6pmwefh8o"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_pj4ig"]
 [ext_resource type="PackedScene" uid="uid://c8mhbkgily14y" path="res://Scenes/Turret.tscn" id="2_tgj4n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cuh1yaoty6gvf" path="res://Scenes/Player/camera.tscn" id="5_6omeo"]
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="6_udxi6"]
 [ext_resource type="Script" path="res://Scripts/PickupComponent.gd" id="7_la2uo"]
+[ext_resource type="Script" path="res://Scripts/levelupComponent.gd" id="8_fftjq"]
 
 [sub_resource type="Animation" id="Animation_k6fa5"]
 resource_name = "idle"
@@ -336,6 +337,9 @@ shape = SubResource("CylinderShape3D_rlva5")
 
 [node name="PickupComponent" type="Node3D" parent="."]
 script = ExtResource("7_la2uo")
+
+[node name="levelupComponent" type="Node3D" parent="."]
+script = ExtResource("8_fftjq")
 
 [connection signal="timeout" from="turret_place_timer" to="." method="_on_turret_place_timer_timeout"]
 [connection signal="body_entered" from="pickup_area" to="PickupComponent" method="_on_pickup_area_body_entered"]

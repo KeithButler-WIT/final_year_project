@@ -1,16 +1,19 @@
 extends Node
 
-# Player Skills
+# Player Skills # These reset every mission
 var max_health = 10
 var current_health = max_health
 var num_turrets_placeable = 1
 var num_weapons = 1
 var turret_attack_speed = 1;
 var pickup_radius = 1
+var level = 1
 var experience = 0
 var exp_to_next_level = 10
+var movement_speed = 1
+var turret_damage = 1;
 
-# Global stats
+# Global stats # These get saved
 var time_played = 0
 var total_kills = 0
 var total_damage_taken = 0

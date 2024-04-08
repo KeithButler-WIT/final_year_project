@@ -47,7 +47,7 @@ func _physics_process(delta):
 		$Character.flip_h = true
 		$Character/AnimationPlayer.play("walk_right")
 	if (direction.z > 0):
-		$Character/AnimationPlayer.play("walk_forward")
+		$Character/AnimationPlayer.play("walk_up")
 	if (direction.z < 0):
 		$Character/AnimationPlayer.play("walk_down")
 	if (direction == Vector3.ZERO):

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://0vplimxr7v7e"]
 
-[node name="VContainer1" type="VBoxContainer"]
+[node name="VContainer" type="VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 alignment = 1
 
-[node name="Option_1" type="Button" parent="."]
+[node name="Option" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 text = "Option 1"
