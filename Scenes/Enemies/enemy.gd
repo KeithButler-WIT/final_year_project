@@ -25,11 +25,14 @@ enum state {
 var current_state = state.SEEKING
 
 @export var exp_packed : PackedScene
+@export var num_exp_to_drop = 1
+
 func spawn_exp():
-	var exp = exp_packed.instantiate()
-	exp.global_transform = global_transform
-	var scene_root = get_tree().root#.get_children()[0]
-	scene_root.add_child(exp)
+	for i in range(0,num_exp_to_drop):
+		var exp = exp_packed.instantiate()
+		exp.global_transform = global_transform
+		var scene_root = get_tree().root#.get_children()[0]
+		scene_root.add_child(exp)
 
 func _ready():
 	animationPlayer.play("idle")
@@ -59,9 +62,11 @@ func _physics_process(delta):
 			var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
 			velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+			animationPlayer.play("walk_down")
 			move_and_slide()
 		state.ATTACKING:
-			move_and_attack()
+			current_state = state.SEEKING
+			#move_and_attack()
 		state.RETURNING:
 			print("RETURNING")
 		state.RESTING:

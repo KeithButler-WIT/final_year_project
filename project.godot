@@ -20,12 +20,6 @@ config/icon="res://Assets/icon.svg"
 PlayerStats="*res://Scenes/Player/player_stats.gd"
 Global="*res://Scripts/global.gd"
 
-[display]
-
-window/size/viewport_width=720
-window/size/viewport_height=480
-window/stretch/mode="viewport"
-
 [editor_plugins]
 
 enabled=PackedStringArray()
@@ -122,6 +116,7 @@ move_right={
 3d_physics/layer_5="Objective"
 3d_physics/layer_6="Collectable"
 3d_physics/layer_7="Ground"
+3d_physics/layer_8="Interactable"
 
 [rendering]
 

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var gun_controller = $GunController
 
-const SPEED = 5.0
+var SPEED = PlayerStats.movement_speed 
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

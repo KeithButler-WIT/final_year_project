@@ -1,8 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=20 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Scripts/hubworld.gd" id="1_1b0wb"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Scenes/Player/player.tscn" id="2_hpfyt"]
+[ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_vrmki"]
 [ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Scenes/Player/player_aiming_component.tscn" id="3_48dm1"]
+[ext_resource type="Script" path="res://Scripts/missionSelector.gd" id="4_3f5q4"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="5_1nkdk"]
+[ext_resource type="Texture2D" uid="uid://dxlntis4lga7t" path="res://Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_e_outline.png" id="6_asmbx"]
+[ext_resource type="PackedScene" uid="uid://dgno57xgtp0gb" path="res://Scenes/mission_select_menu.tscn" id="7_puv74"]
+[ext_resource type="Script" path="res://Scripts/TutorialHints.gd" id="9_1gm8n"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
+panorama = ExtResource("2_vrmki")
+
+[sub_resource type="Sky" id="Sky_d0uxg"]
+sky_material = SubResource("PanoramaSkyMaterial_ql0d3")
+
+[sub_resource type="Environment" id="Environment_ituai"]
+background_mode = 2
+sky = SubResource("Sky_d0uxg")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.02
+glow_blend_mode = 0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7y8vb"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 30.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yyh2v"]
 height = 4.0
@@ -19,9 +50,18 @@ vertices = PackedVector3Array(-9.5, -0.5, -9.5, -9.5, -0.5, 9.5, 9.5, -0.5, 9.5,
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45ylu"]
+albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wgptv"]
+height = 6.32262
+radius = 2.0
 
 [node name="HubWorld" type="Node3D"]
 script = ExtResource("1_1b0wb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ituai")
+camera_attributes = SubResource("CameraAttributesPractical_7y8vb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.75225, 0)
@@ -56,13 +96,59 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.
 use_collision = true
 collision_layer = 64
 collision_mask = 103
-size = Vector3(20, 1, 20)
+size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_45ylu")
 
 [node name="PlayerAimingComponent" parent="." instance=ExtResource("3_48dm1")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="missionSelector" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75366, 0.235107, -0.262207)
+size = Vector3(0.507324, 1.47021, 0.475586)
+script = ExtResource("4_3f5q4")
+
+[node name="InteractableComponent" type="Node3D" parent="missionSelector"]
+script = ExtResource("5_1nkdk")
+
+[node name="Area3D" type="Area3D" parent="missionSelector/InteractableComponent"]
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="missionSelector/InteractableComponent/Area3D"]
+shape = SubResource("CylinderShape3D_wgptv")
+
+[node name="Sprite3D" type="Sprite3D" parent="missionSelector/InteractableComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("6_asmbx")
+
+[node name="mission_select_menu" parent="missionSelector" instance=ExtResource("7_puv74")]
+
+[node name="TutorialHints" type="Node3D" parent="."]
+script = ExtResource("9_1gm8n")
+
+[node name="Label3D" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 5.20693, 0, 3.55175)
+text = "Press F to place a turret"
+font_size = 124
+
+[node name="Label3D2" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -2.79307, 0, -0.448254)
+text = "Press E to interact"
+font_size = 124
+
+[node name="Label3D3" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 2.20693, 0, -6.44825)
+text = "Walk into to start the mission"
+font_size = 124
+
+[node name="Label3D4" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 1.20693, 0, 0.00902343)
+text = "Use WASD to move"
+font_size = 124
 
 [connection signal="timeout" from="LevelStartTimer" to="." method="_on_level_start_timer_timeout"]
 [connection signal="body_entered" from="LevelStartArea" to="." method="_on_level_start_area_body_entered"]
 [connection signal="body_exited" from="LevelStartArea" to="." method="_on_level_start_area_body_exited"]
+[connection signal="body_entered" from="missionSelector/InteractableComponent/Area3D" to="missionSelector/InteractableComponent" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="missionSelector/InteractableComponent/Area3D" to="missionSelector/InteractableComponent" method="_on_area_3d_body_exited"]

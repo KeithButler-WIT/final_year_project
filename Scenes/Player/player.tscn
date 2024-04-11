@@ -270,10 +270,12 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 3.55271e-15, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 6)
 projection = 0
 size = 11.085
+post_processing = false
 
 [node name="Character" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0.1, 0, 4.37114e-09)
 pixel_size = 0.1
+shaded = true
 texture_filter = 0
 texture = ExtResource("6_udxi6")
 hframes = 8

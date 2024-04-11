@@ -1,31 +1,30 @@
 extends Control
 
+@onready var option1 = $"AspectRatioContainer/MainContainer/VContainer/Option"
+@onready var option2 = $"AspectRatioContainer/MainContainer/VContainer2/Option"
+@onready var option3 = $"AspectRatioContainer/MainContainer/VContainer3/Option"
 
 func _ready():
-	pass
-
-var simultaneous_scene = preload("res://levels/hub_world.tscn")
-
-func _on_start_button_pressed():
-	# Put your load scene here
-	# Check the documentation https://docs.godotengine.org/en/stable/tutorials/scripting/change_scenes_manually.html
-	get_tree().change_scene_to_packed(simultaneous_scene)
-
+	option1.text = "Number of turrets + 1"
+	option2.text = "Turret damage + 50%"
+	option3.text = "MOVEMENT SPEED + 20%"
 
 func _on_option_1_pressed():
-	PlayerStats.level += 1
+	base_stat_increase()
 	PlayerStats.num_turrets_placeable += 1
-	PlayerStats.max_health += 10
-	$"../../level_up_menu/MainMenu".visible = false
+	visible = false
 
 func _on_option_2_pressed():
-	PlayerStats.level += 1
-	PlayerStats.max_health += 10
+	base_stat_increase()
 	PlayerStats.turret_damage *= 1.5
-	$"../../level_up_menu/MainMenu".visible = false
+	visible = false
 
 func _on_option_3_pressed():
+	base_stat_increase()
+	PlayerStats.movement_speed *= 1.20
+	visible = false
+
+
+func base_stat_increase():
 	PlayerStats.level += 1
 	PlayerStats.max_health += 10
-	PlayerStats.movement_speed *= 1.20
-	$"../level_up_menu/MainMenu".visible = false

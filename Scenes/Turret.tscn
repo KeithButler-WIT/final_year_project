@@ -106,7 +106,6 @@ script = ExtResource("1_tv2lo")
 shoot_distance = 20.0
 
 [node name="Head" type="Node3D" parent="."]
-visible = false
 
 [node name="Gun" parent="Head" instance=ExtResource("2_0k3ma")]
 transform = Transform3D(-5.96046e-08, 3.55271e-15, 1, 1.21014e-14, 1, 2.13163e-14, -1, 8.99281e-15, -5.96046e-08, 0.000346296, 0.213656, -0.629382)
@@ -146,6 +145,7 @@ skeleton = NodePath("../..")
 
 [node name="Character" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0.1, 0, 4.37114e-09)
+visible = false
 pixel_size = 0.1
 billboard = 1
 texture_filter = 0

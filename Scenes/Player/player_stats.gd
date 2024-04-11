@@ -10,8 +10,9 @@ var pickup_radius = 1
 var level = 1
 var experience = 0
 var exp_to_next_level = 10
-var movement_speed = 1
-var turret_damage = 1;
+var movement_speed = 5
+var turret_damage = 1
+var player_skill = 5
 
 # Global stats # These get saved
 var time_played = 0

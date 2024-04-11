@@ -44,7 +44,7 @@ func _on_timer_timeout():
 		connect_to_enemy_signals(new_enemy)
 		var scene_root = get_parent()
 		scene_root.add_child(new_enemy)
-		enemies_remaining_to_spawn -= 1
+		#enemies_remaining_to_spawn -= 1
 	else:
 		if enemies_killed_this_wave == current_wave.num_enemies:
 			start_next_wave()
@@ -74,3 +74,4 @@ func get_random_position_off_screen() -> Vector3 :
 		randx = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.x + distance_outside_screen
 
 	return Vector3(randx, 2, randz)
+
