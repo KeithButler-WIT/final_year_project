@@ -300,7 +300,6 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8smkj")
 
 [node name="Hand" type="Marker3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0, -0.2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body/Hand"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

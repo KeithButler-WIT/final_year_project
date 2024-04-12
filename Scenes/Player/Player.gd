@@ -13,7 +13,8 @@ var turrets = []
 var can_place_turret : bool = true
 
 func _ready():
-	$Character/AnimationPlayer.play("idle")
+	#$Character/AnimationPlayer.play("idle")
+	pass
 
 func _physics_process(delta):
 	# Movement
@@ -39,19 +40,30 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	
-	if (direction.x > 0):
+
+	if Input.is_action_pressed("move_left"): 
 		$Character.flip_h = false
 		$Character/AnimationPlayer.play("walk_left")
-	if (direction.x < 0):
+	elif Input.is_action_pressed("move_right"):
 		$Character.flip_h = true
 		$Character/AnimationPlayer.play("walk_right")
-	if (direction.z > 0):
+	elif Input.is_action_pressed("move_up"):
 		$Character/AnimationPlayer.play("walk_up")
-	if (direction.z < 0):
+	elif Input.is_action_pressed("move_down"):
 		$Character/AnimationPlayer.play("walk_down")
-	if (direction == Vector3.ZERO):
-		$Character/AnimationPlayer.play("idle")
+	else:
+		$Character/AnimationPlayer.stop()
+		#$Character/AnimationPlayer.play("idle")
+
+	#if (velocity.x < 0):
+		#$Character.flip_h = true
+		#$Character/AnimationPlayer.play("walk_right")
+	#if (velocity.z > 0):
+		#$Character/AnimationPlayer.play("walk_up")
+	#if (velocity.z < 0):
+		#$Character/AnimationPlayer.play("walk_down")
+	#if (velocity == Vector3.ZERO):
+		#$Character/AnimationPlayer.play("idle")
 	
 	# Shooting
 	if Input.is_action_pressed("primary_action"):
