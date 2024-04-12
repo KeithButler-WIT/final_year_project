@@ -8,7 +8,11 @@ albedo_texture = ExtResource("1_7fs33")
 uv1_scale = Vector3(8, 8, 8)
 uv1_world_triplanar = true
 
-[node name="wall" type="CSGBox3D"]
+[node name="Wall" type="Node3D"]
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+
+[node name="wall" type="CSGBox3D" parent="NavigationObstacle3D"]
 transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 2, 0)
 material_override = SubResource("StandardMaterial3D_7lvml")
 use_collision = true

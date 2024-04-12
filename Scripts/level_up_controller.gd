@@ -24,7 +24,6 @@ func _on_option_3_pressed():
 	PlayerStats.movement_speed *= 1.20
 	visible = false
 
-
 func base_stat_increase():
-	PlayerStats.level += 1
+	#PlayerStats.level += 1
 	PlayerStats.max_health += 10

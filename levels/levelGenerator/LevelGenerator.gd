@@ -1,110 +1,3 @@
-#@tool
-#extends Node
-#
-#@export var GroundScene : PackedScene
-#@export var WallScene : PackedScene
-#@export var map_width : int = 11 : 
-	#set = set_width
-#@export var map_depth : int = 11 : 
-	#set = set_depth
-#@export_range(0, 1, 0.05) var wall_density : float = 0.2 : 
-	#set = set_wall_density
-#@export var rng_seed : int = 12345 : 
-	#set = set_seed
-#
-#var map_coords_array : Array = []
-#
-#class Coord:
-	#var x : int
-	#var z : int
-	#
-	#func _init(x,z):
-		#self.x = x
-		#self.z = z
-		#
-	#func _to_string():
-		#return "(" + str(x) + ", " + str(z) + ")"
-#
-#
-## Called when the node enters the scene tree for the first time.
-#func _ready():
-	#generate_map()
-#
-#
-#func generate_map():
-	#print("Generating Map")
-	#clear_map()
-	#add_ground()
-	#add_walls()
-#
-#
-#func clear_map():
-	#for node in get_children():
-		#node.queue_free()
-#
-#
-#func add_ground():
-	#var ground : CSGBox3D = GroundScene.instantiate()
-	#ground.width = map_width
-	#ground.depth = map_depth
-	#add_child(ground)
-#
-#
-#func add_walls():
-	#fill_map_coords_array()
-	##seed(rng_seed)
-	##print(map_coords_array)
-	#map_coords_array.shuffle()
-	##print(map_coords_array)
-	#
-	#var num_walls : int = map_coords_array.size() * wall_density
-	#if num_walls > 0:
-		#for coord in map_coords_array.slice(0, num_walls-1):
-			#create_wall_at(coord.x, coord.z)
-	#
-	#
-	##for x in range(map_width):
-		##for z in range(map_depth):
-			##if randf() < wall_density: # create a wall
-#
-#func create_wall_at(x,z):
-	#var wall_position = Vector3(x,0,z)
-	#var new_wall : CSGBox3D = WallScene.instantiate()
-	#new_wall.transform.origin = wall_position
-	#new_wall.transform.origin.x -= map_width/2 # offset to be in the true center of the map
-	#new_wall.transform.origin.z -= map_depth/2
-	#add_child(new_wall)
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
-#
-#
-#func fill_map_coords_array():
-	#map_coords_array = []
-	#for x in range(map_width):
-		#for z in range(map_depth):
-			#map_coords_array.append(Coord.new(x,z))
-#
-#
-#func set_width(w):
-	#map_width = w
-	#generate_map()
-#
-#
-#func set_depth(d):
-	#map_depth = d
-	#generate_map()
-#
-#
-#func set_wall_density(r):
-	#wall_density = r
-	#generate_map()
-#
-#func set_seed(s):
-	#rng_seed = s
-
 # https://github.com/age-of-asparagus/godot3-3dgame
 @tool
 extends Node3D
@@ -112,19 +5,19 @@ extends Node3D
 @export var GroundScene: PackedScene
 @export var ObstacleScene: PackedScene
 
-var shader_material : ShaderMaterial
+var shader_material: ShaderMaterial
 
 #@export var map_width = 11: set = set_width
 #@export var map_depth = 11: set = set_depth
-@export var map_width : int = 11 : 
+@export var map_width: int = 11:
 	set = set_width
-@export var map_depth : int = 11 : 
+@export var map_depth: int = 11:
 	set = set_depth
 
-@export var obstacle_density : float = 0.2: set = set_obstacle_density
+@export var obstacle_density: float = 0.2: set = set_obstacle_density
 
-@export var foreground_color: Color = Color(0,0,0,1) : set = set_fore_color
-@export var background_color: Color = Color(0,0,0,1) : set = set_back_color
+@export var foreground_color: Color = Color(0, 0, 0, 1): set = set_fore_color
+@export var background_color: Color = Color(0, 0, 0, 1): set = set_back_color
 
 @export var rng_seed: int = 12345: set = set_seed
 
@@ -157,7 +50,6 @@ func set_back_color(new_val):
 func set_fore_color(new_val):
 	foreground_color = new_val
 	generate_map()
-
 	
 func set_seed(new_val):
 	rng_seed = new_val
@@ -174,7 +66,7 @@ func set_depth(new_val):
 	generate_map()
 	
 func update_map_center():
-	map_center = Coord.new(map_width/2, map_depth/2)
+	map_center = Coord.new(map_width / 2, map_depth / 2)
 	
 func set_obstacle_density(new_val):
 	obstacle_density = new_val
@@ -218,7 +110,7 @@ func clear_map():
 func add_ground():
 	var ground: CSGBox3D = GroundScene.instantiate()
 	ground.width = map_width * 2
-	ground.depth = map_depth * 2 
+	ground.depth = map_depth * 2
 	add_child(ground)
 	
 #func update_obstacle_material():
@@ -265,9 +157,9 @@ func map_is_fully_accessible(current_obstacle_count):
 	
 	while coords_to_check:
 		var current_tile: Coord = coords_to_check.pop_front()
-		for x in [-1, 0, 1]:
-			for z in [-1, 0, 1]:
-				if x == 0 or z == 0:  # non-diagonal neighbor
+		for x in [- 1, 0, 1]:
+			for z in [- 1, 0, 1]:
+				if x == 0 or z == 0: # non-diagonal neighbor
 					var neighbor = Coord.new(current_tile.x + x, current_tile.z + z)
 					# Make sure we don't go off map
 					if on_the_map(neighbor):
@@ -282,15 +174,14 @@ func map_is_fully_accessible(current_obstacle_count):
 		return true
 	else:
 		return false
-	
 
 func on_the_map(neighbor):
 	return neighbor.x >= 0 and neighbor.x < map_width and neighbor.z >= 0 and neighbor.z < map_depth
 
 func create_obstacle_at(x, z):
 	var obstacle_position = Vector3(x * 2, 0, z * 2)
-	obstacle_position += Vector3(-map_width + 1, 0, -map_depth + 1)
-	var new_obstacle: CSGBox3D = ObstacleScene.instantiate()
+	obstacle_position += Vector3( - map_width + 1, -0.5, -map_depth + 1)
+	var new_obstacle: Node3D = ObstacleScene.instantiate()
 	
 	# New material and set it's color
 #	var new_material := SpatialMaterial.new()
@@ -300,6 +191,5 @@ func create_obstacle_at(x, z):
 	new_obstacle.transform.origin = obstacle_position
 	add_child(new_obstacle)
 
-
 func get_color_at_depth(z):
-	return background_color.lerp(foreground_color, float(z)/map_depth)
+	return background_color.lerp(foreground_color, float(z) / map_depth)
