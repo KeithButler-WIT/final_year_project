@@ -3,7 +3,7 @@ extends Node3D
 @export var rot_speed = 10
 @onready var camera : Camera3D = get_node("/root/Level/Player/Camera")
 
-@export var shoot_distance:float = 70
+@export var shoot_distance:float = 20
 var close_enemy
 
 
@@ -11,7 +11,7 @@ func _physics_process(delta):
 	var all_enemy = get_tree().get_nodes_in_group("enemy")
 	for enemy in all_enemy:
 		var gun2enemy_distance = position.distance_to(enemy.position)
-		if gun2enemy_distance < shoot_distance:
+		if gun2enemy_distance < shoot_distance and gun2enemy_distance > 10:
 
 			shoot_distance = gun2enemy_distance  ## ---> ## with this i storaged the current close enemy to shoot_distance ###	this is need the be reset ever time, shoot distance must be allways 70, so that guns can search enemys that close the guns 70 value. because of that i reset it every 1 second to 70 again.
 		  

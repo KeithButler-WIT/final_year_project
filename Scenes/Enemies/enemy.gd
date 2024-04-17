@@ -9,7 +9,7 @@ var attack_speed_multiplier = 5
 #@export var player : CharacterBody3D
 @onready var player: CharacterBody3D = $"../Player"
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var attack_timer = $AttackTimer
+#@onready var attack_timer = $AttackTimer
 @onready var animationPlayer = $Character/AnimationPlayer
 
 var attack_target: Vector3
@@ -26,6 +26,7 @@ var current_state = state.SEEKING
 
 @export var exp_packed : PackedScene
 @export var num_exp_to_drop = 1
+@export var damage = 1;
 
 func spawn_exp():
 	for i in range(0,num_exp_to_drop):
@@ -52,49 +53,54 @@ func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
 func _physics_process(delta):
-	match current_state:
-		state.SEEKING:
-			if navigation_agent.is_navigation_finished():
+	if is_instance_valid(player):
+		match current_state:
+			state.SEEKING:
+				if navigation_agent.is_navigation_finished():
+					animationPlayer.play("idle")
+					current_state = state.ATTACKING
+					return
+
+				var current_agent_position: Vector3 = global_position
+				var next_path_position: Vector3 = navigation_agent.get_next_path_position()
+
+				velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+				animationPlayer.play("walk_down")
+				move_and_slide()
+			state.ATTACKING:
+				move_and_attack()
+			state.RETURNING:
+				print("RETURNING")
+			state.RESTING:
+				print("RESTING")
 				animationPlayer.play("idle")
-				return
-
-			var current_agent_position: Vector3 = global_position
-			var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-
-			velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-			animationPlayer.play("walk_down")
-			move_and_slide()
-		state.ATTACKING:
-			current_state = state.SEEKING
-			#move_and_attack()
-		state.RETURNING:
-			print("RETURNING")
-		state.RESTING:
-			print("RESTING")
-			animationPlayer.play("idle")
 
 
 func move_and_attack():
-	var current_agent_position: Vector3 = global_transform.origin
 	var attack_position: Vector3 = navigation_agent.get_final_position()
+	var current_agent_position: Vector3 = global_position
+	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
-	velocity = current_agent_position.direction_to(attack_position) * movement_speed  * attack_speed_multiplier
+	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	animationPlayer.play("walk_down")
 	move_and_slide()
-	#print(current_agent_position.direction_to(attack_position))
 	
 	if global_transform.origin.distance_to(attack_position) < 1:
 		match current_state:
 			state.ATTACKING:
-				current_state == state.RETURNING
-				attack_target = current_agent_position
+				# Do damage to the player
+				player.take_hit(damage)
+				current_state == state.SEEKING
+				#attack_target = current_agent_position
 			state.RETURNING:
 				current_state == state.RESTING
-				attack_timer.start()
+				#attack_timer.start()
 
 
 func _on_PathUpdateTimer_timeout():
-	# Now that the navigation map is no longer empty, set the movement target.
-	set_movement_target(player.global_transform.origin)
+	if is_instance_valid(player):
+		# Now that the navigation map is no longer empty, set the movement target.
+		set_movement_target(player.global_transform.origin)
 
 
 func _on_health_died_signal():

@@ -1,18 +1,28 @@
 extends Node
 
-# Player Skills # These reset every mission
-var max_health = 10
+# Variables used as permanent upgrades
+var starting_max_health = 10
+var starting_num_turrets_placeable = 1
+var starting_num_weapons = 1
+var starting_turrent_attack_speed = 1
+var starting_pickup_radius = 1
+var starting_movement_speed = 5
+var starting_turret_damage = 1
+
+# Player stats # These reset every mission
+var max_health = starting_max_health
 var current_health = max_health
-var num_turrets_placeable = 1
-var num_weapons = 1
-var turret_attack_speed = 1;
-var pickup_radius = 1
+var num_turrets_placeable = starting_num_turrets_placeable
+var num_weapons = starting_num_weapons
+var turret_attack_speed = starting_turrent_attack_speed
+var pickup_radius = starting_pickup_radius
 var level = 1
 var experience = 0
 var exp_to_next_level = 10
-var movement_speed = 5
-var turret_damage = 1
+var movement_speed = starting_movement_speed
+var turret_damage = starting_turret_damage
 var player_skill = 5
+
 
 # Global stats # These get saved
 var time_played = 0
@@ -44,6 +54,23 @@ func _ready():
 func _process(delta):
 	# get signal from level complete to know when to save data
 	pass
+
+
+func reset():
+	### Resets the player stats after dying ###
+	var max_health = starting_max_health
+	var current_health = max_health
+	var num_turrets_placeable = starting_num_turrets_placeable
+	var num_weapons = starting_num_weapons
+	var turret_attack_speed = starting_turrent_attack_speed
+	var pickup_radius = starting_pickup_radius
+	var level = 1
+	var experience = 0
+	var exp_to_next_level = 10
+	var movement_speed = starting_movement_speed
+	var turret_damage = starting_turret_damage
+	var player_skill = 5
+
 
 # Save data
 func save():

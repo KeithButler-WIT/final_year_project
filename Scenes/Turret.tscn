@@ -103,7 +103,6 @@ _data = {
 [node name="Turret" type="Node3D"]
 transform = Transform3D(0.0425209, -4.36718e-08, -0.999096, 4.36719e-08, 1, -4.18527e-08, 0.999096, -4.18527e-08, 0.0425209, 0, 0, 0)
 script = ExtResource("1_tv2lo")
-shoot_distance = 20.0
 
 [node name="Head" type="Node3D" parent="."]
 

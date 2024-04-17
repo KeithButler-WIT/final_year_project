@@ -31,6 +31,20 @@ layout_mode = 2
 [node name="VContainer3" parent="AspectRatioContainer/MainContainer" instance=ExtResource("2_hauyt")]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 53.0
+offset_right = 304.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 32
+text = "SELECT A MISSION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer/Option" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer2/Option" to="." method="_on_option_2_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer3/Option" to="." method="_on_option_3_pressed"]

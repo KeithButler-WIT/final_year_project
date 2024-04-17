@@ -296,6 +296,16 @@ offset_bottom = 21.0
 text = "67%"
 script = ExtResource("4_2sdq7")
 
+[node name="Gameplay" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Accessibility" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="Container" type="HBoxContainer" parent="MainMenu/OptionContainer"]
 layout_mode = 2
 size_flags_horizontal = 4

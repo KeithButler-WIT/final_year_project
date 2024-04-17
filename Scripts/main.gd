@@ -3,6 +3,9 @@ extends Node3D
 # Spawn a single objective randomly in the world
 # after objective completed spawn exit
 
+func _ready():
+	PlayerStats.reset()
+
 func _process(_delta):
 	update_exp_bar()
 

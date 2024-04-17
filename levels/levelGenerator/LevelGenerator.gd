@@ -103,6 +103,8 @@ func generate_map():
 	#update_obstacle_material()
 	add_obstacles()
 	
+	$"../NavigationRegion3D".bake_navigation_mesh()
+	
 func clear_map():
 	for node in get_children():
 		node.queue_free()
@@ -180,7 +182,7 @@ func on_the_map(neighbor):
 
 func create_obstacle_at(x, z):
 	var obstacle_position = Vector3(x * 2, 0, z * 2)
-	obstacle_position += Vector3( - map_width + 1, -0.5, -map_depth + 1)
+	obstacle_position += Vector3( - map_width + 1, 0, -map_depth + 1)
 	var new_obstacle: Node3D = ObstacleScene.instantiate()
 	
 	# New material and set it's color

@@ -1,9 +1,9 @@
 extends Node3D
 
-var player_in_range = false
-
 @onready var button_icon = $Sprite3D
-@onready var menu = $"../mission_select_menu"
+@onready var menu = $"shopMenu"
+
+var player_in_range = false
 
 func _ready():
 	button_icon.visible = false
