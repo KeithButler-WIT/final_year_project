@@ -109,7 +109,7 @@ func _on_window_mode_optionbutton_item_selected(index):
 
 
 
-func _on_preset_h_slider_value_changed(value):
+func _on_preset_h_slider_value_changed(_value):
 	# start here https://docs.godotengine.org/en/stable/tutorials/3d/mesh_lod.html
 	pass # Replace with function body.
 

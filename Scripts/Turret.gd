@@ -7,7 +7,7 @@ extends Node3D
 var close_enemy
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var all_enemy = get_tree().get_nodes_in_group("enemy")
 	for enemy in all_enemy:
 		var gun2enemy_distance = position.distance_to(enemy.position)

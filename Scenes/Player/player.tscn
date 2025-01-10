@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2sf6pmwefh8o"]
+[gd_scene load_steps=36 format=3 uid="uid://b2sf6pmwefh8o"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_pj4ig"]
 [ext_resource type="PackedScene" uid="uid://c8mhbkgily14y" path="res://Scenes/Turret.tscn" id="2_tgj4n"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="10_aoq3k"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/idle.gd" id="11_gu44f"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/move.gd" id="12_4hqdw"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/jump.gd" id="13_ljcpp"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pmtll"]
 dof_blur_far_enabled = true
@@ -385,6 +386,9 @@ script = ExtResource("11_gu44f")
 
 [node name="move" type="Node" parent="movement_state_machine"]
 script = ExtResource("12_4hqdw")
+
+[node name="jump" type="Node" parent="movement_state_machine"]
+script = ExtResource("13_ljcpp")
 
 [connection signal="timeout" from="turret_place_timer" to="." method="_on_turret_place_timer_timeout"]
 [connection signal="body_entered" from="pickup_area" to="PickupComponent" method="_on_pickup_area_body_entered"]
