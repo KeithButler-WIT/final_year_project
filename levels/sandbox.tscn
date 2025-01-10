@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://co4engn5l2q3u"]
+[gd_scene load_steps=23 format=3 uid="uid://co4engn5l2q3u"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vpvr0"]
 [ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Scenes/Player/player_aiming_component.tscn" id="2_eavse"]
@@ -9,14 +9,10 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Spawner.gd" id="3_517dx"]
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Scenes/Enemies/enemy.tscn" id="3_pkqfi"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Wave.gd" id="5_p1r37"]
-[ext_resource type="PackedScene" uid="uid://vyjqu0cnwc1u" path="res://Scenes/Enemies/DroneEnemy.tscn" id="6_4dt1v"]
 [ext_resource type="PackedScene" uid="uid://dvbvkruchlsci" path="res://levels/levelGenerator/LevelGenerator.tscn" id="6_wwvf4"]
 [ext_resource type="PackedScene" uid="uid://6b5i0ese6itq" path="res://Scenes/crt_effect.tscn" id="7_h42i5"]
-[ext_resource type="PackedScene" uid="uid://cqwqx1yc48o66" path="res://levels/levelGenerator/tree.tscn" id="8_ooebq"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/Analog_Monochrome.gdshader" id="8_ornif"]
 [ext_resource type="Script" path="res://Scripts/Objective.gd" id="9_mrbkt"]
-[ext_resource type="PackedScene" uid="uid://5c6ceybbpc40" path="res://Scenes/Enemies/bouncingSeed.tscn" id="14_oyh8x"]
-[ext_resource type="PackedScene" uid="uid://bm32j8dle6xuk" path="res://Scenes/Enemies/bat.tscn" id="15_1h6xo"]
 [ext_resource type="PackedScene" uid="uid://f1a5ie4anfhg" path="res://Scenes/mission_end_loader.tscn" id="17_0fe0t"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rqhsu"]
@@ -94,10 +90,10 @@ collision_mask = 127
 navigation_mesh = SubResource("NavigationMesh_nsxpk")
 
 [node name="LevelGenerator" parent="NavigationRegion3D" instance=ExtResource("6_wwvf4")]
-ObstacleScene = ExtResource("8_ooebq")
 map_width = 21
 map_depth = 21
 obstacle_density = 0.3
+rng_seed = 12355
 
 [node name="MissionEndLoader" parent="." instance=ExtResource("17_0fe0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9878, 0, -8.03575)
@@ -124,9 +120,6 @@ seconds_between_spawns = 1.0
 script = ExtResource("5_p1r37")
 num_enemies = 120
 seconds_between_spawns = 0.5
-
-[node name="Enemy" parent="." instance=ExtResource("6_4dt1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 
 [node name="crt effect" parent="." instance=ExtResource("7_h42i5")]
 visible = false
@@ -170,85 +163,6 @@ offset_bottom = 67.0
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Enemy49" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -4)
-
-[node name="Enemy50" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -6)
-
-[node name="Enemy51" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -8)
-
-[node name="Enemy52" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -9)
-
-[node name="Enemy53" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -8)
-
-[node name="Enemy54" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -6)
-
-[node name="Enemy55" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -10)
-
-[node name="Enemy56" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -12)
-
-[node name="Enemy57" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -9)
-
-[node name="Enemy58" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -11)
-
-[node name="Enemy59" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -13)
-
-[node name="Enemy60" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13)
-
-[node name="Enemy61" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -4)
-
-[node name="Enemy62" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -6)
-
-[node name="Enemy63" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -8)
-
-[node name="Enemy64" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -9)
-
-[node name="Enemy65" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -8)
-
-[node name="Enemy66" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -6)
-
-[node name="Enemy67" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -10)
-
-[node name="Enemy68" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -12)
-
-[node name="Enemy69" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -9)
-
-[node name="Enemy70" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -11)
-
-[node name="Enemy71" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -13)
-
-[node name="Enemy72" parent="." instance=ExtResource("3_pkqfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13)
-
-[node name="Enemy2" parent="." instance=ExtResource("14_oyh8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84143, -0.5, 10.1791)
-
-[node name="Enemy3" parent="." instance=ExtResource("15_1h6xo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19459, -0.499999, 7.91401)
-num_exp_to_drop = 2
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_entered"]

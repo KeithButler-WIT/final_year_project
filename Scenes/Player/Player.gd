@@ -104,6 +104,7 @@ func take_hit(damage):
 		PlayerStats.current_health -= damage
 		canBeDamaged = false
 		print("HP: ", PlayerStats.current_health,"/",PlayerStats.max_health)
+		PlayerStats.decrease_skill(1)
 	
 	if PlayerStats.current_health <= 0:
 		die()

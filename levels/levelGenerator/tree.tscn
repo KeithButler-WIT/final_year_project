@@ -6,7 +6,7 @@
 height = 4.0
 radius = 1.0
 
-[node name="Wall" type="Node3D"]
+[node name="tree" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

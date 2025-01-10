@@ -17,7 +17,11 @@ var current_wave_number = -1
 func _ready():
 	waves = $"Waves".get_children()
 	start_next_wave()
-	
+	_update_timer_wait()
+
+func _update_timer_wait():
+	timer.wait_time = timer.wait_time / PlayerStats.player_skill
+
 func start_next_wave():
 	enemies_killed_this_wave = 0
 	current_wave_number += 1
@@ -37,6 +41,7 @@ func _on_enemy_health_died_signal():
 	#("detected enemy death")
 
 func _on_timer_timeout():
+	_update_timer_wait()
 	if enemies_remaining_to_spawn:
 		var new_enemy = packed_enemy.instantiate()
 		new_enemy.position = get_random_position_off_screen()
@@ -74,4 +79,3 @@ func get_random_position_off_screen() -> Vector3 :
 		randx = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.x + distance_outside_screen
 
 	return Vector3(randx, 2, randz)
-

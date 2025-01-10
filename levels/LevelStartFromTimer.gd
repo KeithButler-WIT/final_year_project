@@ -23,7 +23,7 @@ func _on_level_start_timer_timeout():
 	PlayerStats.save_game()
 	print("LOAD THE LEVEL: TIMER TIMEOUT")
 	#get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(LEVEL_SCENE.resource_path))
-	get_tree().change_scene_to_packed(LEVEL_SCENE)
+	get_tree().root.change_scene_to_packed(LEVEL_SCENE)
 
 func _on_level_start_area_body_entered(body):
 	print("Level area entered")

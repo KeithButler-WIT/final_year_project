@@ -55,6 +55,20 @@ func _process(delta):
 	# get signal from level complete to know when to save data
 	pass
 
+func decrease_skill(skill):
+	if player_skill < skill:
+		player_skill = 0
+	else:
+		player_skill -= skill
+
+func increase_skill(skill):
+	player_skill += skill
+
+func set_skill(skill):
+	if player_skill < 0:
+		player_skill = 0
+	else:
+		player_skill = skill
 
 func reset():
 	### Resets the player stats after dying ###
@@ -84,7 +98,9 @@ func save():
 		"total_health_recovered" : total_health_recovered,
 		"deaths" : deaths,
 		"turrets_placed" : turrets_placed,
-		"highest_level" : highest_level
+		"highest_level" : highest_level,
+		"total_experience_gained": total_experience_gained,
+		"missions_completed": missions_completed
 	}
 	return save_dict
 

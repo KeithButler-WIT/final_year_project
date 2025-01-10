@@ -72,10 +72,12 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="Video" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
 layout_mode = 0
@@ -103,7 +105,6 @@ offset_right = 210.0
 offset_bottom = 103.5
 item_count = 10
 popup/item_0/text = "640x480"
-popup/item_0/id = 0
 popup/item_1/text = "800x600"
 popup/item_1/id = 1
 popup/item_2/text = "1024x768"
@@ -154,7 +155,6 @@ offset_right = 210.0
 offset_bottom = 201.0
 item_count = 4
 popup/item_0/text = "off"
-popup/item_0/id = 0
 popup/item_1/text = "Normal"
 popup/item_1/id = 1
 popup/item_2/text = "Adaptative"
@@ -176,10 +176,9 @@ offset_left = 298.0
 offset_top = 169.0
 offset_right = 474.0
 offset_bottom = 200.0
-item_count = 4
 selected = 0
+item_count = 4
 popup/item_0/text = "OFF"
-popup/item_0/id = 0
 popup/item_1/text = "Protanopia"
 popup/item_1/id = 1
 popup/item_2/text = "Deuteranopia"
@@ -217,6 +216,7 @@ text = " Low  	   medium          high 	    very high      ultra"
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
 layout_mode = 0
@@ -300,11 +300,13 @@ script = ExtResource("4_2sdq7")
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="Accessibility" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="Container" type="HBoxContainer" parent="MainMenu/OptionContainer"]
 layout_mode = 2

@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpyd7irmqvlth"]
+
+[ext_resource type="Script" path="res://Scripts/hubworld.gd" id="1_1b0wb"]
+[ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Scenes/Player/player.tscn" id="2_hpfyt"]
+[ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_vrmki"]
+[ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Scenes/Player/player_aiming_component.tscn" id="3_48dm1"]
+[ext_resource type="Script" path="res://Scripts/TutorialHints.gd" id="9_1gm8n"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
+panorama = ExtResource("2_vrmki")
+
+[sub_resource type="Sky" id="Sky_d0uxg"]
+sky_material = SubResource("PanoramaSkyMaterial_ql0d3")
+
+[sub_resource type="Environment" id="Environment_ituai"]
+background_mode = 2
+sky = SubResource("Sky_d0uxg")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.02
+glow_blend_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45ylu"]
+albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[node name="HubWorld2" type="Node3D"]
+script = ExtResource("1_1b0wb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ituai")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.75225, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_hpfyt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 0)
+use_collision = true
+collision_layer = 64
+collision_mask = 103
+size = Vector3(80, 1, 100)
+material = SubResource("StandardMaterial3D_45ylu")
+
+[node name="PlayerAimingComponent" parent="." instance=ExtResource("3_48dm1")]
+
+[node name="TutorialHints" type="Node3D" parent="."]
+script = ExtResource("9_1gm8n")
+
+[node name="Label3D" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 5.20693, 0, 3.55175)
+text = "Press F to place a turret"
+font_size = 124
+
+[node name="Label3D2" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -19.2142, 0, -0.448254)
+text = "Press E to interact"
+font_size = 124
+
+[node name="Label3D3" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 2.20693, 0, -6.44825)
+text = "Walk into to start the mission"
+font_size = 124
+
+[node name="Label3D4" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 1.20693, 0, 0.00902343)
+text = "Use WASD to move"
+font_size = 124
+
+[node name="Label3D5" type="Label3D" parent="TutorialHints"]
+transform = Transform3D(-0.5, -0.866025, -1.63133e-07, -1.74846e-07, -8.74228e-08, 1, -0.866025, 0.5, -1.07709e-07, -17.4821, 0.00902343, 12.0142)
+text = "Permanent upgrades can be purchased here"
+font_size = 124
+autowrap_mode = 3
+width = 1000.0

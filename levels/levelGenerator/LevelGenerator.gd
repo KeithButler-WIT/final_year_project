@@ -103,7 +103,7 @@ func generate_map():
 	#update_obstacle_material()
 	add_obstacles()
 	
-	$"../NavigationRegion3D".bake_navigation_mesh()
+	#$"../NavigationRegion3D".bake_navigation_mesh()
 	
 func clear_map():
 	for node in get_children():
