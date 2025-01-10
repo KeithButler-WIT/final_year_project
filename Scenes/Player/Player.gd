@@ -78,7 +78,5 @@ func die():
 	#queue_free()
 	#Global.goto_scene("res://levels/hub_world.tscn")
 
-
-
 func _on_can_be_damaged_timer_timeout():
 	canBeDamaged = true
