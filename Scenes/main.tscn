@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmd7ssgxug2x7"]
 
-[ext_resource type="Script" path="res://src/menu_controller.gd" id="1_u8md4"]
-[ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://res/00000.png" id="2_igsto"]
+[ext_resource type="Script" path="res://Objects/Scripts/menu_controller.gd" id="1_u8md4"]
+[ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://addons/00000.png" id="2_igsto"]
 [ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://font.res" id="3_sqwno"]
-[ext_resource type="Script" path="res://src/Scroll_Label.gd" id="4_2sdq7"]
+[ext_resource type="Script" path="res://Objects/Scripts/Scroll_Label.gd" id="4_2sdq7"]
 
 [node name="main" type="Node"]
 

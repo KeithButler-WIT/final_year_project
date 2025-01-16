@@ -1,0 +1,170 @@
+[gd_scene load_steps=23 format=3 uid="uid://co4engn5l2q3u"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_vpvr0"]
+[ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Objects/Scenes/Player/player_aiming_component.tscn" id="2_eavse"]
+[ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="2_fkka8"]
+[ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_jau35"]
+[ext_resource type="PackedScene" uid="uid://cbhl3vg4rafl2" path="res://Objects/Scenes/level_up_menu.tscn" id="2_qd630"]
+[ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_vkldk"]
+[ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="3_517dx"]
+[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/enemy.tscn" id="3_pkqfi"]
+[ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="5_p1r37"]
+[ext_resource type="PackedScene" uid="uid://dvbvkruchlsci" path="res://Scenes/levels/levelGenerator/LevelGenerator.tscn" id="6_wwvf4"]
+[ext_resource type="PackedScene" uid="uid://6b5i0ese6itq" path="res://Objects/Scenes/crt_effect.tscn" id="7_h42i5"]
+[ext_resource type="Shader" path="res://Objects/Scripts/Shaders/Analog_Monochrome.gdshader" id="8_ornif"]
+[ext_resource type="Script" path="res://Objects/Scripts/Objective.gd" id="9_mrbkt"]
+[ext_resource type="PackedScene" uid="uid://f1a5ie4anfhg" path="res://Objects/Scenes/mission_end_loader.tscn" id="17_0fe0t"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rqhsu"]
+panorama = ExtResource("2_vkldk")
+
+[sub_resource type="Sky" id="Sky_o63wv"]
+sky_material = SubResource("PanoramaSkyMaterial_rqhsu")
+
+[sub_resource type="Environment" id="Environment_so7e5"]
+background_mode = 2
+sky = SubResource("Sky_o63wv")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.02
+glow_blend_mode = 0
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nsxpk"]
+vertices = PackedVector3Array(-20.5, 0, -20.5, -20.5, 0, 20.5, 20.5, 0, 20.5, 20.5, 0, -20.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhtfp"]
+shader = ExtResource("8_ornif")
+shader_parameter/opacity = 0.0
+shader_parameter/pixel_size = 0.01
+shader_parameter/greyscale = true
+shader_parameter/contrast = null
+shader_parameter/pixel_colors = null
+shader_parameter/background_color = null
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_01arm"]
+height = 4.0
+radius = 7.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dpnk"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mmuip"]
+material = SubResource("StandardMaterial3D_2dpnk")
+top_radius = 7.0
+bottom_radius = 7.0
+height = 4.0
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_vpvr0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_so7e5")
+
+[node name="ExpUi" parent="." instance=ExtResource("2_jau35")]
+
+[node name="level_up_menu" parent="." instance=ExtResource("2_qd630")]
+
+[node name="PlayerAimingComponent" parent="." instance=ExtResource("2_eavse")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.75225, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_fkka8")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 0)
+collision_mask = 127
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_nsxpk")
+
+[node name="LevelGenerator" parent="NavigationRegion3D" instance=ExtResource("6_wwvf4")]
+map_width = 21
+map_depth = 21
+obstacle_density = 0.3
+rng_seed = 12355
+
+[node name="MissionEndLoader" parent="." instance=ExtResource("17_0fe0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9878, 0, -8.03575)
+
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("3_517dx")
+packed_enemy = ExtResource("3_pkqfi")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[node name="Waves" type="Node" parent="Spawner"]
+
+[node name="Wave1" type="Node" parent="Spawner/Waves"]
+script = ExtResource("5_p1r37")
+num_enemies = 30
+
+[node name="Wave2" type="Node" parent="Spawner/Waves"]
+script = ExtResource("5_p1r37")
+num_enemies = 60
+seconds_between_spawns = 1.0
+
+[node name="Wave3" type="Node" parent="Spawner/Waves"]
+script = ExtResource("5_p1r37")
+num_enemies = 120
+seconds_between_spawns = 0.5
+
+[node name="crt effect" parent="." instance=ExtResource("7_h42i5")]
+visible = false
+
+[node name="crt effect2" parent="." instance=ExtResource("7_h42i5")]
+visible = false
+material = SubResource("ShaderMaterial_yhtfp")
+
+[node name="Objective" type="Node3D" parent="."]
+script = ExtResource("9_mrbkt")
+
+[node name="Area3D" type="Area3D" parent="Objective"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D"]
+shape = SubResource("CylinderShape3D_01arm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objective/Area3D"]
+mesh = SubResource("CylinderMesh_mmuip")
+
+[node name="Timer" type="Timer" parent="Objective"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Control" type="Control" parent="Objective"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ObjectiveCountdown" type="Label" parent="Objective/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 28.8
+anchor_right = 28.8
+offset_left = -676.0
+offset_top = 27.0
+offset_right = -472.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Objective/Timer" to="Objective" method="_on_timer_timeout"]

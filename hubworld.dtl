@@ -1,0 +1,13 @@
+if {first_load} == false:
+	join ??? center
+	label First Load (First Load)
+	[wait time="2.0"]
+	???: ...............
+	???: You're awake.
+	- What who...
+		???: Thought you were done for.
+	- No I'm not...
+		???: I can see that you are...
+	???: Come over here stranger.
+	set {first_load} = true
+	jump 

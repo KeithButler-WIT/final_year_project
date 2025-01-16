@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn5m8d8ae0v4y"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/Gun.gd" id="1_t65fm"]
+[ext_resource type="PackedScene" uid="uid://dogh73lfxq47p" path="res://Objects/Scenes/Weapons/uziBullet.tscn" id="2_h6kjx"]
+[ext_resource type="ArrayMesh" uid="uid://d3o3robq1h75t" path="res://Assets/kenney_weapon-pack/Models/uziLongSilencer.obj" id="3_hcyi4"]
+
+[sub_resource type="Gradient" id="Gradient_mufk2"]
+colors = PackedColorArray(1, 0.698039, 0, 1, 0.498459, 0.346221, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_km670"]
+gradient = SubResource("Gradient_mufk2")
+
+[sub_resource type="Curve" id="Curve_sevej"]
+_data = [Vector2(0, 0.715427), 0.0, 0.0, 0, 0, Vector2(1, 0.24114), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6unbd"]
+curve = SubResource("Curve_sevej")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cx2j1"]
+lifetime_randomness = 0.2
+particle_flag_align_y = true
+inherit_velocity_ratio = -0.3
+velocity_pivot = Vector3(0, 0, 1)
+direction = Vector3(0, 0, 0)
+spread = 25.0
+flatness = 0.5
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_6unbd")
+color_ramp = SubResource("GradientTexture1D_km670")
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5wiy"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.698039, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_pnnwm"]
+material = SubResource("StandardMaterial3D_l5wiy")
+size = Vector3(0.1, 0.2, 0.1)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.000346303, 0.213656, -0.629382)
+script = ExtResource("1_t65fm")
+Bullet = ExtResource("2_h6kjx")
+millies_between_shots = 1000
+
+[node name="GunModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.99382e-07, 0, 16, 0, 16, 0, -16, 0, -6.99382e-07, -0.239862, -0.25161, 0.00753046)
+mesh = ExtResource("3_hcyi4")
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.570487, 0.0240297, 2.63535e-07)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MuzzeEffect" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.39124e-08, 0, 1.0046, 0, 1.0046, 0, -1.0046, 0, -4.39124e-08, 0.488098, -0.0606079, 2.13331e-08)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.9
+randomness = 0.5
+visibility_aabb = AABB(-4, -4, -18.7503, 8, 8, 37.5007)
+process_material = SubResource("ParticleProcessMaterial_cx2j1")
+draw_pass_1 = SubResource("PrismMesh_pnnwm")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

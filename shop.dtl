@@ -1,0 +1,10 @@
+join ShopKeeper center
+ShopKeeper: Looking for wares.
+- Buy
+	[signal arg="openShopMenu"]
+- Talk
+	ShopKeeper: Epic backstory
+	ShopKeeper: Epic backstory part 2
+- Leave
+	ShopKeeper: See ya sonny.
+	[end_timeline]
