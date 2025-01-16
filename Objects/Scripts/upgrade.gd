@@ -6,10 +6,10 @@
 # Docs: https://docs.godotengine.org/en/stable/tutorials/plugins/running_code_in_the_editor.html#how-to-use-tool
 ####################################################
 @tool
-extends Area2D
+extends Area3D
 
-@export var upgrade_label: Label
-@export var sprite: Sprite2D
+@export var upgrade_label: Label3D
+@export var sprite: Sprite3D
 @export var bullet_strategy: BaseBulletStrategy:
 	set(val):
 		bullet_strategy = val
@@ -25,8 +25,8 @@ extends Area2D
 
 func _ready() -> void:
 	body_entered.connect(on_body_entered)
-	sprite.texture = bullet_strategy.texture
-	upgrade_label.text = bullet_strategy.upgrade_text
+	sprite.texture = player_strategy.texture
+	upgrade_label.text = player_strategy.upgrade_text
 
 
 func _process(delta: float) -> void:
@@ -34,8 +34,8 @@ func _process(delta: float) -> void:
 	# It updates the texture of the sprite when we replace the upgrade strategy
 	if Engine.is_editor_hint():
 		if needs_update:
-			sprite.texture = bullet_strategy.texture
-			upgrade_label.text = bullet_strategy.upgrade_text
+			sprite.texture = player_strategy.texture
+			upgrade_label.text = player_strategy.upgrade_text
 			needs_update = false
 
 

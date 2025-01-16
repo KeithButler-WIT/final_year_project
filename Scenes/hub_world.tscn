@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=29 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://dxlntis4lga7t" path="res://Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_e_outline.png" id="8_gy3m1"]
 [ext_resource type="PackedScene" uid="uid://dgno57xgtp0gb" path="res://Objects/Scenes/mission_select_menu.tscn" id="9_xcxak"]
 [ext_resource type="PackedScene" uid="uid://cqwqx1yc48o66" path="res://Scenes/levels/levelGenerator/tree.tscn" id="10_u2lk3"]
+[ext_resource type="Script" path="res://Objects/Scripts/upgrade.gd" id="11_mi7iy"]
+[ext_resource type="Script" path="res://Util/Strategy/base_bullet_strategy.gd" id="12_4qpk1"]
+[ext_resource type="Texture2D" uid="uid://dja28abtr2teg" path="res://Assets/exp.png" id="13_0icya"]
+[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="13_l1y3b"]
+[ext_resource type="Script" path="res://Util/Strategy/speed_player_strategy.gd" id="14_8hsfh"]
+[ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="15_meimh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
 panorama = ExtResource("2_6ck2a")
@@ -50,6 +56,19 @@ radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4tmr"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_82rp8"]
+script = ExtResource("12_4qpk1")
+texture = ExtResource("13_0icya")
+upgrade_text = "Speed"
+
+[sub_resource type="Resource" id="Resource_apxpj"]
+script = ExtResource("14_8hsfh")
+speed_increase = 50.0
+texture = ExtResource("15_meimh")
+upgrade_text = "Speed"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhu51"]
 
 [node name="HubWorld" type="Node3D"]
 script = ExtResource("1_56qar")
@@ -685,6 +704,27 @@ use_collision = true
 collision_layer = 64
 collision_mask = 5
 size = Vector3(1, 4, 15)
+
+[node name="Upgrades" type="Node" parent="."]
+
+[node name="Upgrade" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52779, 0.306359, 0)
+script = ExtResource("11_mi7iy")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_82rp8")
+player_strategy = SubResource("Resource_apxpj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade"]
+shape = SubResource("BoxShape3D_jhu51")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade"]
+billboard = 1
+texture = ExtResource("15_meimh")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade"]
+text = "Speed"
+font = ExtResource("13_l1y3b")
 
 [connection signal="body_entered" from="MissionSelector/InteractableComponent/Area3D" to="MissionSelector/InteractableComponent" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="MissionSelector/InteractableComponent/Area3D" to="MissionSelector/InteractableComponent" method="_on_area_3d_body_exited"]
