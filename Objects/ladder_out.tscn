@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1nxoxb048g75"]
+
+[ext_resource type="Script" path="res://addons/csg_toolkit/scripts/csg_repeater_3d.gd" id="1_xa4nj"]
+
+[node name="LadderOut" type="Node3D"]
+
+[node name="CSGRepeater3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, -0.000335426, -0.000127136, 0.000355915, 0.971968, 0.235114, 4.47088e-05, -0.235114, 0.971968, 0, 0, 0)
+use_collision = true
+script = ExtResource("1_xa4nj")
+template_node_path = NodePath("Side")
+repeat = Vector3(2, 1, 1)
+spacing = Vector3(0.5, 0, 0)
+
+[node name="Side" type="CSGBox3D" parent="CSGRepeater3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 50.014, 0.042)
+use_collision = true
+size = Vector3(0.1, 100, 0.1)
+
+[node name="CSGRepeater3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97201, 0.234939, 0, -0.234939, 0.97201, 0, 0, 0)
+script = ExtResource("1_xa4nj")
+template_node_path = NodePath("Step")
+repeat = Vector3(1, 50, 1)
+spacing = Vector3(0, 0.3, 0)
+
+[node name="Step" type="CSGBox3D" parent="CSGRepeater3D2"]
+size = Vector3(0.5, 0.1, 0.1)
