@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b67quibb16v2t"]
+[gd_scene load_steps=11 format=3 uid="uid://b67quibb16v2t"]
 
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="1_40k28"]
+[ext_resource type="Texture2D" uid="uid://eaial1f3r3c6" path="res://Assets/variousretrotextures/Wood_0.png" id="1_md6d5"]
+[ext_resource type="Material" uid="uid://tcqkeryjoqhl" path="res://Objects/Scenes/wood_wall.tres" id="1_uj7xu"]
+[ext_resource type="Material" uid="uid://o8nliy0v6o5w" path="res://Objects/Scenes/stone_wall.tres" id="1_web07"]
 [ext_resource type="Script" path="res://Util/Components/shopComponent.gd" id="2_wwk83"]
 [ext_resource type="Texture2D" uid="uid://dxlntis4lga7t" path="res://Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_e_outline.png" id="3_0jmke"]
+[ext_resource type="Material" uid="uid://b5e0xjge8prof" path="res://Objects/Scenes/cobble.tres" id="3_j066g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22urq"]
+albedo_texture = ExtResource("1_md6d5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sbxev"]
 size = Vector3(3, 5, 6)
@@ -16,31 +23,37 @@ outline_color = Color(0, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -2.5, 1.5, 6)
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -2.5, 1.5, 6)
 layers = 128
+material_override = ExtResource("1_web07")
 use_collision = true
 size = Vector3(6, 4, 1)
+material = SubResource("StandardMaterial3D_22urq")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 11)
 layers = 128
+material_override = ExtResource("1_web07")
 use_collision = true
 size = Vector3(6, 4, 1)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
 layers = 128
+material_override = ExtResource("3_j066g")
 use_collision = true
 size = Vector3(1, 1, 4)
 
 [node name="roof" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, 8.5)
 layers = 128
+material_override = ExtResource("1_uj7xu")
 size = Vector3(6, 1, 7)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, 8.5)
 layers = 128
+material_override = ExtResource("1_web07")
 use_collision = true
 size = Vector3(1, 4, 5)
 
