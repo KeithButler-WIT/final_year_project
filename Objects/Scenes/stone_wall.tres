@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://o8nliy0v6o5w"]
+
+[ext_resource type="Texture2D" uid="uid://s27himcro283" path="res://Assets/variousretrotextures/Cobble_Wall.png" id="1_xehnj"]
+
+[resource]
+albedo_texture = ExtResource("1_xehnj")
+uv1_triplanar = true
+uv1_world_triplanar = true
+grow_amount = -3.024
