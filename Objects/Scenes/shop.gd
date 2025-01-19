@@ -16,6 +16,7 @@ func _process(_delta: float) -> void:
 func _on_interactable_component_open_menu() -> void:
 	menu.visible = true
 	Dialogic.start(dialogue_timeline)
+	# TODO open menu when option pressed
 
 
 func _on_interactable_component_close_menu() -> void:

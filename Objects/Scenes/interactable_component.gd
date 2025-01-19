@@ -25,8 +25,10 @@ func _on_area_3d_body_exited(body):
 		button_icon.visible = false
 		player_in_range = false
 
+
 func _process(_delta):
-	if Input.is_action_pressed("use_action") and player_in_range:
+	print(player_in_range)
+	if Input.is_action_pressed("use_action") and player_in_range: # TODO: FIX not dececting player
 		print("INPUT PRESSED")
 		print("sending open signal")
 		OpenMenu.emit()
