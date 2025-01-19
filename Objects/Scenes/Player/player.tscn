@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b2sf6pmwefh8o"]
+[gd_scene load_steps=35 format=3 uid="uid://b2sf6pmwefh8o"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Player.gd" id="1_pj4ig"]
 [ext_resource type="PackedScene" uid="uid://c8mhbkgily14y" path="res://Objects/Scenes/Turret.tscn" id="2_tgj4n"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="6_udxi6"]
 [ext_resource type="Script" path="res://Util/Components/PickupComponent.gd" id="7_la2uo"]
 [ext_resource type="Script" path="res://Util/Components/levelupComponent.gd" id="8_fftjq"]
-[ext_resource type="PackedScene" uid="uid://b5jirnbtug0h5" path="res://Objects/Scenes/health_bar.tscn" id="9_06gsn"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/StateMachine.gd" id="10_aoq3k"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/idle.gd" id="11_gu44f"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/move.gd" id="12_4hqdw"]
@@ -269,7 +268,7 @@ shader = ExtResource("4_xq8cp")
 height = 5.0
 radius = 1.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.505591, 0)
 collision_mask = 255
 script = ExtResource("1_pj4ig")
@@ -359,8 +358,6 @@ script = ExtResource("8_fftjq")
 [node name="CanBeDamagedTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="HealthBar" parent="." instance=ExtResource("9_06gsn")]
 
 [node name="movement_state_machine" type="Node" parent="."]
 script = ExtResource("10_aoq3k")
