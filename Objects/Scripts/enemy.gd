@@ -24,16 +24,8 @@ enum state {
 
 var current_state = state.SEEKING
 
-@export var exp_packed : PackedScene
-@export var num_exp_to_drop = 1
 @export var damage = 1;
 
-func spawn_exp():
-	for i in range(0,num_exp_to_drop):
-		var exp = exp_packed.instantiate()
-		exp.global_transform = global_transform
-		var scene_root = get_tree().root#.get_children()[0]
-		scene_root.add_child(exp)
 
 func _ready():
 	animationPlayer.play("idle")
@@ -52,7 +44,7 @@ func actor_setup():
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_instance_valid(player):
 		match current_state:
 			state.SEEKING:
@@ -104,7 +96,8 @@ func _on_PathUpdateTimer_timeout():
 
 
 func _on_health_died_signal():
-	spawn_exp()
+	if get_node_or_null("DropXPComponent"):
+		$DropXPComponent.spawn_exp()
 	queue_free()
 
 
