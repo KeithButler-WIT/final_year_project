@@ -14,7 +14,7 @@ func enter():
 	#await get_tree().create_timer(1.0).timeout
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_accept") and PLAYER.is_on_floor():
 		PLAYER.velocity.y = JUMP_VELOCITY
 

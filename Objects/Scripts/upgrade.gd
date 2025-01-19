@@ -29,7 +29,7 @@ func _ready() -> void:
 	upgrade_label.text = player_strategy.upgrade_text
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# This is run only when we're editing the scene
 	# It updates the texture of the sprite when we replace the upgrade strategy
 	if Engine.is_editor_hint():
