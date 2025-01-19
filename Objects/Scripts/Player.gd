@@ -4,7 +4,6 @@ extends CharacterBody3D
 const LEVEL_SCENE_PATH: String = "res://levels/hub_world.tscn"
 
 @onready var gun_controller = $GunController
-@onready var health_bar = $HealthBar/SubViewport/health_bar
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -31,7 +30,7 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	# TODO: run every 0.5 seconds
-	_update_health_bar()
+	pass
 
 
 func shoot():
@@ -40,13 +39,6 @@ func shoot():
 		gun_controller.shoot()
 	if Input.is_action_pressed("turret_place"):
 		$TurretPlacingComponent.place_turret()
-
-
-#@onready var health_bar = $HealthBar/SubViewport/health_bar
-func _update_health_bar():
-	health_bar.max_value = PlayerStats.max_health
-	health_bar.min_value = 0
-	health_bar.value = PlayerStats.current_health
 
 
 func take_hit(damage):
@@ -64,6 +56,9 @@ func take_hit(damage):
 func die():
 	print("GAME OVER")
 	upgrades.clear()
+	#TODO: play death animations
+	#TODO: Show game over animations
+	#TODO: wait
 	ResourceLoader.load_threaded_request(LEVEL_SCENE_PATH)
 	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(LEVEL_SCENE_PATH))
 	#emit_signal("player_died_signal")
