@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var Bullet : PackedScene
+@export var bullet : PackedScene
 
 @onready var rof_timer = $Timer
 var can_shoot : bool = true
@@ -19,11 +19,10 @@ func shoot():
 	if can_shoot:
 		$MuzzeEffect.emitting = true;
 
-		var new_bullet = Bullet.instantiate()
+		var new_bullet = bullet.instantiate()
 		new_bullet.global_transform = $Muzzle.global_transform
 		new_bullet.speed = muzzle_speed
-		var scene_root = get_tree().root#.get_children()[0]
-		scene_root.add_child(new_bullet)
+		get_tree().current_scene.add_child(new_bullet)
 		#print("Spawning bullet")
 		can_shoot = false
 		rof_timer.start()
