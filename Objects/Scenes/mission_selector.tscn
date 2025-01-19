@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddag5uqwi8vov"]
+
+[ext_resource type="Script" path="res://Scenes/mission_selector.gd" id="1_2vmmt"]
+[ext_resource type="PackedScene" uid="uid://dgno57xgtp0gb" path="res://Objects/Scenes/mission_select_menu.tscn" id="2_53vkr"]
+[ext_resource type="PackedScene" uid="uid://bdoblesinc0dt" path="res://Objects/Scenes/interactable_component.tscn" id="3_sn5ep"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2iu4"]
+albedo_color = Color(0.611765, 0.345098, 0.188235, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mw6ub"]
+albedo_color = Color(0.611765, 0.345098, 0.188235, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5a1w"]
+albedo_color = Color(0.870588, 0.54902, 0.368627, 1)
+
+[node name="MissionSelector" type="Node3D"]
+script = ExtResource("1_2vmmt")
+metadata/_edit_group_ = true
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75366, 1.5, 1.73779)
+use_collision = true
+collision_layer = 64
+size = Vector3(0.507324, 4, 0.475586)
+material = SubResource("StandardMaterial3D_r2iu4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75366, 1.5, -2.26221)
+use_collision = true
+collision_layer = 64
+size = Vector3(0.507324, 4, 0.475586)
+material = SubResource("StandardMaterial3D_mw6ub")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.99679, -0.279846)
+use_collision = true
+collision_layer = 64
+size = Vector3(0.5, 2.5, 4.5)
+material = SubResource("StandardMaterial3D_x5a1w")
+
+[node name="menu" parent="." instance=ExtResource("2_53vkr")]
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_sn5ep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+
+[connection signal="CloseMenu" from="InteractableComponent" to="." method="_on_interactable_component_close_menu"]
+[connection signal="OpenMenu" from="InteractableComponent" to="." method="_on_interactable_component_open_menu"]
