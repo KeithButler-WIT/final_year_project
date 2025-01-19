@@ -20,7 +20,9 @@ func _ready():
 	_update_timer_wait()
 
 func _update_timer_wait():
-	timer.wait_time = timer.wait_time / PlayerStats.player_skill
+	if timer.wait_time < 1:
+		timer.wait_time = 1
+	timer.wait_time = timer.wait_time / PlayerStats.player_skill #TODO: scale delending on player skill # / PlayerStats.player_skill
 
 func start_next_wave():
 	enemies_killed_this_wave = 0
@@ -47,13 +49,15 @@ func _on_timer_timeout():
 		new_enemy.position = get_random_position_off_screen()
 		#print(new_enemy.position)
 		connect_to_enemy_signals(new_enemy)
-		var scene_root = get_parent()
-		scene_root.add_child(new_enemy)
+		#var scene_root = get_parent()
+		#scene_root.add_child(new_enemy)
+		get_tree().current_scene.add_child(new_enemy)
 		#enemies_remaining_to_spawn -= 1
 	else:
 		if enemies_killed_this_wave == current_wave.num_enemies:
 			start_next_wave()
 
+#FIXME: Enemies spawning too close to player
 func get_random_position_off_screen() -> Vector3 :
 	var randx
 	var randz
