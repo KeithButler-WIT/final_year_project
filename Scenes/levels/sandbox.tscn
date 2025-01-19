@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://co4engn5l2q3u"]
+[gd_scene load_steps=22 format=3 uid="uid://co4engn5l2q3u"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_vpvr0"]
-[ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Objects/Scenes/Player/player_aiming_component.tscn" id="2_eavse"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="2_fkka8"]
 [ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_jau35"]
 [ext_resource type="PackedScene" uid="uid://cbhl3vg4rafl2" path="res://Objects/Scenes/level_up_menu.tscn" id="2_qd630"]
@@ -92,8 +91,6 @@ offset_top = -29.0
 
 [node name="level_up_menu" parent="Control" instance=ExtResource("2_qd630")]
 layout_mode = 1
-
-[node name="PlayerAimingComponent" parent="." instance=ExtResource("2_eavse")]
 
 [node name="Player" parent="." instance=ExtResource("2_fkka8")]
 unique_name_in_owner = true

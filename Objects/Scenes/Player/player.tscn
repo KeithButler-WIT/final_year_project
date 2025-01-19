@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2sf6pmwefh8o"]
+[gd_scene load_steps=36 format=3 uid="uid://b2sf6pmwefh8o"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Player.gd" id="1_pj4ig"]
 [ext_resource type="PackedScene" uid="uid://c8mhbkgily14y" path="res://Objects/Scenes/Turret.tscn" id="2_tgj4n"]
+[ext_resource type="PackedScene" uid="uid://d0v30k4v5qles" path="res://Objects/Scenes/Player/player_aiming_component.tscn" id="2_yoahd"]
 [ext_resource type="Script" path="res://Util/Components/turret_placing_component.gd" id="3_2x2y8"]
 [ext_resource type="PackedScene" uid="uid://giu8xupwwgxp" path="res://Objects/Scenes/Weapons/gun_controller.tscn" id="3_txidj"]
 [ext_resource type="Shader" path="res://Objects/Scripts/Shaders/walkingParticle.gdshader" id="4_xq8cp"]
@@ -273,6 +274,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5
 collision_mask = 255
 script = ExtResource("1_pj4ig")
 metadata/_edit_group_ = true
+
+[node name="PlayerAimingComponent" parent="." instance=ExtResource("2_yoahd")]
 
 [node name="TurretPlacingComponent" type="Node3D" parent="."]
 script = ExtResource("3_2x2y8")
