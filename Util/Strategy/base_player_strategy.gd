@@ -19,6 +19,6 @@ extends Resource
 # 1. Editing simple variables (ex. player.speed += 5)
 # 2. Calling any functions defined in the node
 # 3. Attaching components or changing properties of any attached component
-func apply_upgrade(player: Player):
+func apply_upgrade(_player: Player):
 	# This does nothing by default
 	pass

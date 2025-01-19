@@ -51,13 +51,13 @@ func _ready():
 	load_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# get signal from level complete to know when to save data
 	pass
 
 func decrease_skill(skill):
 	if player_skill < skill:
-		player_skill = 0
+		player_skill = 1
 	else:
 		player_skill -= skill
 
@@ -65,25 +65,25 @@ func increase_skill(skill):
 	player_skill += skill
 
 func set_skill(skill):
-	if player_skill < 0:
-		player_skill = 0
+	if player_skill <= 0:
+		player_skill = 1
 	else:
 		player_skill = skill
 
 func reset():
 	### Resets the player stats after dying ###
-	var max_health = starting_max_health
-	var current_health = max_health
-	var num_turrets_placeable = starting_num_turrets_placeable
-	var num_weapons = starting_num_weapons
-	var turret_attack_speed = starting_turrent_attack_speed
-	var pickup_radius = starting_pickup_radius
-	var level = 1
-	var experience = 0
-	var exp_to_next_level = 10
-	var movement_speed = starting_movement_speed
-	var turret_damage = starting_turret_damage
-	var player_skill = 5
+	max_health = starting_max_health
+	current_health = max_health
+	num_turrets_placeable = starting_num_turrets_placeable
+	num_weapons = starting_num_weapons
+	turret_attack_speed = starting_turrent_attack_speed
+	pickup_radius = starting_pickup_radius
+	level = 1
+	experience = 0
+	exp_to_next_level = 10
+	movement_speed = starting_movement_speed
+	turret_damage = starting_turret_damage
+	player_skill = 5
 
 
 # Save data

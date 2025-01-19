@@ -19,4 +19,4 @@ func take_hit(damage):
 		die()
 
 func die():
-	emit_signal("died_signal")
+	died_signal.emit()

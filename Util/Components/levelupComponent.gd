@@ -2,11 +2,12 @@ extends Node3D
 
 
 var current_level = PlayerStats.level
+var level_up_node = "../../Control/level_up_menu"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if (get_node_or_null("../../level_up_menu") != null):
-		$"../../level_up_menu".visible = false
+	if (get_node_or_null(level_up_node) != null):
+		$"../../Control/level_up_menu".visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +21,8 @@ func _process(_delta):
 		print("Exp ", PlayerStats.experience)
 		print("Exp to get ", PlayerStats.exp_to_next_level)
 		print("Level ", PlayerStats.level)
-		print("Level up menu: ",get_node_or_null("../../level_up_menu"))
+		print("Level up menu: ",get_node_or_null(level_up_node))
 		# open level up menu
-		if (get_node_or_null("../../level_up_menu") != null and $"../../level_up_menu".visible == false):
+		if (get_node_or_null(level_up_node) != null and $"../../Control/level_up_menu".visible == false):
 			print("LEVELING UP")
-			$"../../level_up_menu".visible = true
+			$"../../Control/level_up_menu".visible = true

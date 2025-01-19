@@ -1,4 +1,4 @@
-class_name SpeedPlayerStrategy
+class_name TurretDamagePlayerStrategy
 extends BasePlayerStrategy
 
 
@@ -6,4 +6,4 @@ extends BasePlayerStrategy
 
 
 func apply_upgrade(_player: Player):
-	PlayerStats.movement_speed += increase
+	PlayerStats.turret_damage += increase
