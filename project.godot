@@ -22,6 +22,7 @@ PlayerStats="*res://Util/AutoLoad/player_stats.gd"
 Global="*res://Util/AutoLoad/global.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
+QuestManager="*res://Util/AutoLoad/QuestManager.gd"
 
 [dialogic]
 
