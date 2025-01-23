@@ -28,9 +28,13 @@ func _process(_delta):
 	shoot()
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# TODO: run every 0.5 seconds
-	pass
+	# Add the gravity.
+	if not is_on_floor():
+		$".".velocity.y -= gravity * delta
+
+	move_and_slide()
 
 
 func shoot():
@@ -56,6 +60,7 @@ func take_hit(damage):
 func die():
 	print("GAME OVER")
 	upgrades.clear()
+	PlayerStats.reset()
 	#TODO: play death animations
 	#TODO: Show game over animations
 	#TODO: wait

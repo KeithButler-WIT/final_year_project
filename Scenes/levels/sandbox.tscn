@@ -1,11 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://co4engn5l2q3u"]
+[gd_scene load_steps=24 format=3 uid="uid://co4engn5l2q3u"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_vpvr0"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="2_fkka8"]
 [ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_jau35"]
 [ext_resource type="PackedScene" uid="uid://cbhl3vg4rafl2" path="res://Objects/Scenes/level_up_menu.tscn" id="2_qd630"]
+[ext_resource type="PackedScene" uid="uid://f1a5ie4anfhg" path="res://Objects/Scenes/mission_end_loader.tscn" id="2_vd1d6"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_vkldk"]
 [ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="3_517dx"]
+[ext_resource type="PackedScene" uid="uid://c1nxoxb048g75" path="res://Objects/ladder_out.tscn" id="3_cgxyq"]
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/enemy.tscn" id="3_pkqfi"]
 [ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="4_34xak"]
 [ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="5_p1r37"]
@@ -66,6 +68,8 @@ height = 4.0
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_vpvr0")
+missionEnd = ExtResource("2_vd1d6")
+exitLadder = ExtResource("3_cgxyq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_so7e5")

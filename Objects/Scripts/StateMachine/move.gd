@@ -4,9 +4,6 @@ var fsm: StateMachine
 
 var SPEED = PlayerStats.starting_movement_speed 
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 @onready var PLAYER = $"../.."
 @onready var CHARACTER = $"../../Character"
 @onready var ANIMATIONPLAYER = $"../../Character/AnimationPlayer"
@@ -21,9 +18,6 @@ func exit():
 
 func _physics_process(delta):
 	SPEED = PlayerStats.movement_speed
-	# Add the gravity.
-	if not PLAYER.is_on_floor():
-		PLAYER.velocity.y -= gravity * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
