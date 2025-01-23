@@ -1,0 +1,6 @@
+join ??? center
+???: That was a nasty fall you took there.
+???: <Empty Text Event>
+do QuestManager.advanceQuest("MQ001")
+???: If you're feeling brave take a take a look into that giant hole in the center of town.
+do QuestManager.addQuest("MQ002")

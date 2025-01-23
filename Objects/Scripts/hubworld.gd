@@ -5,3 +5,4 @@ func _ready():
 	PlayerStats.load_game() # TODO: Load on start not of return
 	PlayerStats.reset() # TODO: reset on return
 	Dialogic.start("hubworld")
+	QuestManager.addQuest("MQ001")
