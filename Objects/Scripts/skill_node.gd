@@ -32,14 +32,19 @@ func _process(_delta):
 	if not Engine.is_editor_hint():
 		pass
 
+
 func redraw_lines():
 	skillBranch.clear_points()
 	_connect_nodes()
+
 
 func _on_pressed() -> void:
 	# TODO: subtract upgrade point
 	level = min(level+1, maxLevel)
 	self_modulate = Color(1, 1, 1)
+	
+	if level+1 <= maxLevel:
+		update_upgrade_points()
 	
 	skillBranch.default_color = Color(1,1,1)
 	
@@ -47,3 +52,9 @@ func _on_pressed() -> void:
 	for skill in skills:
 		if skill is SkillNode and level == 1:
 			skill.disabled = false
+
+
+func update_upgrade_points():
+	#TODO: Stop going past 0
+	PlayerStats.upgrade_point -= 1
+	PlayerStats.upgrade_points_spent += 1

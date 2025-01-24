@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b67quibb16v2t"]
+[gd_scene load_steps=11 format=3 uid="uid://b67quibb16v2t"]
 
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="1_40k28"]
 [ext_resource type="Texture2D" uid="uid://eaial1f3r3c6" path="res://Assets/variousretrotextures/Wood_0.png" id="1_md6d5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://o8nliy0v6o5w" path="res://Objects/Scenes/Materials/stone_wall.tres" id="1_web07"]
 [ext_resource type="Material" uid="uid://b5e0xjge8prof" path="res://Objects/Scenes/Materials/cobble.tres" id="3_j066g"]
 [ext_resource type="PackedScene" uid="uid://bdoblesinc0dt" path="res://Objects/Scenes/interactable_component.tscn" id="7_3xb2i"]
+[ext_resource type="PackedScene" uid="uid://bqkh5crffd41y" path="res://Objects/Scenes/skill_tree.tscn" id="8_t8tn6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22urq"]
 albedo_texture = ExtResource("1_md6d5")
@@ -88,6 +89,14 @@ vertical_alignment = 1
 
 [node name="InteractableComponent" parent="." instance=ExtResource("7_3xb2i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+
+[node name="SkillTree" parent="." instance=ExtResource("8_t8tn6")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="CloseMenu" from="InteractableComponent" to="." method="_on_interactable_component_close_menu"]
 [connection signal="OpenMenu" from="InteractableComponent" to="." method="_on_interactable_component_open_menu"]
