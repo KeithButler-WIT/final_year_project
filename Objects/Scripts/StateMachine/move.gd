@@ -16,7 +16,7 @@ func exit():
 	# Go back to the last state
 	fsm.back()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	SPEED = PlayerStats.movement_speed
 
 	# Get the input direction and handle the movement/deceleration.
