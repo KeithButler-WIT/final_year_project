@@ -15,6 +15,7 @@ var current_wave_number = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ResourceLoader.load_threaded_request(packed_enemy.resource_path)
 	waves = $"Waves".get_children()
 	start_next_wave()
 	_update_timer_wait()
@@ -45,13 +46,15 @@ func _on_enemy_health_died_signal():
 func _on_timer_timeout():
 	_update_timer_wait()
 	if enemies_remaining_to_spawn:
-		var new_enemy = packed_enemy.instantiate()
-		new_enemy.position = get_random_position_off_screen()
-		#print(new_enemy.position)
-		connect_to_enemy_signals(new_enemy)
+		ResourceLoader.load_threaded_request(packed_enemy.resource_path)
+		var enemy_scene = ResourceLoader.load_threaded_get(packed_enemy.resource_path)
+		var enemy = enemy_scene.instantiate()
+		enemy.position = get_random_position_off_screen()
+		#print(enemy.position)
+		connect_to_enemy_signals(enemy)
 		#var scene_root = get_parent()
-		#scene_root.add_child(new_enemy)
-		get_tree().current_scene.add_child(new_enemy)
+		#scene_root.add_child(enemy)
+		get_tree().current_scene.add_child(enemy)
 		#enemies_remaining_to_spawn -= 1
 	else:
 		if enemies_killed_this_wave == current_wave.num_enemies:
