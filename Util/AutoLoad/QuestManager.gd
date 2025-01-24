@@ -5,23 +5,57 @@ var Quests: Dictionary = {
 		"Name": "First Meeting",
 		"Stage": 1,
 		"Description": {
-			"01":"Talk to Stranger.",
-			"02":"Visit the village.",
-			"03":"Check out the shop.",
+			"1":"Talk to Stranger.",
+			"2":"Visit the village.",
+			"3":"Check out the shop.",
 		}
 	},
 	"MQ002": {
-		"Name": "First Dive",
+		"Name": "Leap of Faith",
 		"Stage": 1,
 		"Description": {
-			"01":"Enter the first level.",
+			"1":"Enter the first level.",
 		}
 	},
 	"MQ003": {
 		"Name": "First Dive Complete",
 		"Stage": 1,
 		"Description": {
-			"01":"Beat the first level",
+			"1":"Beat the first level",
+		}
+	},
+	#TODO: Could all be one quest just different stages
+	# Example
+	#"MQ003": {
+		#"Name": "Beat The Game",
+		#"Stage": 1,
+		#"Description": {
+			#"01":"Beat the first level",
+			#"02":"Beat the Second level",
+			#"03":"Beat the Third level",
+			#"04":"Beat the Forth level",
+			#"05":"Beat the Fifth level",
+		#}
+	#},
+	"MQ004": {
+		"Name": "Second Level Complete",
+		"Stage": 1,
+		"Description": {
+			"1":"Beat the Second level",
+		}
+	},
+	"MQ005": {
+		"Name": "Third Level Complete",
+		"Stage": 1,
+		"Description": {
+			"1":"Beat the Third level",
+		}
+	},
+	"MQ006": {
+		"Name": "Fourth Level Complete",
+		"Stage": 1,
+		"Description": {
+			"1":"Beat the Fourth level",
 		}
 	},
 }
@@ -32,6 +66,7 @@ var CompletedQuests: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#TODO: Decides quests and how their added
 	addQuest("MQ001")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

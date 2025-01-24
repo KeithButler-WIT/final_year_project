@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="1_40k28"]
 [ext_resource type="Texture2D" uid="uid://eaial1f3r3c6" path="res://Assets/variousretrotextures/Wood_0.png" id="1_md6d5"]
-[ext_resource type="Script" path="res://Objects/Scenes/shop.gd" id="1_oegu0"]
-[ext_resource type="Material" uid="uid://tcqkeryjoqhl" path="res://Objects/Scenes/wood_wall.tres" id="1_uj7xu"]
-[ext_resource type="Material" uid="uid://o8nliy0v6o5w" path="res://Objects/Scenes/stone_wall.tres" id="1_web07"]
-[ext_resource type="Material" uid="uid://b5e0xjge8prof" path="res://Objects/Scenes/cobble.tres" id="3_j066g"]
+[ext_resource type="Script" path="res://Objects/Scripts/shop.gd" id="1_oegu0"]
+[ext_resource type="Material" uid="uid://tcqkeryjoqhl" path="res://Objects/Scenes/Materials/wood_wall.tres" id="1_uj7xu"]
+[ext_resource type="Material" uid="uid://o8nliy0v6o5w" path="res://Objects/Scenes/Materials/stone_wall.tres" id="1_web07"]
+[ext_resource type="Material" uid="uid://b5e0xjge8prof" path="res://Objects/Scenes/Materials/cobble.tres" id="3_j066g"]
 [ext_resource type="PackedScene" uid="uid://bdoblesinc0dt" path="res://Objects/Scenes/interactable_component.tscn" id="7_3xb2i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22urq"]

@@ -35,6 +35,7 @@ var turrets_placed = 0
 var highest_level = 0
 var total_experience_gained = 0
 var missions_completed = 0
+var upgrade_point = 0
 
 enum MISSION {
 	LOOTING,
@@ -100,7 +101,8 @@ func save():
 		"turrets_placed" : turrets_placed,
 		"highest_level" : highest_level,
 		"total_experience_gained": total_experience_gained,
-		"missions_completed": missions_completed
+		"missions_completed": missions_completed,
+		"upgrade_point" : upgrade_point
 	}
 	return save_dict
 

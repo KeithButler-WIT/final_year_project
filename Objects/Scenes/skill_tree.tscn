@@ -1,0 +1,330 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqkh5crffd41y"]
+
+[ext_resource type="PackedScene" uid="uid://da2unl4ljf3mb" path="res://Objects/Scenes/skill_button.tscn" id="1_4ggoj"]
+[ext_resource type="Script" path="res://Objects/Scripts/skill_tree.gd" id="1_joyul"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_num_turrets_player_strategy.gd" id="3_wrbxm"]
+[ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="4_oi3ef"]
+[ext_resource type="PackedScene" uid="uid://bfwmsflivpkcj" path="res://Objects/Scenes/confirm_menu.tscn" id="5_jq33m"]
+
+[sub_resource type="Resource" id="Resource_uc2lf"]
+script = ExtResource("3_wrbxm")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Speed"
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_joyul")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[node name="SkillButton" parent="ColorRect" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 268.0
+offset_right = 610.0
+offset_bottom = 396.0
+upgrade = SubResource("Resource_uc2lf")
+
+[node name="SkillButton2" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = -268.0
+offset_bottom = -140.0
+disabled = true
+
+[node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton2" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -135.0
+offset_top = -232.0
+offset_right = -7.0
+offset_bottom = -104.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = -262.0
+offset_bottom = -134.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -162.0
+offset_top = -208.0
+offset_right = -34.0
+offset_bottom = -80.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -210.0
+offset_right = -82.0
+disabled = true
+
+[node name="SkillButton7" parent="ColorRect/SkillButton/SkillButton2" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -232.0
+offset_right = 256.0
+offset_bottom = -104.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton2/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = -262.0
+offset_bottom = -134.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton2/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = -208.0
+offset_right = 291.0
+offset_bottom = -80.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton2/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 237.0
+offset_right = 365.0
+disabled = true
+
+[node name="SkillButton3" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 291.0
+offset_right = 419.0
+disabled = true
+
+[node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton3" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 202.0
+offset_top = -144.0
+offset_right = 330.0
+offset_bottom = -16.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton3/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 156.0
+offset_top = -174.0
+offset_right = 284.0
+offset_bottom = -46.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton3/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 4.0
+offset_right = 358.0
+offset_bottom = 132.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton3/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -174.0
+offset_right = 54.0
+offset_bottom = -46.0
+disabled = true
+
+[node name="SkillButton7" parent="ColorRect/SkillButton/SkillButton3" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 128.0
+offset_right = 330.0
+offset_bottom = 256.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton3/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 230.0
+offset_right = 358.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton3/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 212.0
+offset_right = 284.0
+offset_bottom = 340.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton3/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -54.0
+offset_top = 212.0
+offset_right = 74.0
+offset_bottom = 340.0
+disabled = true
+
+[node name="SkillButton4" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = 246.0
+offset_bottom = 374.0
+disabled = true
+
+[node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton4" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -135.0
+offset_top = 168.0
+offset_right = -7.0
+offset_bottom = 296.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton4/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -210.0
+offset_top = -54.0
+offset_right = -82.0
+offset_bottom = 74.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton4/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -210.0
+offset_top = 174.0
+offset_right = -82.0
+offset_bottom = 302.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton4/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = 241.0
+offset_bottom = 369.0
+disabled = true
+
+[node name="SkillButton7" parent="ColorRect/SkillButton/SkillButton4" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 168.0
+offset_right = 256.0
+offset_bottom = 296.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton4/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = 241.0
+offset_bottom = 369.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton4/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 163.0
+offset_right = 291.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton4/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 174.0
+offset_right = 291.0
+offset_bottom = 302.0
+disabled = true
+
+[node name="SkillButton5" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -297.0
+offset_right = -169.0
+disabled = true
+
+[node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton5" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -185.0
+offset_top = -140.0
+offset_right = -57.0
+offset_bottom = -12.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton5/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = -232.0
+offset_bottom = -104.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton5/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -177.0
+offset_top = -178.0
+offset_right = -49.0
+offset_bottom = -50.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton5/SkillButton6" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -285.0
+offset_top = 4.0
+offset_right = -157.0
+offset_bottom = 132.0
+disabled = true
+
+[node name="SkillButton7" parent="ColorRect/SkillButton/SkillButton5" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -185.0
+offset_top = 124.0
+offset_right = -57.0
+offset_bottom = 252.0
+disabled = true
+
+[node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton5/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = 176.0
+offset_bottom = 304.0
+disabled = true
+
+[node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton5/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -177.0
+offset_top = 176.0
+offset_right = -49.0
+offset_bottom = 304.0
+disabled = true
+
+[node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton5/SkillButton7" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_left = -285.0
+offset_right = -157.0
+disabled = true
+
+[node name="VScrollBar" type="VScrollBar" parent="ColorRect"]
+layout_mode = 0
+offset_left = 1131.0
+offset_right = 1151.0
+offset_bottom = 648.0
+min_value = -1000.0
+max_value = 1000.0
+
+[node name="HScrollBar" type="HScrollBar" parent="ColorRect"]
+layout_mode = 0
+offset_top = 628.0
+offset_right = 1152.0
+offset_bottom = 648.0
+min_value = -1000.0
+max_value = 1000.0
+
+[node name="ResetButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 1049.0
+offset_top = 568.0
+offset_right = 1131.0
+offset_bottom = 628.0
+text = "Reset
+Upgrades"
+
+[node name="ConfirmMenu" parent="." instance=ExtResource("5_jq33m")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ColorRect/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="confirmation_pressed" from="ConfirmMenu" to="." method="_on_confirm_menu_confirmation_pressed"]
+[connection signal="deny_pressed" from="ConfirmMenu" to="." method="_on_confirm_menu_deny_pressed"]

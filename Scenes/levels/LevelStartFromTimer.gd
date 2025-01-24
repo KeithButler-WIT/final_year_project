@@ -1,12 +1,15 @@
 extends Node3D
 
 @export var LEVEL_SCENE : PackedScene
+@export var use_timer : bool = false
 
 @onready var timer = $LevelStartTimer
 @onready var countdownLabel = $Control/ObjectiveCountdown
 
 func _ready():
 	countdownLabel.visible = false
+	if !use_timer:
+		timer.wait_time = 0.001
 
 
 func _process(_delta):
@@ -18,6 +21,7 @@ func _process(_delta):
 func _on_level_start_timer_timeout():
 	print("LOAD THE LEVEL: TIMER TIMEOUT")
 	Global.goto_scene(LEVEL_SCENE.resource_path)
+
 
 func _on_level_start_area_body_entered(_body):
 	print("Level area entered")

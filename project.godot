@@ -82,6 +82,7 @@ import/fbx/enabled=false
 [global_group]
 
 player=""
+Persist="Gets Saved"
 
 [input]
 

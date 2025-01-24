@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=31 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
@@ -15,7 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="15_meimh"]
 [ext_resource type="PackedScene" uid="uid://bx654nysnlmku" path="res://Objects/Scenes/quest_list.tscn" id="16_mtsq8"]
 [ext_resource type="Script" path="res://Util/Strategy/health_player_strategy.gd" id="17_m584y"]
+[ext_resource type="PackedScene" uid="uid://bqkh5crffd41y" path="res://Objects/Scenes/skill_tree.tscn" id="17_v2hci"]
 [ext_resource type="Script" path="res://Util/Strategy/turret_damage_player_strategy.gd" id="18_6ns6g"]
+[ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="18_v4tlj"]
+[ext_resource type="PackedScene" uid="uid://co4engn5l2q3u" path="res://Scenes/levels/sandbox.tscn" id="19_8tneg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
 panorama = ExtResource("2_6ck2a")
@@ -89,11 +92,35 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.012
 [node name="World" type="Node" parent="."]
 
 [node name="ground" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57715, -22, 0)
 use_collision = true
 collision_layer = 64
 collision_mask = 103
-size = Vector3(80, 1, 100)
+size = Vector3(40.8457, 43, 100)
+material = SubResource("StandardMaterial3D_45ylu")
+
+[node name="ground3" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4607, -22, 0)
+use_collision = true
+collision_layer = 64
+collision_mask = 103
+size = Vector3(32.4536, 43, 100)
+material = SubResource("StandardMaterial3D_45ylu")
+
+[node name="ground4" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4703, -22, -27.6879)
+use_collision = true
+collision_layer = 64
+collision_mask = 103
+size = Vector3(76.4343, 43, 44.6243)
+material = SubResource("StandardMaterial3D_45ylu")
+
+[node name="ground5" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4703, -22.2067, 27.4733)
+use_collision = true
+collision_layer = 64
+collision_mask = 103
+size = Vector3(76.4343, 43.4133, 44.7151)
 material = SubResource("StandardMaterial3D_45ylu")
 
 [node name="ground2" type="CSGBox3D" parent="World"]
@@ -188,7 +215,7 @@ text = "Press F to place a turret"
 font_size = 124
 
 [node name="Label3D2" type="Label3D" parent="TutorialHints"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -19.2142, 0, -0.448254)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -22.2142, 0, -0.448254)
 text = "Press E to interact"
 font_size = 124
 
@@ -775,3 +802,14 @@ text = "Turret Damage"
 font = ExtResource("13_l1y3b")
 
 [node name="QuestList" parent="." instance=ExtResource("16_mtsq8")]
+
+[node name="SkillTree" parent="." instance=ExtResource("17_v2hci")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Level Loader" parent="." instance=ExtResource("18_v4tlj")]
+transform = Transform3D(6.91397, 0, 0, 0, 1, 0, 0, 0, 6.91397, -17, -35, 1)
+LEVEL_SCENE = ExtResource("19_8tneg")

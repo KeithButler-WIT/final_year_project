@@ -27,4 +27,4 @@ func _on_item_list_item_selected(index: int) -> void:
 	
 	var questID = QuestManager.ActiveQuests.keys()[index]
 	var currentStage: String = str(QuestManager.ActiveQuests[questID]["Stage"])
-	description.text = QuestManager.ActiveQuests[questID]["Description"]["0" + currentStage]
+	description.text = QuestManager.ActiveQuests[questID]["Description"][currentStage]
