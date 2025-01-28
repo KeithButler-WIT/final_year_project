@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://bx654nysnlmku" path="res://Objects/Scenes/quest_list.tscn" id="16_mtsq8"]
 [ext_resource type="Script" path="res://Util/Strategy/health_player_strategy.gd" id="17_m584y"]
 [ext_resource type="Script" path="res://Util/Strategy/turret_damage_player_strategy.gd" id="18_6ns6g"]
+[ext_resource type="PackedScene" uid="uid://iunxjo0xjik0" path="res://Scenes/level_01.tscn" id="18_ly6eg"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="18_v4tlj"]
-[ext_resource type="PackedScene" uid="uid://co4engn5l2q3u" path="res://Scenes/levels/sandbox.tscn" id="19_8tneg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
 panorama = ExtResource("2_6ck2a")
@@ -830,4 +830,4 @@ font = ExtResource("13_l1y3b")
 
 [node name="Level Loader" parent="." instance=ExtResource("18_v4tlj")]
 transform = Transform3D(6.91397, 0, 0, 0, 1, 0, 0, 0, 6.91397, -17, -35, 1)
-LEVEL_SCENE = ExtResource("19_8tneg")
+LEVEL_SCENE = ExtResource("18_ly6eg")
