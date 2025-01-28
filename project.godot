@@ -65,7 +65,7 @@ text/autopauses={}
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg", "res://addons/proto_shape/plugin.cfg")
+enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/Gaea-1.3.2/addons/gaea/plugin.cfg", "res://addons/csg_toolkit/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg", "res://addons/proto_shape/plugin.cfg")
 
 [file_customization]
 

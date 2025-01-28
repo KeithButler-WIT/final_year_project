@@ -1,0 +1,200 @@
+[gd_scene load_steps=21 format=3 uid="uid://iunxjo0xjik0"]
+
+[ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="1_2n465"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="1_6q7hj"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/renderers/3D/gridmap_gaea_renderer.gd" id="1_2606m"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="1_y7s12"]
+[ext_resource type="MeshLibrary" uid="uid://pnj88ymntxvb" path="res://Scenes/level_01.tres" id="2_60spy"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="2_jwnya"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d_settings.gd" id="3_quslp"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/tile_info/gridmap_tile_info.gd" id="4_qquv7"]
+[ext_resource type="Script" path="res://Objects/Scripts/upgrade.gd" id="4_ro40h"]
+[ext_resource type="Script" path="res://Util/Strategy/base_bullet_strategy.gd" id="5_5h2i5"]
+[ext_resource type="Texture2D" uid="uid://dja28abtr2teg" path="res://Assets/exp.png" id="6_ublfu"]
+[ext_resource type="Script" path="res://Util/Strategy/speed_player_strategy.gd" id="7_tvfck"]
+[ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="8_l1qo0"]
+[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="9_vsr6t"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8gnhh"]
+seed = 1785625762
+
+[sub_resource type="Resource" id="Resource_dcyia"]
+script = ExtResource("4_qquv7")
+index = 0
+id = "MeshInstance3D"
+layer = 0
+
+[sub_resource type="Resource" id="Resource_rwyds"]
+script = ExtResource("3_quslp")
+tile = SubResource("Resource_dcyia")
+noise = SubResource("FastNoiseLite_8gnhh")
+infinite = true
+world_size = Vector2i(3, 3)
+height_offset = 0
+height_intensity = 0
+min_height = 0
+air_layer = false
+falloff_enabled = false
+modifiers = Array[ExtResource("2_jwnya")]([])
+
+[sub_resource type="Resource" id="Resource_08e56"]
+script = ExtResource("5_5h2i5")
+texture = ExtResource("6_ublfu")
+upgrade_text = "Speed"
+
+[sub_resource type="Resource" id="Resource_akrmw"]
+script = ExtResource("7_tvfck")
+increase = 10.0
+texture = ExtResource("8_l1qo0")
+upgrade_text = "Speed"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywknh"]
+
+[node name="Level_01" type="Node3D"]
+
+[node name="Ground" type="GridMap" parent="."]
+mesh_library = ExtResource("2_60spy")
+cell_size = Vector3(50, 1, 50)
+collision_layer = 64
+collision_mask = 71
+bake_navigation = true
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridmapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("grid_map", "generator")]
+script = ExtResource("1_2606m")
+grid_map = NodePath("../Ground")
+generator = NodePath("../HeightmapGenerator3D")
+
+[node name="ChunkLoader3D" type="Node3D" parent="." node_paths=PackedStringArray("generator", "actor")]
+script = ExtResource("1_6q7hj")
+generator = NodePath("../HeightmapGenerator3D")
+actor = NodePath("../Player")
+
+[node name="HeightmapGenerator3D" type="Node" parent="."]
+script = ExtResource("1_y7s12")
+settings = SubResource("Resource_rwyds")
+chunk_size = Vector3i(3, 1, 3)
+tile_size = Vector3(50, 1, 50)
+
+[node name="World" type="Node3D" parent="."]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("1_2n465")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0292, 10, 36.8162)
+
+[node name="Upgrade" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 41.29)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_akrmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrade"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrade"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade2" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 39.6999)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_akrmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade2"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrade2"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrade2"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade3" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 37.5703)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_akrmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade3"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrade3"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrade3"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade4" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 35.3581)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_akrmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade4"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrade4"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrade4"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade5" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 33.0634)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_akrmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade5"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrade5"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrade5"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade6" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 31.1527)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_akrmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade6"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrade6"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrade6"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
