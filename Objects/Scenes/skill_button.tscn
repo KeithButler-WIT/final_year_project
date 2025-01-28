@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://da2unl4ljf3mb"]
 
-[ext_resource type="Texture2D" uid="uid://bgan4hfednou8" path="res://icon.svg" id="1_5xvu6"]
+[ext_resource type="Texture2D" uid="uid://dkl54bravyxa" path="res://Assets/icons/base-upgrade-icon.png" id="1_w1sxw"]
 [ext_resource type="Script" path="res://Objects/Scripts/skill_node.gd" id="2_sctuo"]
 
 [node name="SkillButton" type="TextureButton"]
@@ -8,15 +8,16 @@ self_modulate = Color(0.392157, 0.392157, 0.392157, 1)
 z_index = 1
 offset_right = 128.0
 offset_bottom = 128.0
-texture_normal = ExtResource("1_5xvu6")
+texture_normal = ExtResource("1_w1sxw")
 script = ExtResource("2_sctuo")
 
 [node name="SkillLevel" type="Label" parent="."]
 layout_mode = 0
-offset_top = 94.0
+offset_top = 105.0
 offset_right = 128.0
-offset_bottom = 124.0
+offset_bottom = 128.0
 text = "0/3"
+horizontal_alignment = 2
 
 [node name="SkillBranch" type="Line2D" parent="."]
 top_level = true

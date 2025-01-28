@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqkh5crffd41y"]
+[gd_scene load_steps=10 format=3 uid="uid://bqkh5crffd41y"]
 
 [ext_resource type="PackedScene" uid="uid://da2unl4ljf3mb" path="res://Objects/Scenes/skill_button.tscn" id="1_4ggoj"]
 [ext_resource type="Script" path="res://Objects/Scripts/skill_tree.gd" id="1_joyul"]
-[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_num_turrets_player_strategy.gd" id="3_wrbxm"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_max_health_player_strategy.gd" id="3_tgmyb"]
+[ext_resource type="Texture2D" uid="uid://ds3hbkr7bpel6" path="res://Assets/icons/base-health-icon.png" id="3_veb4f"]
 [ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="4_oi3ef"]
 [ext_resource type="PackedScene" uid="uid://bfwmsflivpkcj" path="res://Objects/Scenes/confirm_menu.tscn" id="5_jq33m"]
+[ext_resource type="Texture2D" uid="uid://d365gd46yq8m" path="res://Assets/icons/base-turret-up-icon.png" id="6_xa3bp"]
+[ext_resource type="Texture2D" uid="uid://b1efuvhp4h56w" path="res://Assets/icons/base-damage-up-icon.png" id="7_0fe5j"]
 
-[sub_resource type="Resource" id="Resource_uc2lf"]
-script = ExtResource("3_wrbxm")
+[sub_resource type="Resource" id="Resource_a733c"]
+script = ExtResource("3_tgmyb")
 increase = 1.0
 texture = ExtResource("4_oi3ef")
 upgrade_text = "Speed"
@@ -36,13 +39,16 @@ offset_left = 482.0
 offset_top = 268.0
 offset_right = 610.0
 offset_bottom = 396.0
-upgrade = SubResource("Resource_uc2lf")
+texture_normal = ExtResource("3_veb4f")
+maxLevel = 1
+upgrade = SubResource("Resource_a733c")
 
 [node name="SkillButton2" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_top = -268.0
 offset_bottom = -140.0
 disabled = true
+texture_normal = ExtResource("6_xa3bp")
 
 [node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton2" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -105,6 +111,7 @@ layout_mode = 0
 offset_left = 291.0
 offset_right = 419.0
 disabled = true
+texture_normal = ExtResource("7_0fe5j")
 
 [node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton3" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -297,20 +304,23 @@ offset_right = -157.0
 disabled = true
 
 [node name="VScrollBar" type="VScrollBar" parent="ColorRect"]
+z_index = 10
 layout_mode = 0
 offset_left = 1131.0
 offset_right = 1151.0
 offset_bottom = 648.0
-min_value = -1000.0
+min_value = -500.0
 max_value = 1000.0
 
 [node name="HScrollBar" type="HScrollBar" parent="ColorRect"]
+z_index = 10
 layout_mode = 0
 offset_top = 628.0
 offset_right = 1152.0
 offset_bottom = 648.0
-min_value = -1000.0
+min_value = -500.0
 max_value = 1000.0
+value = 500.0
 
 [node name="ResetButton" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -325,6 +335,8 @@ Upgrades"
 visible = false
 layout_mode = 1
 
+[connection signal="value_changed" from="ColorRect/VScrollBar" to="." method="_on_v_scroll_bar_value_changed"]
+[connection signal="value_changed" from="ColorRect/HScrollBar" to="." method="_on_h_scroll_bar_value_changed"]
 [connection signal="pressed" from="ColorRect/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="confirmation_pressed" from="ConfirmMenu" to="." method="_on_confirm_menu_confirmation_pressed"]
 [connection signal="deny_pressed" from="ConfirmMenu" to="." method="_on_confirm_menu_deny_pressed"]

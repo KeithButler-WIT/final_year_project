@@ -9,9 +9,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	Tree_Root.position.y = $ColorRect/VScrollBar.value
-	Tree_Root.position.x = $ColorRect/HScrollBar.value
-	Tree_Root.redraw_lines()
+	pass
 
 
 func _on_reset_button_pressed() -> void:
@@ -25,3 +23,13 @@ func _on_confirm_menu_confirmation_pressed() -> void:
 
 func _on_confirm_menu_deny_pressed() -> void:
 	$ConfirmMenu.visible = false
+
+
+func _on_v_scroll_bar_value_changed(value: float) -> void:
+	Tree_Root.global_position.y = value
+	Tree_Root.redraw_lines()
+
+
+func _on_h_scroll_bar_value_changed(value: float) -> void:
+	Tree_Root.global_position.x = value
+	Tree_Root.redraw_lines()

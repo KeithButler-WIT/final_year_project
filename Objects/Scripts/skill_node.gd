@@ -15,18 +15,26 @@ var level:int = 0:
 
 
 func _ready() -> void:
+	_update_label()
 	_connect_nodes()
 
+func _update_label() -> void:
+	if maxLevel == 1:
+		skillLevel.text = ""
+	else:
+		skillLevel.text = str(level) + "/" + str(maxLevel)
 
 func _connect_nodes() -> void:
-	skillLevel.text = str(level) + "/" + str(maxLevel)
 	if get_parent() is SkillNode:
 		skillBranch.add_point(global_position + size/2)
 		skillBranch.add_point(get_parent().global_position + get_parent().size/2)
+		#skillBranch.add_point(global_position + size/2)
+		#skillBranch.add_point(get_parent().global_position + get_parent().size/2)
 
 
 func _process(_delta):
 	if Engine.is_editor_hint():
+		_update_label()
 		redraw_lines()
 
 	if not Engine.is_editor_hint():
