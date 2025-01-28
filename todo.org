@@ -1,0 +1,19 @@
+#+title: Todo
+
+
+* TODO
+
+* DOING
+** Skilltree
+*** Art
+- 37 art icons maximum [8/8]
+  - [X] Max Health
+  - [X] Health Regeneration
+  - [X] Turret Count
+  - [X] Turret Attack Speed
+  - [X] Turret Damage
+  - [X] Speed
+  - [X] Damage
+  - [X] Pickup Radius
+
+* DONE
