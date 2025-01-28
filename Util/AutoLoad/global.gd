@@ -1,9 +1,12 @@
 extends Node
 
+const LOADING_SCREEN_PATH : String = "res://Scenes/loading_screen.tscn"
 
 var current_scene = null
 
+
 func _ready():
+	ResourceLoader.load_threaded_request(LOADING_SCREEN_PATH)
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 
@@ -17,7 +20,7 @@ func goto_scene(path):
 
 	# The solution is to defer the load to a later time, when
 	# we can be sure that no code from the current scene is running:
-
+	ResourceLoader.load_threaded_request(path)
 	call_deferred("_deferred_goto_scene", path)
 
 
@@ -27,13 +30,14 @@ func _deferred_goto_scene(path):
 	get_tree().current_scene.free()
 
 	# Load the new scene.
-	var s = ResourceLoader.load(path)
-
-	# Instance the new scene.
-	current_scene = s.instantiate()
-
-	# Add it to the active scene, as child of root.
-	get_tree().root.add_child(current_scene)
-
-	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
-	get_tree().current_scene = current_scene
+	var progress = []
+	ResourceLoader.load_threaded_get_status(path, progress)
+	print(progress[0]*100)
+	if progress[0] == 1:
+		var s = ResourceLoader.load_threaded_get(path)
+		# Instance the new scene.
+		current_scene = s.instantiate()
+		# Add it to the active scene, as child of root.
+		get_tree().root.add_child(current_scene)
+		# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
+		get_tree().current_scene = current_scene
