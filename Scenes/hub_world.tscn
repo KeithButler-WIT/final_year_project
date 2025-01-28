@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=31 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
@@ -49,6 +49,13 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_60168"]
 left_to_right = 0.0
 size = Vector3(20, 10, 4)
+
+[sub_resource type="Curve3D" id="Curve3D_ah3fs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -3, 0, 0, 0, 0, 0, 0, 0, 1, -13, 0, 0, 0, 0, 0, 0, 0, 0, -15),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [sub_resource type="Resource" id="Resource_82rp8"]
 script = ExtResource("12_4qpk1")
@@ -204,6 +211,25 @@ polygon = PackedVector2Array(0, -2, 0, 1, 3, 1, 2, -1)
 mode = 1
 spin_degrees = 360.0
 spin_sides = 8
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9701, -1.43066, 7.00171)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 1, 4, 1, 4, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Path3D" type="Path3D" parent="World/CSGPolygon3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+curve = SubResource("Curve3D_ah3fs")
 
 [node name="TutorialHints" type="Node3D" parent="."]
 script = ExtResource("5_4elcs")
