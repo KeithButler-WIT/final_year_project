@@ -2,9 +2,9 @@ extends CharacterBody3D
 
 class_name Enemy
 
-var movement_speed: float = 2.0
+@export var movement_speed: float = 2.0
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
-var attack_speed_multiplier = 5
+@export var attack_speed_multiplier = 5
 
 #@export var player : CharacterBody3D
 @onready var player: CharacterBody3D = $"../Player"
@@ -98,7 +98,12 @@ func _on_PathUpdateTimer_timeout():
 func _on_health_died_signal():
 	if get_node_or_null("DropXPComponent"):
 		$DropXPComponent.spawn_exp()
-	queue_free()
+	var tween = get_tree().create_tween().bind_node(self)
+	tween.set_parallel(true)
+	tween.tween_property($Character, "modulate", Color.RED, 0.1)
+	tween.tween_property($Character, "scale", Vector2(), 0.1)
+	if (tween.finished):
+		tween.tween_callback(self.queue_free)
 
 
 func _on_AttackRadius_body_entered(body):
