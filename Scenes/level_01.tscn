@@ -93,8 +93,8 @@ upgrade_text = "Speed"
 script = ExtResource("7_tvfck")
 increase = 1.0
 texture = ExtResource("8_l1qo0")
-upgrade_text = "Speed"
-description = "Increase something"
+upgrade_text = "Nothing"
+description = null
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ywknh"]
 
@@ -102,8 +102,8 @@ description = "Increase something"
 script = ExtResource("24_81e1m")
 increase = 0.2
 texture = ExtResource("8_l1qo0")
-upgrade_text = "Speed"
-description = "Increase something"
+upgrade_text = "Nothing"
+description = null
 
 [node name="Level_01" type="Node3D"]
 script = ExtResource("1_v0fkc")
@@ -228,7 +228,7 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Upgrades" type="Node3D" parent="."]
+[node name="Upgrades" type="Node3D" parent="." groups=["Debug"]]
 
 [node name="Upgrade" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 41.29)
@@ -246,7 +246,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade2" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -265,7 +265,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade2"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade3" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -284,7 +284,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade3"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade4" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -303,7 +303,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade4"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade5" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -322,7 +322,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade5"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade6" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -341,7 +341,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade6"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade7" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -360,7 +360,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade7"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade8" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -379,7 +379,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade8"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade9" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -398,7 +398,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade9"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade10" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -417,7 +417,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade10"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade11" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -436,7 +436,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade11"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Upgrade12" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
@@ -455,7 +455,7 @@ billboard = 1
 texture = ExtResource("8_l1qo0")
 
 [node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade12"]
-text = "Speed"
+text = "Nothing"
 font = ExtResource("9_vsr6t")
 
 [node name="Boss_Slime" parent="." instance=ExtResource("24_mhceg")]

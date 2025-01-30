@@ -84,6 +84,7 @@ import/fbx/enabled=false
 
 player=""
 Persist="Gets Saved"
+Debug=""
 
 [input]
 
