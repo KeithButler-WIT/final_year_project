@@ -4,7 +4,7 @@ extends Node3D
 var ray_origin = Vector3()
 var ray_target = Vector3()
 
-@onready var camera = $"../Camera"
+@onready var camera = %Camera
 @onready var player_body = $"../Body"
 
 func _physics_process(_delta):
