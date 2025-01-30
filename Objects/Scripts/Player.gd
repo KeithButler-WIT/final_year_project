@@ -58,18 +58,19 @@ func take_hit(damage):
 
 
 func die():
-	print("GAME OVER")
+	if !OS.has_feature("standalone"):
+		print("GAME OVER")
 	upgrades.clear()
 	PlayerStats.reset()
 	#TODO: play death animations
 	#TODO: Show game over animations
 	#TODO: wait
-	ResourceLoader.load_threaded_request(LEVEL_SCENE_PATH)
-	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(LEVEL_SCENE_PATH))
+	#ResourceLoader.load_threaded_request(LEVEL_SCENE_PATH)
+	#get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(LEVEL_SCENE_PATH))
 	#emit_signal("player_died_signal")
 	#visible = false
 	#queue_free()
-	#Global.goto_scene("res://levels/hub_world.tscn")
+	#Global.goto_scene(LEVEL_SCENE_PATH)
 
 
 func _on_turret_place_timer_timeout():
