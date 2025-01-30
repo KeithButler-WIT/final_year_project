@@ -1,22 +1,53 @@
-[gd_scene load_steps=21 format=3 uid="uid://iunxjo0xjik0"]
+[gd_scene load_steps=39 format=3 uid="uid://iunxjo0xjik0"]
 
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="1_2n465"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="1_6q7hj"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/renderers/3D/gridmap_gaea_renderer.gd" id="1_2606m"]
+[ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_sddlb"]
+[ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_v0fkc"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="1_y7s12"]
 [ext_resource type="MeshLibrary" uid="uid://pnj88ymntxvb" path="res://Scenes/level_01.tres" id="2_60spy"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="2_jwnya"]
+[ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_pxkjo"]
+[ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="3_8lwvn"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d_settings.gd" id="3_quslp"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/tile_info/gridmap_tile_info.gd" id="4_qquv7"]
 [ext_resource type="Script" path="res://Objects/Scripts/upgrade.gd" id="4_ro40h"]
+[ext_resource type="PackedScene" uid="uid://cbhl3vg4rafl2" path="res://Objects/Scenes/level_up_menu.tscn" id="4_w7vl5"]
 [ext_resource type="Script" path="res://Util/Strategy/base_bullet_strategy.gd" id="5_5h2i5"]
 [ext_resource type="Texture2D" uid="uid://dja28abtr2teg" path="res://Assets/exp.png" id="6_ublfu"]
-[ext_resource type="Script" path="res://Util/Strategy/speed_player_strategy.gd" id="7_tvfck"]
+[ext_resource type="Script" path="res://Util/Strategy/temporary/speed_player_strategy.gd" id="7_tvfck"]
 [ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="8_l1qo0"]
 [ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="9_vsr6t"]
+[ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="19_01mgi"]
+[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/enemy.tscn" id="20_x74ub"]
+[ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="21_rtubr"]
+[ext_resource type="Script" path="res://Objects/Scripts/Objective.gd" id="22_rg5nr"]
+[ext_resource type="Script" path="res://Util/Strategy/temporary/pickup_radius_player_strategy.gd" id="24_81e1m"]
+[ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="24_mhceg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vay7k"]
+panorama = ExtResource("1_sddlb")
+
+[sub_resource type="Sky" id="Sky_o63wv"]
+sky_material = SubResource("PanoramaSkyMaterial_vay7k")
+
+[sub_resource type="Environment" id="Environment_mh6h8"]
+background_mode = 2
+sky = SubResource("Sky_o63wv")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.02
+glow_blend_mode = 0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8gnhh"]
-seed = 1785625762
 
 [sub_resource type="Resource" id="Resource_dcyia"]
 script = ExtResource("4_qquv7")
@@ -37,6 +68,22 @@ air_layer = false
 falloff_enabled = false
 modifiers = Array[ExtResource("2_jwnya")]([])
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kbmgx"]
+height = 4.0
+radius = 7.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dpnk"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xrjta"]
+material = SubResource("StandardMaterial3D_2dpnk")
+top_radius = 7.0
+bottom_radius = 7.0
+height = 4.0
+
 [sub_resource type="Resource" id="Resource_08e56"]
 script = ExtResource("5_5h2i5")
 texture = ExtResource("6_ublfu")
@@ -44,13 +91,54 @@ upgrade_text = "Speed"
 
 [sub_resource type="Resource" id="Resource_akrmw"]
 script = ExtResource("7_tvfck")
-increase = 10.0
+increase = 1.0
 texture = ExtResource("8_l1qo0")
 upgrade_text = "Speed"
+description = "Increase something"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ywknh"]
 
+[sub_resource type="Resource" id="Resource_32lkq"]
+script = ExtResource("24_81e1m")
+increase = 0.2
+texture = ExtResource("8_l1qo0")
+upgrade_text = "Speed"
+description = "Increase something"
+
 [node name="Level_01" type="Node3D"]
+script = ExtResource("1_v0fkc")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1800.0
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mh6h8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.75225, 0)
+shadow_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpUi" parent="Control" instance=ExtResource("2_pxkjo")]
+layout_mode = 1
+
+[node name="HpUi" parent="Control" instance=ExtResource("3_8lwvn")]
+layout_mode = 1
+offset_top = -29.0
+
+[node name="level_up_menu" parent="Control" instance=ExtResource("4_w7vl5")]
+layout_mode = 1
+
+[node name="World" type="Node3D" parent="."]
+visible = false
 
 [node name="Ground" type="GridMap" parent="."]
 mesh_library = ExtResource("2_60spy")
@@ -76,16 +164,73 @@ actor = NodePath("../Player")
 [node name="HeightmapGenerator3D" type="Node" parent="."]
 script = ExtResource("1_y7s12")
 settings = SubResource("Resource_rwyds")
-chunk_size = Vector3i(3, 1, 3)
+chunk_size = Vector3i(3, 3, 3)
 tile_size = Vector3(50, 1, 50)
 
-[node name="World" type="Node3D" parent="."]
-visible = false
-
 [node name="Player" parent="." instance=ExtResource("1_2n465")]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0292, 10, 36.8162)
 
-[node name="Upgrade" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("19_01mgi")
+packed_enemy = Array[PackedScene]([ExtResource("20_x74ub")])
+
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[node name="Waves" type="Node" parent="Spawner"]
+
+[node name="Wave1" type="Node" parent="Spawner/Waves"]
+script = ExtResource("21_rtubr")
+
+[node name="Wave2" type="Node" parent="Spawner/Waves"]
+script = ExtResource("21_rtubr")
+num_enemies = 60
+
+[node name="Wave3" type="Node" parent="Spawner/Waves"]
+script = ExtResource("21_rtubr")
+num_enemies = 120
+seconds_between_spawns = 0.5
+
+[node name="Objective" type="Node3D" parent="."]
+script = ExtResource("22_rg5nr")
+
+[node name="Area3D" type="Area3D" parent="Objective"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D"]
+shape = SubResource("CylinderShape3D_kbmgx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objective/Area3D"]
+mesh = SubResource("CylinderMesh_xrjta")
+
+[node name="Timer" type="Timer" parent="Objective"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Control" type="Control" parent="Objective"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ObjectiveCountdown" type="Label" parent="Objective/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 28.8
+anchor_right = 28.8
+offset_left = -676.0
+offset_top = 27.0
+offset_right = -472.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrades" type="Node3D" parent="."]
+
+[node name="Upgrade" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 41.29)
 script = ExtResource("4_ro40h")
 upgrade_label = NodePath("UpgradeLabel")
@@ -93,18 +238,18 @@ sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade"]
 shape = SubResource("BoxShape3D_ywknh")
 
-[node name="Sprite3D" type="Sprite3D" parent="Upgrade"]
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade"]
 billboard = 1
 texture = ExtResource("8_l1qo0")
 
-[node name="UpgradeLabel" type="Label3D" parent="Upgrade"]
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade"]
 text = "Speed"
 font = ExtResource("9_vsr6t")
 
-[node name="Upgrade2" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+[node name="Upgrade2" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 39.6999)
 script = ExtResource("4_ro40h")
 upgrade_label = NodePath("UpgradeLabel")
@@ -112,18 +257,18 @@ sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade2"]
 shape = SubResource("BoxShape3D_ywknh")
 
-[node name="Sprite3D" type="Sprite3D" parent="Upgrade2"]
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade2"]
 billboard = 1
 texture = ExtResource("8_l1qo0")
 
-[node name="UpgradeLabel" type="Label3D" parent="Upgrade2"]
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade2"]
 text = "Speed"
 font = ExtResource("9_vsr6t")
 
-[node name="Upgrade3" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+[node name="Upgrade3" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 37.5703)
 script = ExtResource("4_ro40h")
 upgrade_label = NodePath("UpgradeLabel")
@@ -131,18 +276,18 @@ sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade3"]
 shape = SubResource("BoxShape3D_ywknh")
 
-[node name="Sprite3D" type="Sprite3D" parent="Upgrade3"]
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade3"]
 billboard = 1
 texture = ExtResource("8_l1qo0")
 
-[node name="UpgradeLabel" type="Label3D" parent="Upgrade3"]
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade3"]
 text = "Speed"
 font = ExtResource("9_vsr6t")
 
-[node name="Upgrade4" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+[node name="Upgrade4" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 35.3581)
 script = ExtResource("4_ro40h")
 upgrade_label = NodePath("UpgradeLabel")
@@ -150,18 +295,18 @@ sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade4"]
 shape = SubResource("BoxShape3D_ywknh")
 
-[node name="Sprite3D" type="Sprite3D" parent="Upgrade4"]
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade4"]
 billboard = 1
 texture = ExtResource("8_l1qo0")
 
-[node name="UpgradeLabel" type="Label3D" parent="Upgrade4"]
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade4"]
 text = "Speed"
 font = ExtResource("9_vsr6t")
 
-[node name="Upgrade5" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+[node name="Upgrade5" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 33.0634)
 script = ExtResource("4_ro40h")
 upgrade_label = NodePath("UpgradeLabel")
@@ -169,18 +314,18 @@ sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade5"]
 shape = SubResource("BoxShape3D_ywknh")
 
-[node name="Sprite3D" type="Sprite3D" parent="Upgrade5"]
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade5"]
 billboard = 1
 texture = ExtResource("8_l1qo0")
 
-[node name="UpgradeLabel" type="Label3D" parent="Upgrade5"]
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade5"]
 text = "Speed"
 font = ExtResource("9_vsr6t")
 
-[node name="Upgrade6" type="Area3D" parent="." node_paths=PackedStringArray("upgrade_label", "sprite")]
+[node name="Upgrade6" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 31.1527)
 script = ExtResource("4_ro40h")
 upgrade_label = NodePath("UpgradeLabel")
@@ -188,13 +333,138 @@ sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrade6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade6"]
 shape = SubResource("BoxShape3D_ywknh")
 
-[node name="Sprite3D" type="Sprite3D" parent="Upgrade6"]
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade6"]
 billboard = 1
 texture = ExtResource("8_l1qo0")
 
-[node name="UpgradeLabel" type="Label3D" parent="Upgrade6"]
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade6"]
 text = "Speed"
 font = ExtResource("9_vsr6t")
+
+[node name="Upgrade7" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 41.29)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_32lkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade7"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade7"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade7"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade8" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 39.6999)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_32lkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade8"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade8"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade8"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade9" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 37.5703)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_32lkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade9"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade9"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade9"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade10" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 35.3581)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_32lkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade10"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade10"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade10"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade11" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 33.0634)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_32lkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade11"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade11"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade11"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Upgrade12" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 31.1527)
+script = ExtResource("4_ro40h")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite3D")
+bullet_strategy = SubResource("Resource_08e56")
+player_strategy = SubResource("Resource_32lkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade12"]
+shape = SubResource("BoxShape3D_ywknh")
+
+[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade12"]
+billboard = 1
+texture = ExtResource("8_l1qo0")
+
+[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade12"]
+text = "Speed"
+font = ExtResource("9_vsr6t")
+
+[node name="Boss_Slime" parent="." instance=ExtResource("24_mhceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.6, 40)
+
+[node name="Boss_Slime2" parent="." instance=ExtResource("24_mhceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 1.6, 25)
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Objective/Timer" to="Objective" method="_on_timer_timeout"]
