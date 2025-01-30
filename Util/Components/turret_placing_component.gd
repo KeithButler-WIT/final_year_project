@@ -15,11 +15,14 @@ func place_turret():
 			get_tree().current_scene.remove_child(turrets[0])
 			turrets.pop_front()  # remove oldest turret
 			turrets.append(new_turret)
-			print("Turret Size: ", turrets.size())
-			print("Max Turrets reached, replacing oldest one")
+			if !OS.has_feature("standalone"):
+				print("Turret Size: ", turrets.size())
+				print("Max Turrets reached, replacing oldest one")
 		else:
 			turrets.append(new_turret)
-			print("Spawning turret")
+			if !OS.has_feature("standalone"):
+				print("Spawning turret")
 		get_parent().can_place_turret = false
 	else:
-		print("Turret on cooldown")
+		if !OS.has_feature("standalone"):
+			print("Turret on cooldown")
