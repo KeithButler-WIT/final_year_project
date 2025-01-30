@@ -31,8 +31,12 @@ layout_mode = 2
 [node name="VContainer3" parent="AspectRatioContainer/MainContainer" instance=ExtResource("2_hrf2w")]
 layout_mode = 2
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="button_up" from="AspectRatioContainer/MainContainer/VContainer/Option" to="." method="_on_option_button_up"]
 [connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer/Option" to="." method="_on_option_1_pressed"]
+[connection signal="button_up" from="AspectRatioContainer/MainContainer/VContainer2/Option" to="." method="_on_option_button_up"]
 [connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer2/Option" to="." method="_on_option_2_pressed"]
+[connection signal="button_up" from="AspectRatioContainer/MainContainer/VContainer3/Option" to="." method="_on_option_button_up"]
 [connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer3/Option" to="." method="_on_option_3_pressed"]
 
 [editable path="AspectRatioContainer/MainContainer/VContainer"]
