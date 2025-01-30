@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b2sf6pmwefh8o"]
+[gd_scene load_steps=37 format=3 uid="uid://b2sf6pmwefh8o"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Player.gd" id="1_pj4ig"]
 [ext_resource type="PackedScene" uid="uid://c8mhbkgily14y" path="res://Objects/Scenes/Turret.tscn" id="2_tgj4n"]
@@ -8,12 +8,17 @@
 [ext_resource type="Shader" path="res://Objects/Scripts/Shaders/walkingParticle.gdshader" id="4_xq8cp"]
 [ext_resource type="PackedScene" uid="uid://cuh1yaoty6gvf" path="res://Objects/Scenes/Player/camera.tscn" id="5_6omeo"]
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="6_udxi6"]
+[ext_resource type="Script" path="res://Objects/Scenes/Player/camera_arm.gd" id="7_ksuh6"]
 [ext_resource type="Script" path="res://Util/Components/PickupComponent.gd" id="7_la2uo"]
 [ext_resource type="Script" path="res://Util/Components/levelupComponent.gd" id="8_fftjq"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/StateMachine.gd" id="10_aoq3k"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/idle.gd" id="11_gu44f"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/move.gd" id="12_4hqdw"]
 [ext_resource type="Script" path="res://Objects/Scripts/StateMachine/jump.gd" id="13_ljcpp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rlva5"]
+height = 5.0
+radius = 1.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pmtll"]
 dof_blur_far_enabled = true
@@ -265,10 +270,6 @@ shader = ExtResource("4_xq8cp")
 
 [sub_resource type="BoxMesh" id="BoxMesh_l6iob"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_rlva5"]
-height = 5.0
-radius = 1.0
-
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.505591, 0)
 collision_mask = 255
@@ -284,11 +285,22 @@ packet_turret = ExtResource("2_tgj4n")
 [node name="PickupComponent" type="Node3D" parent="."]
 script = ExtResource("7_la2uo")
 
+[node name="pickup_area" type="Area3D" parent="."]
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
+shape = SubResource("CylinderShape3D_rlva5")
+
 [node name="levelupComponent" type="Node3D" parent="."]
 script = ExtResource("8_fftjq")
 
-[node name="Camera" parent="." instance=ExtResource("5_6omeo")]
-transform = Transform3D(1, 3.55271e-15, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 6)
+[node name="CameraArm" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -4.37114e-08, 8, 5)
+collision_mask = 64
+script = ExtResource("7_ksuh6")
+
+[node name="Camera" parent="CameraArm" instance=ExtResource("5_6omeo")]
+unique_name_in_owner = true
 attributes = SubResource("CameraAttributesPractical_pmtll")
 projection = 0
 size = 11.085
@@ -331,11 +343,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wapkd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_417lt")
 
-[node name="Camera_Old" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 6)
-visible = false
-current = true
-
 [node name="GunController" parent="." instance=ExtResource("3_txidj")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
@@ -351,12 +358,6 @@ draw_pass_1 = SubResource("BoxMesh_l6iob")
 [node name="turret_place_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="pickup_area" type="Area3D" parent="."]
-collision_mask = 32
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
-shape = SubResource("CylinderShape3D_rlva5")
 
 [node name="CanBeDamagedTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -374,6 +375,6 @@ script = ExtResource("12_4hqdw")
 [node name="jump" type="Node" parent="movement_state_machine"]
 script = ExtResource("13_ljcpp")
 
-[connection signal="timeout" from="turret_place_timer" to="." method="_on_turret_place_timer_timeout"]
 [connection signal="body_entered" from="pickup_area" to="PickupComponent" method="_on_pickup_area_body_entered"]
+[connection signal="timeout" from="turret_place_timer" to="." method="_on_turret_place_timer_timeout"]
 [connection signal="timeout" from="CanBeDamagedTimer" to="." method="_on_can_be_damaged_timer_timeout"]
