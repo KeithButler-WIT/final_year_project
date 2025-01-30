@@ -9,8 +9,8 @@ extends Resource
 
 
 @export var texture : Texture2D = preload("res://Assets/icon.svg")
-@export var upgrade_text : String = "Speed"
-@export var description : String = "Increase something"
+@export var upgrade_text : String = "Nothing"
+@export var description : String = "Increase %s" % upgrade_text
 
 
 # This is the function that we later call when firing our player.
