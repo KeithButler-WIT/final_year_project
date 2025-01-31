@@ -5,6 +5,7 @@ extends Node3D
 
 @export var missionEnd : PackedScene
 @export var exitLadder : PackedScene
+@export var PackedObjective : PackedScene
 
 @onready var exp_bar = $Control/ExpUi/Bar
 @onready var exp_label = $Control/ExpUi/Label
@@ -16,6 +17,7 @@ var time_start = 0
 
 func _ready():
 	time_start = Time.get_ticks_msec()
+	spawn_objective()
 
 
 var sec_to_min = func(sec):
@@ -64,3 +66,11 @@ func _on_objective_complete() -> void:
 	var exit_ladder = exitLadder.instantiate()
 	mission_end.position = Vector3(player.x-10, player.y, player.z)
 	add_child(exit_ladder)
+
+
+func spawn_objective():
+	var objective = PackedObjective.instantiate()
+	objective.position = Vector3(randi_range(-100,100),0,randi_range(-100,100))
+	objective.unique_name_in_owner = true
+	print(objective.position)
+	add_child(objective)

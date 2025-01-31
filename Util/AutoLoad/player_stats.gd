@@ -37,6 +37,7 @@ var total_experience_gained = 0
 var missions_completed = 0
 var upgrade_points_spent = 0
 var upgrade_point = 0
+var upgrade_choices = 3
 
 enum MISSION {
 	LOOTING,
@@ -104,7 +105,8 @@ func save():
 		"total_experience_gained" : total_experience_gained,
 		"missions_completed" : missions_completed,
 		"upgrade_points_spent" : upgrade_points_spent,
-		"upgrade_point" : upgrade_point
+		"upgrade_point" : upgrade_point,
+		"upgrade_choices" : upgrade_choices
 	}
 	return save_dict
 

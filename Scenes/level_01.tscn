@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://iunxjo0xjik0"]
+[gd_scene load_steps=36 format=3 uid="uid://iunxjo0xjik0"]
 
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="1_2n465"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="1_6q7hj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_sddlb"]
 [ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_v0fkc"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="1_y7s12"]
+[ext_resource type="PackedScene" uid="uid://dseiori76psbj" path="res://Objects/Scenes/objective.tscn" id="2_34o17"]
 [ext_resource type="MeshLibrary" uid="uid://pnj88ymntxvb" path="res://Scenes/level_01.tres" id="2_60spy"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="2_jwnya"]
 [ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_pxkjo"]
@@ -22,7 +23,6 @@
 [ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="19_01mgi"]
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/enemy.tscn" id="20_x74ub"]
 [ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="21_rtubr"]
-[ext_resource type="Script" path="res://Objects/Scripts/Objective.gd" id="22_rg5nr"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/pickup_radius_player_strategy.gd" id="24_81e1m"]
 [ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="24_mhceg"]
 
@@ -68,22 +68,6 @@ air_layer = false
 falloff_enabled = false
 modifiers = Array[ExtResource("2_jwnya")]([])
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_kbmgx"]
-height = 4.0
-radius = 7.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dpnk"]
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xrjta"]
-material = SubResource("StandardMaterial3D_2dpnk")
-top_radius = 7.0
-bottom_radius = 7.0
-height = 4.0
-
 [sub_resource type="Resource" id="Resource_08e56"]
 script = ExtResource("5_5h2i5")
 texture = ExtResource("6_ublfu")
@@ -107,6 +91,7 @@ description = null
 
 [node name="Level_01" type="Node3D"]
 script = ExtResource("1_v0fkc")
+PackedObjective = ExtResource("2_34o17")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1800.0
@@ -191,42 +176,6 @@ num_enemies = 60
 script = ExtResource("21_rtubr")
 num_enemies = 120
 seconds_between_spawns = 0.5
-
-[node name="Objective" type="Node3D" parent="."]
-script = ExtResource("22_rg5nr")
-
-[node name="Area3D" type="Area3D" parent="Objective"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
-collision_layer = 16
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objective/Area3D"]
-shape = SubResource("CylinderShape3D_kbmgx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Objective/Area3D"]
-mesh = SubResource("CylinderMesh_xrjta")
-
-[node name="Timer" type="Timer" parent="Objective"]
-wait_time = 10.0
-one_shot = true
-
-[node name="Control" type="Control" parent="Objective"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ObjectiveCountdown" type="Label" parent="Objective/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 28.8
-anchor_right = 28.8
-offset_left = -676.0
-offset_top = 27.0
-offset_right = -472.0
-offset_bottom = 67.0
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Upgrades" type="Node3D" parent="." groups=["Debug"]]
 
@@ -465,6 +414,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.6, 40)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 1.6, 25)
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
-[connection signal="body_entered" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Objective/Area3D" to="Objective" method="_on_area_3d_body_exited"]
-[connection signal="timeout" from="Objective/Timer" to="Objective" method="_on_timer_timeout"]

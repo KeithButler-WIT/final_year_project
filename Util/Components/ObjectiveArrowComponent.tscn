@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c260cklg2sqqt"]
+
+[ext_resource type="Texture2D" uid="uid://bgan4hfednou8" path="res://icon.svg" id="1_00fhp"]
+[ext_resource type="Script" path="res://Util/Components/objective_arrow_component.gd" id="1_fc3di"]
+
+[node name="ObjectiveArrowComponent" type="Node3D"]
+script = ExtResource("1_fc3di")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2)
+texture = ExtResource("1_00fhp")

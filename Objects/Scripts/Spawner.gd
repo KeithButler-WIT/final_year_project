@@ -68,19 +68,37 @@ func get_random_position_off_screen() -> Vector3 :
 	if weakref(camera).get_ref():
 		screensize = camera.get_viewport().size
 	else:
-		screensize = get_viewport().size 
+		screensize = get_viewport().size
 
 	var rng := RandomNumberGenerator.new()
 
 	rng.randomize()
+	
+	match rng.randi_range(0,3):
+		0: # TOP
+			randx = %Player.global_position.x + screensize.x/50
+			randz = %Player.global_position.z + int(rng.randi_range(0, screensize.y/50))
+		1: # BOTTOM
+			randx = %Player.global_position.x - screensize.x/50
+			randz = %Player.global_position.z - int(rng.randi_range(0, screensize.y/50))
+		2: # LEFT
+			randx = %Player.global_position.x - int(rng.randi_range(0, screensize.x/50))
+			randz = %Player.global_position.z + screensize.y/50
+		3: # RIGHT
+			randx = %Player.global_position.x + int(rng.randi_range(0, screensize.x/50))
+			randz = %Player.global_position.z - screensize.y/50
 
-	if rng.randi() % 2 == 0:
-		# spawn at top or bottom
-		randx = int(rng.randi_range(0, screensize.x))
-		randz = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.y + distance_outside_screen
-	else:
-		# spawn at left or right
-		randz = int(rng.randi_range(0, screensize.y))
-		randx = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.x + distance_outside_screen
+	#if rng.randi() % 2 == 0:
+		## spawn at top or bottom
+		#randx = int(rng.randi_range(0, screensize.x))
+		#randz = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.y + distance_outside_screen
+	#else:
+		## spawn at left or right
+		#randz = int(rng.randi_range(0, screensize.y))
+		#randx = -distance_outside_screen if rng.randi() % 2 == 0 else screensize.x + distance_outside_screen
+
+	#print(screensize)
+	#print(randx)
+	#print(randz)
 
 	return Vector3(randx, 3, randz)

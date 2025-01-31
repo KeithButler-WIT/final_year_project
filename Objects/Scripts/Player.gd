@@ -25,8 +25,10 @@ func _ready():
 
 
 func _process(_delta):
-	shoot()
-
+	if Input.is_action_pressed("primary_action"):
+		gun_controller.shoot()
+	if has_node("TurretPlacingComponent") and Input.is_action_pressed("turret_place"):
+		$TurretPlacingComponent.place_turret()
 
 func _physics_process(delta):
 	# TODO: run every 0.5 seconds
@@ -37,20 +39,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func shoot():
-	# Shooting
-	if Input.is_action_pressed("primary_action"):
-		gun_controller.shoot()
-	if Input.is_action_pressed("turret_place"):
-		$TurretPlacingComponent.place_turret()
-
-
 func take_hit(damage):
 	# TODO: Add cooldown to being hit
 	if canBeDamaged:
 		PlayerStats.current_health -= damage
 		canBeDamaged = false
-		print("HP: ", PlayerStats.current_health, "/", PlayerStats.max_health)
+		if !OS.has_feature("standalone"):
+			print("HP: ", PlayerStats.current_health, "/", PlayerStats.max_health)
 		PlayerStats.decrease_skill(1)
 
 	if PlayerStats.current_health <= 0:

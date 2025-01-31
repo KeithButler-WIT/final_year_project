@@ -37,6 +37,11 @@ func _ready():
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 
+
+func _process(delta: float) -> void:
+	change_screen_edge()
+
+
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
@@ -66,6 +71,24 @@ func _physics_process(_delta):
 			state.RESTING:
 				print("RESTING")
 				animationPlayer.play("idle")
+
+
+func change_screen_edge():
+	if navigation_agent.target_position:
+		var distance = global_position.distance_to(navigation_agent.target_position)
+		var direction = global_position.direction_to(navigation_agent.target_position)
+		# TODO: refine values
+		if distance > 20 and distance < 100:
+			#print("Direction: ", direction)
+			#print("Distance: ", distance)
+			print("Moving to other side of screen")
+			print("Position Before: ", global_position)
+			print(direction.ceil().x * (distance*2))
+			#position *= direction.ceil() * (distance*2)
+			global_position.x += direction.round().x * ((distance-2)*2)
+			global_position.z += direction.round().z * ((distance-2)*2)
+			print("Position After: ", global_position)
+	return global_position
 
 
 func move_and_attack():
