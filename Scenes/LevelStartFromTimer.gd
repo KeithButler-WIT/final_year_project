@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var LEVEL_SCENE : PackedScene
+@export var LEVEL_SCENE : String
 @export var use_timer : bool = false
 
 @onready var timer = $LevelStartTimer
@@ -20,7 +20,8 @@ func _process(_delta):
 
 func _on_level_start_timer_timeout():
 	print("LOAD THE LEVEL: TIMER TIMEOUT")
-	Global.goto_scene(LEVEL_SCENE.resource_path)
+	#print(LEVEL_SCENE.resource_path)
+	Global.goto_scene(load(LEVEL_SCENE).resource_path)
 
 
 func _on_level_start_area_body_entered(_body):

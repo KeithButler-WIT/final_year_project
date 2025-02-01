@@ -81,13 +81,13 @@ func change_screen_edge():
 		if distance > 20 and distance < 100:
 			#print("Direction: ", direction)
 			#print("Distance: ", distance)
-			print("Moving to other side of screen")
-			print("Position Before: ", global_position)
-			print(direction.ceil().x * (distance*2))
+			#print("Moving to other side of screen")
+			#print("Position Before: ", global_position)
+			#print(direction.ceil().x * (distance*2))
 			#position *= direction.ceil() * (distance*2)
 			global_position.x += direction.round().x * ((distance-2)*2)
 			global_position.z += direction.round().z * ((distance-2)*2)
-			print("Position After: ", global_position)
+			#print("Position After: ", global_position)
 	return global_position
 
 
@@ -122,9 +122,9 @@ func _on_health_died_signal():
 	if get_node_or_null("DropXPComponent"):
 		$DropXPComponent.spawn_exp()
 	var tween = get_tree().create_tween().bind_node(self)
-	tween.set_parallel(true)
-	tween.tween_property($Character, "modulate", Color.RED, 0.1)
-	tween.tween_property($Character, "scale", Vector2(), 0.1)
+	#tween.set_parallel(true)
+	tween.tween_property($Character, "modulate", Color.RED, 0.2)
+	tween.tween_property($Character, "scale", Vector3(1,0,1), 0.2)
 	if (tween.finished):
 		tween.tween_callback(self.queue_free)
 

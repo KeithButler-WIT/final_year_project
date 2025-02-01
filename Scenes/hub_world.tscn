@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=30 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Objects/Scripts/TutorialHints.gd" id="5_4elcs"]
 [ext_resource type="PackedScene" uid="uid://b67quibb16v2t" path="res://Objects/Scenes/upgrade_shop.tscn" id="6_xmeu7"]
 [ext_resource type="PackedScene" uid="uid://ddag5uqwi8vov" path="res://Objects/Scenes/mission_selector.tscn" id="7_6rd4m"]
-[ext_resource type="PackedScene" uid="uid://cqwqx1yc48o66" path="res://Scenes/levels/levelGenerator/tree.tscn" id="10_u2lk3"]
+[ext_resource type="PackedScene" uid="uid://cqwqx1yc48o66" path="res://Scenes/levelGenerator/tree.tscn" id="10_u2lk3"]
 [ext_resource type="Script" path="res://Objects/Scripts/upgrade.gd" id="11_mi7iy"]
 [ext_resource type="Script" path="res://Util/Strategy/base_bullet_strategy.gd" id="12_4qpk1"]
 [ext_resource type="Texture2D" uid="uid://dja28abtr2teg" path="res://Assets/exp.png" id="13_0icya"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bx654nysnlmku" path="res://Objects/Scenes/quest_list.tscn" id="16_mtsq8"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/health_player_strategy.gd" id="17_m584y"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/turret_damage_player_strategy.gd" id="18_6ns6g"]
-[ext_resource type="PackedScene" uid="uid://iunxjo0xjik0" path="res://Scenes/level_01.tscn" id="18_ly6eg"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="18_v4tlj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
@@ -67,6 +66,7 @@ script = ExtResource("14_8hsfh")
 increase = 1.0
 texture = ExtResource("15_meimh")
 upgrade_text = "Speed"
+description = null
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jhu51"]
 
@@ -75,12 +75,14 @@ script = ExtResource("17_m584y")
 increase = 50.0
 texture = ExtResource("15_meimh")
 upgrade_text = "Health"
+description = null
 
 [sub_resource type="Resource" id="Resource_n758l"]
 script = ExtResource("18_6ns6g")
 increase = 10.0
 texture = ExtResource("15_meimh")
 upgrade_text = "Turret Damage"
+description = null
 
 [node name="HubWorld" type="Node3D"]
 script = ExtResource("1_56qar")
@@ -777,7 +779,6 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_82rp8")
 player_strategy = SubResource("Resource_apxpj")
-needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade"]
 shape = SubResource("BoxShape3D_jhu51")
@@ -797,7 +798,6 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_82rp8")
 player_strategy = SubResource("Resource_yvbhm")
-needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade2"]
 shape = SubResource("BoxShape3D_jhu51")
@@ -817,7 +817,6 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_82rp8")
 player_strategy = SubResource("Resource_n758l")
-needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade3"]
 shape = SubResource("BoxShape3D_jhu51")
@@ -832,6 +831,6 @@ font = ExtResource("13_l1y3b")
 
 [node name="Level Loader" parent="." instance=ExtResource("18_v4tlj")]
 transform = Transform3D(6.91397, 0, 0, 0, 1, 0, 0, 0, 6.91397, -17, -35, 1)
-LEVEL_SCENE = ExtResource("18_ly6eg")
+LEVEL_SCENE = "res://Scenes/level_01.tscn"
 
 [node name="QuestList" parent="." instance=ExtResource("16_mtsq8")]

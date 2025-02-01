@@ -4,6 +4,13 @@ extends Node3D
 var turrets = []
 
 
+func _animate_turret_placing(turret: Node3D):
+	var tween = get_tree().create_tween().bind_node(turret)
+	#tween.set_parallel(true)
+	tween.tween_property(turret, "scale", Vector3(0,0,0), 0.0001)
+	tween.tween_property(turret, "scale", Vector3(1,1,1), 0.4)
+
+
 func place_turret():
 	if get_parent().can_place_turret:
 		var new_turret = packet_turret.instantiate()
@@ -11,6 +18,7 @@ func place_turret():
 		#var scene_root = get_tree().root  #.get_children()[0]
 		#scene_root.add_child(new_turret)
 		get_tree().current_scene.add_child(new_turret)
+		_animate_turret_placing(new_turret)
 		if turrets.size() == PlayerStats.num_turrets_placeable:
 			get_tree().current_scene.remove_child(turrets[0])
 			turrets.pop_front()  # remove oldest turret

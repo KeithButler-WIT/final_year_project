@@ -29,6 +29,10 @@ func _process(_delta):
 		gun_controller.shoot()
 	if has_node("TurretPlacingComponent") and Input.is_action_pressed("turret_place"):
 		$TurretPlacingComponent.place_turret()
+	
+	if has_node("ObjectiveArrowComponent"):
+		if has_node("../Objective"):
+			pass
 
 func _physics_process(delta):
 	# TODO: run every 0.5 seconds
@@ -47,9 +51,21 @@ func take_hit(damage):
 		if !OS.has_feature("standalone"):
 			print("HP: ", PlayerStats.current_health, "/", PlayerStats.max_health)
 		PlayerStats.decrease_skill(1)
+		_animate_on_hit()
 
 	if PlayerStats.current_health <= 0:
 		die()
+
+
+func _animate_on_hit():
+	var tween = get_tree().create_tween().bind_node(self)
+	#tween.set_parallel(true)
+	tween.tween_property($Character, "modulate", Color.RED, 0.1)
+	tween.tween_property($Character, "scale", Vector3(1.1,1.1,1.1), 0.1)
+	tween.tween_property($Character, "modulate", Color.WHITE, 0.1)
+	tween.tween_property($Character, "scale", Vector3(1,1,1), 0.1)
+	#if (tween.finished):
+		#tween.tween_callback(self.queue_free)
 
 
 func die():

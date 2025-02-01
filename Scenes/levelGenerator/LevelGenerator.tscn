@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvbvkruchlsci"]
+
+[ext_resource type="Script" path="res://Scenes/levelGenerator/LevelGenerator.gd" id="1_buqfy"]
+[ext_resource type="PackedScene" uid="uid://b67tvs5dqftfy" path="res://Scenes/levelGenerator/ground.tscn" id="2_egxin"]
+[ext_resource type="PackedScene" uid="uid://cqwqx1yc48o66" path="res://Scenes/levelGenerator/tree.tscn" id="3_ch631"]
+
+[node name="LevelGenerator" type="Node3D"]
+script = ExtResource("1_buqfy")
+GroundScene = ExtResource("2_egxin")
+ObstacleScene = ExtResource("3_ch631")
+map_width = 15

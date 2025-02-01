@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c1nxoxb048g75" path="res://Objects/Scenes/ladder_out.tscn" id="3_cgxyq"]
 [ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="4_34xak"]
 [ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="5_p1r37"]
-[ext_resource type="PackedScene" uid="uid://dvbvkruchlsci" path="res://Scenes/levels/levelGenerator/LevelGenerator.tscn" id="6_wwvf4"]
+[ext_resource type="PackedScene" uid="uid://dvbvkruchlsci" path="res://Scenes/levelGenerator/LevelGenerator.tscn" id="6_wwvf4"]
 [ext_resource type="PackedScene" uid="uid://6b5i0ese6itq" path="res://Objects/Scenes/crt_effect.tscn" id="7_h42i5"]
 [ext_resource type="Shader" path="res://Objects/Scripts/Shaders/Analog_Monochrome.gdshader" id="8_ornif"]
 [ext_resource type="Script" path="res://Objects/Scripts/Objective.gd" id="9_mrbkt"]

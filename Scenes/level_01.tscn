@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://iunxjo0xjik0"]
+[gd_scene load_steps=38 format=3 uid="uid://iunxjo0xjik0"]
 
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="1_2n465"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="1_6q7hj"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="1_y7s12"]
 [ext_resource type="PackedScene" uid="uid://dseiori76psbj" path="res://Objects/Scenes/objective.tscn" id="2_34o17"]
 [ext_resource type="MeshLibrary" uid="uid://pnj88ymntxvb" path="res://Scenes/level_01.tres" id="2_60spy"]
+[ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="2_jdutr"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="2_jwnya"]
+[ext_resource type="PackedScene" uid="uid://c1nxoxb048g75" path="res://Objects/Scenes/ladder_out.tscn" id="2_mweys"]
 [ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_pxkjo"]
 [ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="3_8lwvn"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d_settings.gd" id="3_quslp"]
@@ -91,6 +93,8 @@ description = null
 
 [node name="Level_01" type="Node3D"]
 script = ExtResource("1_v0fkc")
+levelLoader = ExtResource("2_jdutr")
+exitLadder = ExtResource("2_mweys")
 PackedObjective = ExtResource("2_34o17")
 
 [node name="Timer" type="Timer" parent="."]

@@ -12,6 +12,10 @@ func _on_pickup_area_body_entered(body: Node3D):
 	#print("Exp detected:", exp.name)
 	increase_stats()
 	animate_pickup(exp)
+	#animate_player()
+	var tween = get_tree().create_tween().bind_node(self)
+	tween.tween_property(%Player/Character, "scale", Vector3(1.1,1.1,1.1), 0.2)
+	tween.tween_property(%Player/Character, "scale", Vector3(1,1,1), 0.2)
 	#cleanup(exp)
 
 func animate_pickup(body:Node3D): # TODO: Fix tween animation

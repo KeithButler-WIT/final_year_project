@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bluxp1h4dqech"]
 
-[ext_resource type="Script" path="res://Scenes/levels/LevelStartFromTimer.gd" id="1_oucbi"]
-[ext_resource type="PackedScene" uid="uid://co4engn5l2q3u" path="res://Scenes/levels/sandbox.tscn" id="2_s7gn1"]
+[ext_resource type="Script" path="res://Scenes/LevelStartFromTimer.gd" id="1_oucbi"]
+[ext_resource type="PackedScene" uid="uid://co4engn5l2q3u" path="res://Scenes/levelGenerator/sandbox.tscn" id="2_s7gn1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yyh2v"]
 height = 6.0
