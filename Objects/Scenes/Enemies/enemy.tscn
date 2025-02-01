@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5h0xo5axmbxk"]
+[gd_scene load_steps=14 format=3 uid="uid://c5h0xo5axmbxk"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/enemy.gd" id="1_tk1ha"]
 [ext_resource type="PackedScene" uid="uid://cg5juf0ykl0rd" path="res://Objects/Scenes/exp.tscn" id="2_qky04"]
@@ -6,13 +6,8 @@
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/DropXPComponent.gd" id="3_aawd0"]
 [ext_resource type="Texture2D" uid="uid://3relrg218lh5" path="res://Assets/Enemies/mm-crawl.png" id="3_tvw7j"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_r3yl3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2avj8"]
-albedo_color = Color(0.0392157, 0.686275, 0.329412, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_bllru"]
-size = Vector3(1, 1.99292, 1)
+size = Vector3(0.788818, 1, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5til4"]
 radius = 2.0
@@ -113,13 +108,8 @@ _data = {
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_tk1ha")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_r3yl3")
-surface_material_override/0 = SubResource("StandardMaterial3D_2avj8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0020752, 0)
