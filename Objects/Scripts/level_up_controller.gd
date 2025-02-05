@@ -1,21 +1,27 @@
 extends Control
 
-@onready var option1 = $"AspectRatioContainer/MainContainer/VContainer/Option"
-@onready var option2 = $"AspectRatioContainer/MainContainer/VContainer2/Option"
-@onready var option3 = $"AspectRatioContainer/MainContainer/VContainer3/Option"
 
-@onready var upgrades
-@onready var upgrade_1
-@onready var upgrade_2
-@onready var upgrade_3
+@onready var main_container = $MainContainer
+@onready var upgrades = []
+@onready var upgrade
+@onready var upgrade_list = []
 
 
 func _ready():
-	#option1.text = "Number of turrets + 1"
-	#option2.text = "Turret damage + 50%"
-	#option3.text = "MOVEMENT SPEED + 20%"
 	upgrades = Utils.get_all_files("res://Util/Strategy/temporary")
 	visible = false
+
+func _process(delta: float) -> void:
+	if !OS.has_feature("standalone"):
+		if Input.is_key_pressed(KEY_L):
+			visible = !visible
+		if Input.is_key_pressed(KEY_BRACKETLEFT):
+			PlayerStats.upgrade_choices -= 1 if PlayerStats.upgrade_choices > 0 else PlayerStats.upgrade_choices
+			print(PlayerStats.upgrade_choices)
+		if Input.is_key_pressed(KEY_BRACKETRIGHT):
+			PlayerStats.upgrade_choices += 1 if PlayerStats.upgrade_choices < 8 else PlayerStats.upgrade_choices
+			print(PlayerStats.upgrade_choices)
+
 
 
 func get_random_upgrade() -> Resource:
@@ -27,46 +33,65 @@ func get_random_upgrade() -> Resource:
 		return load(upgrades[0]).new()
 	return null
 
+@export var packedVContainer : PackedScene
 
 func _on_visibility_changed() -> void:
 	if upgrades:
-		#set_script(get_random_upgrades()).apply_upgrade()
-		upgrade_1 = get_random_upgrade()
-		option1.text = upgrade_1.description
-		upgrade_2 = get_random_upgrade()
-		option2.text = upgrade_2.description
-		upgrade_3 = get_random_upgrade()
-		option3.text = upgrade_3.description
-
-
-func _on_option_1_pressed():
-	base_stat_increase()
-	upgrade_1.apply_upgrade(%Player)
-	#option1.text = upgrade_1.description
-	#TODO: spawn upgrade item insteadss
-	#PlayerStats.num_turrets_placeable += 1
-
-
-func _on_option_2_pressed():
-	base_stat_increase()
-	upgrade_2.apply_upgrade(%Player)
-	#TODO: spawn upgrade item instead
-	#PlayerStats.turret_damage *= 1.5
-
-
-func _on_option_3_pressed():
-	base_stat_increase()
-	upgrade_3.apply_upgrade(%Player)
-	#TODO: spawn upgrade item instead
-	#PlayerStats.movement_speed *= 1.20
+		if visible:
+			for i in PlayerStats.upgrade_choices:
+				var vcontainer = packedVContainer.instantiate()
+				main_container.add_child(vcontainer)
+				main_container.set_pivot_offset(main_container.size/2)
+				upgrade = get_random_upgrade()
+				upgrade_list.append(upgrade)
+				var button = main_container.get_child(i).get_child(-1)
+				button.text = upgrade.description
+				button.set_pivot_offset(button.size/2)
+				button.connect("pressed", _on_option_pressed.bind(i))
+				button.connect("mouse_entered", _on_option_mouse_entered.bind(i))
+				button.connect("mouse_exited", _on_option_mouse_exited.bind(i))
+		else:
+			for child in main_container.get_children():
+				child.disconnect("pressed", _on_option_pressed)
+				child.disconnect("mouse_entered", _on_option_mouse_entered)
+				child.disconnect("mouse_exited", _on_option_mouse_exited)
+				child.queue_free()
 
 
 func base_stat_increase():
-	#PlayerStats.level += 1
+	#PlayerStats.level += 1 # Handled in different script
 	PlayerStats.max_health += 10
 	PlayerStats.current_health += 10
 
 
-
-func _on_option_button_up() -> void:
+func _on_option_pressed(index: int):
+	base_stat_increase()
+	upgrade_list[index].apply_upgrade(%Player)
 	visible = false
+
+
+func _on_option_mouse_entered(index: int) -> void:
+	#tween.set_parallel(true)
+	var button = main_container.get_child(index).get_child(-1)
+	animate_rotation(button, 1 , 0.1)
+
+
+func animate_rotation(node:Control, degrees: int, time:float):
+	var tween = get_tree().create_tween().bind_node(node)
+	# tween.set_loops(0)
+	tween.tween_property(node, "scale", 2.2, time)
+	tween.tween_property(node, "rotation_degrees", 0, time)
+	tween.tween_property(node, "rotation_degrees", degrees, time)
+	tween.tween_property(node, "rotation_degrees", 0, time)
+	tween.tween_property(node, "rotation_degrees", -degrees, time)
+	tween.tween_property(node, "rotation_degrees", 0, time)
+
+
+func _on_option_mouse_exited(index: int) -> void:
+	var button = main_container.get_child(index).get_child(-1)
+	# if get_tree().has_node("tween"):
+	# 	get_tree().get_node("tween").kill()
+	var tween = get_tree().create_tween().bind_node(button)
+	tween.set_parallel(true)
+	tween.tween_property(button, "rotation_degrees", 0, 1)
+	tween.tween_property(button, "scale", 1, 0.1)

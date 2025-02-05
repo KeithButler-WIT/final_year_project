@@ -11,34 +11,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(576, 324)
 script = ExtResource("1_higd3")
+packedVContainer = ExtResource("2_hrf2w")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
 
-[node name="MainContainer" type="HBoxContainer" parent="AspectRatioContainer"]
+[node name="MainContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+offset_left = 252.0
+offset_right = 900.0
+offset_bottom = 648.0
+pivot_offset = Vector2(324, 324)
 alignment = 1
 
-[node name="VContainer" parent="AspectRatioContainer/MainContainer" instance=ExtResource("2_hrf2w")]
+[node name="VContainer" parent="MainContainer" instance_placeholder="res://Objects/Scenes/mission_select_card.tscn"]
 layout_mode = 2
 
-[node name="VContainer2" parent="AspectRatioContainer/MainContainer" instance=ExtResource("2_hrf2w")]
+[node name="VContainer2" parent="MainContainer" instance_placeholder="res://Objects/Scenes/mission_select_card.tscn"]
 layout_mode = 2
 
-[node name="VContainer3" parent="AspectRatioContainer/MainContainer" instance=ExtResource("2_hrf2w")]
+[node name="VContainer3" parent="MainContainer" instance_placeholder="res://Objects/Scenes/mission_select_card.tscn"]
 layout_mode = 2
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="button_up" from="AspectRatioContainer/MainContainer/VContainer/Option" to="." method="_on_option_button_up"]
-[connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer/Option" to="." method="_on_option_1_pressed"]
-[connection signal="button_up" from="AspectRatioContainer/MainContainer/VContainer2/Option" to="." method="_on_option_button_up"]
-[connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer2/Option" to="." method="_on_option_2_pressed"]
-[connection signal="button_up" from="AspectRatioContainer/MainContainer/VContainer3/Option" to="." method="_on_option_button_up"]
-[connection signal="pressed" from="AspectRatioContainer/MainContainer/VContainer3/Option" to="." method="_on_option_3_pressed"]
-
-[editable path="AspectRatioContainer/MainContainer/VContainer"]
-[editable path="AspectRatioContainer/MainContainer/VContainer2"]
-[editable path="AspectRatioContainer/MainContainer/VContainer3"]

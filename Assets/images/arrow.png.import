@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr5pr88k0cyxr"
-path.s3tc="res://.godot/imported/roadDirt_tile_NW.png-2e97c8bc72b1ac564bc9fc48f5b2310a.s3tc.ctex"
+uid="uid://cxfkhpjrdidwe"
+path.s3tc="res://.godot/imported/arrow.png-200b2c59f9e659ee8ac914f997902e47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/kenney_retro-urban-kit/Isometric/roadDirt_tile_NW.png"
-dest_files=["res://.godot/imported/roadDirt_tile_NW.png-2e97c8bc72b1ac564bc9fc48f5b2310a.s3tc.ctex"]
+source_file="res://Assets/images/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-200b2c59f9e659ee8ac914f997902e47.s3tc.ctex"]
 
 [params]
 
