@@ -79,7 +79,7 @@ func _on_option_mouse_entered(index: int) -> void:
 func animate_rotation(node:Control, degrees: int, time:float):
 	var tween = get_tree().create_tween().bind_node(node)
 	# tween.set_loops(0)
-	tween.tween_property(node, "scale", 2.2, time)
+	tween.tween_property(node, "scale", 1.1, time)
 	tween.tween_property(node, "rotation_degrees", 0, time)
 	tween.tween_property(node, "rotation_degrees", degrees, time)
 	tween.tween_property(node, "rotation_degrees", 0, time)
