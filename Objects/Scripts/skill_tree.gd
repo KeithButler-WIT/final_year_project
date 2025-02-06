@@ -5,11 +5,12 @@ extends Control
 
 
 func _ready() -> void:
+	#grab_focus()
 	$ConfirmMenu.visible = false
 
 
 func _process(_delta: float) -> void:
-	pass
+	$point_count_label.text = str(PlayerStats.upgrade_point)
 
 
 func _on_reset_button_pressed() -> void:

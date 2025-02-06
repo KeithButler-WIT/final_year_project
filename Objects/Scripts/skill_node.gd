@@ -15,6 +15,7 @@ var level:int = 0:
 
 
 func _ready() -> void:
+	grab_focus()
 	_update_label()
 	_connect_nodes()
 
@@ -47,7 +48,11 @@ func redraw_lines():
 
 
 func _on_pressed() -> void:
-	# TODO: subtract upgrade point
+	if !PlayerStats.upgrade_point:
+		print("No upgrade points")
+		# TODO: play sound
+		return
+
 	level = min(level+1, maxLevel)
 	self_modulate = Color(1, 1, 1)
 	
@@ -56,6 +61,8 @@ func _on_pressed() -> void:
 	
 	skillBranch.default_color = Color(1,1,1)
 	
+	# TODO: play sound
+	
 	var skills = get_children()
 	for skill in skills:
 		if skill is SkillNode and level == 1:
@@ -63,6 +70,5 @@ func _on_pressed() -> void:
 
 
 func update_upgrade_points():
-	#TODO: Stop going past 0
 	PlayerStats.upgrade_point -= 1
 	PlayerStats.upgrade_points_spent += 1

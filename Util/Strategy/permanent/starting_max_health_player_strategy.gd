@@ -2,7 +2,7 @@ class_name StartingMaxHealthPlayerStrategy
 extends BasePlayerStrategy
 
 
-@export var increase := 1.0
+@export var increase := 10.0
 
 
 func _init() -> void:

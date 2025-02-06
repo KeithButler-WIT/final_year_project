@@ -5,6 +5,10 @@ extends Control
 signal confirmation_pressed
 signal deny_pressed
 
+
+func _ready() -> void:
+	grab_focus()
+
 func _on_confirm_button_pressed() -> void:
 	confirmation_pressed.emit()
 

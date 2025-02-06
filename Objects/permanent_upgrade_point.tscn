@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlfi3pmqsr5a4"]
+
+[ext_resource type="Texture2D" uid="uid://bgan4hfednou8" path="res://icon.svg" id="1_7jdus"]
+[ext_resource type="Script" path="res://Objects/permanent_upgrade_point.gd" id="1_jg0iq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5ptwy"]
+
+[node name="permanent_upgrade_point" type="Node3D"]
+script = ExtResource("1_jg0iq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_7jdus")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_5ptwy")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

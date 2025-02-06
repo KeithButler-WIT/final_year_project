@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=31 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bx654nysnlmku" path="res://Objects/Scenes/quest_list.tscn" id="16_mtsq8"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/health_player_strategy.gd" id="17_m584y"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/turret_damage_player_strategy.gd" id="18_6ns6g"]
+[ext_resource type="PackedScene" uid="uid://dlfi3pmqsr5a4" path="res://Objects/permanent_upgrade_point.tscn" id="18_e845y"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="18_v4tlj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
@@ -96,7 +97,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_83tsm")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.5434, 20.9055, 1.49073)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9124, 2.64991, 9.51243)
 
 [node name="World" type="Node" parent="."]
 
@@ -835,3 +836,6 @@ transform = Transform3D(6.91397, 0, 0, 0, 1, 0, 0, 0, 6.91397, -17, -35, 1)
 LEVEL_SCENE = "res://Scenes/level_01.tscn"
 
 [node name="QuestList" parent="." instance=ExtResource("16_mtsq8")]
+
+[node name="permanent_upgrade_point" parent="." instance=ExtResource("18_e845y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5654, 0.367594, 12.8656)

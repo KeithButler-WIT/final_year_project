@@ -12,6 +12,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_a3kh8")
 Confirmation_Text = "DO YOU WANT TO RECLAIM ALL YOUR SPENT UPGRADE POINTS?"
 
@@ -28,6 +29,7 @@ offset_right = 332.0
 offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 color = Color(0.164183, 0.119461, 2.40654e-08, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]

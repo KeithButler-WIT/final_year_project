@@ -68,6 +68,7 @@ hframes = 8
 vframes = 3
 
 [node name="menu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

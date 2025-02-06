@@ -11,9 +11,10 @@
 
 [sub_resource type="Resource" id="Resource_a733c"]
 script = ExtResource("3_tgmyb")
-increase = 1.0
+increase = 10.0
 texture = ExtResource("4_oi3ef")
 upgrade_text = "Speed"
+description = null
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -309,6 +310,7 @@ layout_mode = 0
 offset_left = 1131.0
 offset_right = 1151.0
 offset_bottom = 648.0
+focus_mode = 2
 min_value = -500.0
 max_value = 1000.0
 
@@ -318,6 +320,7 @@ layout_mode = 0
 offset_top = 628.0
 offset_right = 1152.0
 offset_bottom = 648.0
+focus_mode = 2
 min_value = -500.0
 max_value = 1000.0
 value = 500.0
@@ -330,6 +333,19 @@ offset_right = 1131.0
 offset_bottom = 628.0
 text = "Reset
 Upgrades"
+
+[node name="point_count_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_left = 976.0
+offset_top = 568.0
+offset_right = -101.848
+offset_bottom = -20.0
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ConfirmMenu" parent="." instance=ExtResource("5_jq33m")]
 visible = false
