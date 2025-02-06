@@ -16,7 +16,7 @@ func handle_zoom():
 			tween.tween_property(self,"spring_length", newlength, 0.5)
 			#if newlength <= 0:
 				#tween.tween_property(self,"position", Vector3(0,0.2,0), 0.5)
-			print("len: ", newlength)
+			#print("len: ", newlength)
 	elif Input.is_action_just_pressed("zoom_out"):
 		if spring_length < 15:
 			var tween = create_tween()
@@ -25,7 +25,7 @@ func handle_zoom():
 			tween.set_ease(Tween.EASE_OUT)
 			var newlength = spring_length + 1
 			tween.tween_property(self,"spring_length", newlength, 0.5)
-			print("len: ", newlength)
+			#print("len: ", newlength)
 			#if newlength > 0:
 				#tween.tween_property(self,"position", Vector3(0,0,0), 0.5)
 

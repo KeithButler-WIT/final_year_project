@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1577yle27p7l"]
+
+[ext_resource type="ArrayMesh" uid="uid://dnie5iabcyx7a" path="res://Assets/level01_Plane.res" id="1_rc2ow"]
+[ext_resource type="ArrayMesh" uid="uid://rqy7x4bq8bj0" path="res://Assets/level01_Cube.res" id="2_ksia1"]
+[ext_resource type="ArrayMesh" uid="uid://b0hxt5ft6h8t5" path="res://Assets/level01_Cube_001.res" id="3_xtj0y"]
+
+[node name="level_test" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_rc2ow")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_ksia1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_xtj0y")
+skeleton = NodePath("../..")
