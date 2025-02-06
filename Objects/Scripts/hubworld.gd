@@ -12,6 +12,16 @@ func _ready():
 	main_ui.append(questList)
 
 
+func _process(delta: float) -> void:
+	if !OS.has_feature("standalone"):
+		if Input.is_key_pressed(KEY_O):
+			print("Saving")
+			PlayerStats.save_game()
+		if Input.is_key_pressed(KEY_P):
+			print("LOADING")
+			PlayerStats.load_game()
+
+
 func toggle_main_ui():
 	for ui in main_ui:
 		ui.visible = !ui.visible

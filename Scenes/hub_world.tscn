@@ -265,7 +265,7 @@ font_size = 124
 autowrap_mode = 3
 width = 1000.0
 
-[node name="upgradeShop" parent="." instance=ExtResource("6_xmeu7")]
+[node name="upgradeShop" parent="." groups=["Persist"] instance=ExtResource("6_xmeu7")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -22, 0, 15)
 
 [node name="MissionSelector" parent="." instance=ExtResource("7_6rd4m")]
@@ -839,3 +839,9 @@ LEVEL_SCENE = "res://Scenes/level_01.tscn"
 
 [node name="permanent_upgrade_point" parent="." instance=ExtResource("18_e845y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5654, 0.367594, 12.8656)
+
+[node name="permanent_upgrade_point2" parent="." instance=ExtResource("18_e845y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8424, 0.367594, 12.8656)
+
+[node name="permanent_upgrade_point3" parent="." instance=ExtResource("18_e845y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2734, 0.367594, 12.8656)

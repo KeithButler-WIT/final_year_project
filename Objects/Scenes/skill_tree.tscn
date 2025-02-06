@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqkh5crffd41y"]
+[gd_scene load_steps=19 format=3 uid="uid://bqkh5crffd41y"]
 
 [ext_resource type="PackedScene" uid="uid://da2unl4ljf3mb" path="res://Objects/Scenes/skill_button.tscn" id="1_4ggoj"]
 [ext_resource type="Script" path="res://Objects/Scripts/skill_tree.gd" id="1_joyul"]
@@ -8,12 +8,51 @@
 [ext_resource type="PackedScene" uid="uid://bfwmsflivpkcj" path="res://Objects/Scenes/confirm_menu.tscn" id="5_jq33m"]
 [ext_resource type="Texture2D" uid="uid://d365gd46yq8m" path="res://Assets/icons/base-turret-up-icon.png" id="6_xa3bp"]
 [ext_resource type="Texture2D" uid="uid://b1efuvhp4h56w" path="res://Assets/icons/base-damage-up-icon.png" id="7_0fe5j"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_upgrade_choice_player_strategy.gd" id="7_ngplg"]
+[ext_resource type="Texture2D" uid="uid://duyxlwal1h3cp" path="res://Assets/icons/base-pickup-radius-icon.png" id="9_2j0p3"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_pickup_radius_player_strategy.gd" id="10_suew1"]
+[ext_resource type="Texture2D" uid="uid://dxvbawrt2cyax" path="res://Assets/icons/base-health-regen-icon.png" id="11_kfoo1"]
 
 [sub_resource type="Resource" id="Resource_a733c"]
 script = ExtResource("3_tgmyb")
 increase = 10.0
 texture = ExtResource("4_oi3ef")
 upgrade_text = "Speed"
+description = null
+
+[sub_resource type="Resource" id="Resource_ux7sk"]
+script = ExtResource("7_ngplg")
+increase = 1
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_gpkyq"]
+script = ExtResource("10_suew1")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_ajf6r"]
+script = ExtResource("10_suew1")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_ai0wy"]
+script = ExtResource("3_tgmyb")
+increase = 10.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_1p7pp"]
+script = ExtResource("3_tgmyb")
+increase = 10.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
 description = null
 
 [node name="SkillTree" type="Control"]
@@ -107,6 +146,14 @@ offset_left = 237.0
 offset_right = 365.0
 disabled = true
 
+[node name="SkillButton6" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
+layout_mode = 0
+offset_top = -912.0
+offset_bottom = -784.0
+disabled = true
+texture_normal = ExtResource("6_xa3bp")
+upgrade = SubResource("Resource_ux7sk")
+
 [node name="SkillButton3" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_left = 291.0
@@ -121,6 +168,8 @@ offset_top = -144.0
 offset_right = 330.0
 offset_bottom = -16.0
 disabled = true
+texture_normal = ExtResource("9_2j0p3")
+upgrade = SubResource("Resource_gpkyq")
 
 [node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton3/SkillButton6" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -145,6 +194,8 @@ offset_top = -174.0
 offset_right = 54.0
 offset_bottom = -46.0
 disabled = true
+texture_normal = ExtResource("9_2j0p3")
+upgrade = SubResource("Resource_ajf6r")
 
 [node name="SkillButton7" parent="ColorRect/SkillButton/SkillButton3" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -181,6 +232,8 @@ layout_mode = 0
 offset_top = 246.0
 offset_bottom = 374.0
 disabled = true
+texture_normal = ExtResource("3_veb4f")
+upgrade = SubResource("Resource_ai0wy")
 
 [node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton4" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -189,6 +242,7 @@ offset_top = 168.0
 offset_right = -7.0
 offset_bottom = 296.0
 disabled = true
+texture_normal = ExtResource("11_kfoo1")
 
 [node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton4/SkillButton6" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -219,6 +273,8 @@ offset_top = 168.0
 offset_right = 256.0
 offset_bottom = 296.0
 disabled = true
+texture_normal = ExtResource("3_veb4f")
+upgrade = SubResource("Resource_1p7pp")
 
 [node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton4/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0

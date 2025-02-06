@@ -22,6 +22,7 @@ func _ready() -> void:
 func _update_label() -> void:
 	if maxLevel == 1:
 		skillLevel.text = ""
+		skillLevel.visible = false
 	else:
 		skillLevel.text = str(level) + "/" + str(maxLevel)
 
@@ -59,7 +60,7 @@ func _on_pressed() -> void:
 	if level+1 <= maxLevel:
 		update_upgrade_points()
 	
-	skillBranch.default_color = Color(1,1,1)
+	skillBranch.default_color = Color(1, 1, 1)
 	
 	# TODO: play sound
 	
