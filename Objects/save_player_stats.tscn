@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba76hwii6uwvd"]
+
+[ext_resource type="Script" path="res://Objects/save_player_stats.gd" id="1_syqoi"]
+
+[node name="SavePlayerStats" type="Node3D" groups=["Persist"]]
+script = ExtResource("1_syqoi")

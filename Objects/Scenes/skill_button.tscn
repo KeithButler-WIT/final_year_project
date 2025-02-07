@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkl54bravyxa" path="res://Assets/icons/base-upgrade-icon.png" id="1_w1sxw"]
 [ext_resource type="Script" path="res://Objects/Scripts/skill_node.gd" id="2_sctuo"]
 
-[node name="SkillButton" type="TextureButton"]
+[node name="SkillButton" type="TextureButton" groups=["UpgradeButton"]]
 self_modulate = Color(0.392157, 0.392157, 0.392157, 1)
 z_index = 1
 offset_right = 128.0

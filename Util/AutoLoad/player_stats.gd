@@ -38,6 +38,7 @@ var missions_completed = 0
 var upgrade_points_spent = 0
 var upgrade_point = 0
 var upgrade_choices = 3
+var upgrades_picked = []
 
 enum MISSION {
 	LOOTING,
@@ -89,29 +90,30 @@ func reset():
 	player_skill = 5
 
 
-# Save data
-func save():
-	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
-		"time_played" : time_played,
-		"total_kills" : total_kills,
-		"total_damage_taken" : total_damage_taken,
-		"total_damage_given" : total_damage_given,
-		"total_health_recovered" : total_health_recovered,
-		"deaths" : deaths,
-		"turrets_placed" : turrets_placed,
-		"highest_level" : highest_level,
-		"total_experience_gained" : total_experience_gained,
-		"missions_completed" : missions_completed,
-		"upgrade_points_spent" : upgrade_points_spent,
-		"upgrade_point" : upgrade_point,
-		"upgrade_choices" : upgrade_choices
-	}
-	return save_dict
+# Save data # https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
+#func save():
+	#var save_dict = {
+		#"filename" : get_scene_file_path(),
+		#"parent" : get_parent().get_path(),
+		#"pos_x" : position.x, # Vector2 is not supported by JSON
+		#"pos_y" : position.y,
+		#"pos_z" : position.z,
+		#"time_played" : time_played,
+		#"total_kills" : total_kills,
+		#"total_damage_taken" : total_damage_taken,
+		#"total_damage_given" : total_damage_given,
+		#"total_health_recovered" : total_health_recovered,
+		#"deaths" : deaths,
+		#"turrets_placed" : turrets_placed,
+		#"highest_level" : highest_level,
+		#"total_experience_gained" : total_experience_gained,
+		#"missions_completed" : missions_completed,
+		#"upgrade_points_spent" : upgrade_points_spent,
+		#"upgrade_point" : upgrade_point,
+		#"upgrade_choices" : upgrade_choices
+	#}
+	#return save_dict
 
-# Note: This can be called from anywhere inside the tree. This function is
-# path independent.
 # Go through everything in the persist category and ask them to return a
 # dict of relevant variables.
 func save_game():
@@ -139,8 +141,6 @@ func save_game():
 
 
 # Load data
-# Note: This can be called from anywhere inside the tree. This function
-# is path independent.
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
@@ -174,7 +174,11 @@ func load_game():
 		# Firstly, we need to create the object and add it to the tree and set its position.
 		var new_object = load(node_data["filename"]).instantiate()
 		get_node(node_data["parent"]).add_child(new_object)
-		#new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
+		if node_data["pos_x"] and node_data["pos_y"]:
+			if node_data["pos_z"]:
+				new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
+			else:
+				new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
 		#new_object.time_played = node_data["time_played"];
 		#new_object.total_kills = node_data["total_kills"];
 		#new_object.total_damage_taken = node_data["total_damage_taken"];
@@ -185,6 +189,6 @@ func load_game():
 
 		# Now we set the remaining variables.
 		for i in node_data.keys():
-			if i == "filename" or i == "parent": # or i == "pos_x" or i == "pos_y":
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "pos_z":
 				continue
 			new_object.set(i, node_data[i])

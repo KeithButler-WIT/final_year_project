@@ -49,25 +49,35 @@ func redraw_lines():
 
 
 func _on_pressed() -> void:
+	activate_button()
+
+
+func activate_button():
 	if !PlayerStats.upgrade_point:
 		print("No upgrade points")
 		# TODO: play sound
 		return
 
-	level = min(level+1, maxLevel)
-	self_modulate = Color(1, 1, 1)
-	
-	if level+1 <= maxLevel:
+
+	if level < maxLevel:
 		update_upgrade_points()
-	
-	skillBranch.default_color = Color(1, 1, 1)
-	
+		upgrade.apply_upgrade(%Player)
+
+	level = min(level+1, maxLevel)
 	# TODO: play sound
-	
-	var skills = get_children()
-	for skill in skills:
-		if skill is SkillNode and level == 1:
-			skill.disabled = false
+	lighten_color()
+	skillBranch.default_color = Color(1, 1, 1)
+	enable_children()
+
+
+func enable_children():
+	for child in get_children():
+		if child is SkillNode and level == 1:
+			child.disabled = false
+
+
+func lighten_color():
+	self_modulate = Color(1, 1, 1)
 
 
 func update_upgrade_points():

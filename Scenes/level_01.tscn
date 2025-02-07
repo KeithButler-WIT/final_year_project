@@ -190,6 +190,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -209,6 +210,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade2"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -228,6 +230,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade3"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -247,6 +250,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade4"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -266,6 +270,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade5"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -285,6 +290,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_akrmw")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade6"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -304,6 +310,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_32lkq")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade7"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -323,6 +330,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_32lkq")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade8"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -342,6 +350,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_32lkq")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade9"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -361,6 +370,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_32lkq")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade10"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -380,6 +390,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_32lkq")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade11"]
 shape = SubResource("BoxShape3D_ywknh")
@@ -399,6 +410,7 @@ upgrade_label = NodePath("UpgradeLabel")
 sprite = NodePath("Sprite3D")
 bullet_strategy = SubResource("Resource_08e56")
 player_strategy = SubResource("Resource_32lkq")
+needs_update = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade12"]
 shape = SubResource("BoxShape3D_ywknh")

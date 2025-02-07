@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://dak5oux8hnrwh"]
+[gd_scene load_steps=32 format=3 uid="uid://dak5oux8hnrwh"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
+[ext_resource type="PackedScene" uid="uid://ba76hwii6uwvd" path="res://Objects/save_player_stats.tscn" id="2_t0q4r"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="3_83tsm"]
 [ext_resource type="Script" path="res://Objects/Scripts/TutorialHints.gd" id="5_4elcs"]
 [ext_resource type="PackedScene" uid="uid://b67quibb16v2t" path="res://Objects/Scenes/upgrade_shop.tscn" id="6_xmeu7"]
@@ -87,6 +88,8 @@ description = null
 
 [node name="HubWorld" type="Node3D"]
 script = ExtResource("1_56qar")
+
+[node name="SavePlayerStats" parent="." instance=ExtResource("2_t0q4r")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ituai")
@@ -265,7 +268,7 @@ font_size = 124
 autowrap_mode = 3
 width = 1000.0
 
-[node name="upgradeShop" parent="." groups=["Persist"] instance=ExtResource("6_xmeu7")]
+[node name="upgradeShop" parent="." instance=ExtResource("6_xmeu7")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -22, 0, 15)
 
 [node name="MissionSelector" parent="." instance=ExtResource("7_6rd4m")]

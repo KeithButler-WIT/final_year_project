@@ -5,6 +5,7 @@ var main_ui = []
 
 func _ready():
 	PlayerStats.load_game() # TODO: Load on start not of return
+	call_deferred("PlayerStats.save_game")
 	PlayerStats.reset() # TODO: reset on return
 	Dialogic.start("hubworld")
 	QuestManager.addQuest("MQ001")

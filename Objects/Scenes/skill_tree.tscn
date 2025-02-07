@@ -406,6 +406,11 @@ vertical_alignment = 1
 [node name="ConfirmMenu" parent="." instance=ExtResource("5_jq33m")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [connection signal="value_changed" from="ColorRect/VScrollBar" to="." method="_on_v_scroll_bar_value_changed"]
 [connection signal="value_changed" from="ColorRect/HScrollBar" to="." method="_on_h_scroll_bar_value_changed"]
