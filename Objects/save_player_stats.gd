@@ -50,7 +50,6 @@ func _ready() -> void:
 	PlayerStats.upgrade_point = upgrade_point
 	PlayerStats.upgrade_choices = upgrade_choices
 	PlayerStats.upgrades_picked = upgrades_picked
-	print("Inside of _ready: ", PlayerStats.upgrades_picked)
 
 func update_upgrade_stats() -> void:
 	starting_max_health = PlayerStats.starting_max_health

@@ -36,6 +36,7 @@ offset_right = 120.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Start_button" type="Button" parent="MainMenu/MainContainer"]
 layout_mode = 2

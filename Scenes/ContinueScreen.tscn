@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://8nic885hi8xl"]
+
+[ext_resource type="Script" path="res://Scenes/ClickToContinue.gd" id="1_13urf"]
+[ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://addons/00000.png" id="2_8in62"]
+[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="3_24ewx"]
+
+[sub_resource type="Theme" id="Theme_i3i42"]
+default_font = ExtResource("3_24ewx")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_0dmuy"]
+default_font = ExtResource("3_24ewx")
+default_font_size = 20
+
+[node name="main" type="Node"]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_13urf")
+
+[node name="Bg" type="Sprite2D" parent="MainMenu"]
+position = Vector2(960, 544)
+texture = ExtResource("2_8in62")
+
+[node name="MainContainer" type="VBoxContainer" parent="MainMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = 167.0
+offset_right = 194.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MainMenu/MainContainer"]
+layout_mode = 2
+theme = SubResource("Theme_i3i42")
+text = "Press any button to continue!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MainMenu/MainContainer"]
+layout_mode = 2
+theme = SubResource("Theme_0dmuy")
+text = "Press Esc to quit"
+horizontal_alignment = 1

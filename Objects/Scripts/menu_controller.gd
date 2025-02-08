@@ -76,8 +76,8 @@ func _ready():
 	MainContainer.set_pivot_offset(MainContainer.size/2)
 	for child in MainContainer.get_children():
 		child.set_pivot_offset(child.size/2)
-		child.connect("mouse_entered", _on_mouse_entered.bind(child.get_index()))
-		child.connect("mouse_exited", _on_mouse_exited.bind(child.get_index()))
+		child.connect("mouse_entered", _on_main_container_button_mouse_entered.bind(child.get_index()))
+		child.connect("mouse_exited", _on_main_container_button_mouse_exited.bind(child.get_index()))
 
 
 var simultaneous_scene = preload("res://Scenes/hub_world.tscn")
@@ -89,16 +89,19 @@ func _on_start_button_pressed():
 	get_tree().change_scene_to_packed(simultaneous_scene)
 
 
-func _on_mouse_entered(index: int) -> void:
+func _on_main_container_button_mouse_entered(index: int) -> void:
 	var button = MainContainer.get_child(index)
-	var tween = get_tree().create_tween().bind_node(button)
-	tween.tween_property(button, "scale", Vector2(1.1, 1.1), 0.1)
+	animate_scale(button, 1.1, 0.1)
 
 
-func _on_mouse_exited(index: int) -> void:
+func _on_main_container_button_mouse_exited(index: int) -> void:
 	var button = MainContainer.get_child(index)
+	animate_scale(button, 1, 0.1)
+
+
+func animate_scale(button:Control, amount:float, time:float):
 	var tween = get_tree().create_tween().bind_node(button)
-	tween.tween_property(button, "scale", Vector2(1, 1), 0.1)
+	tween.tween_property(button, "scale", Vector2(amount,amount), time)
 
 
 func _on_option_button_pressed():
