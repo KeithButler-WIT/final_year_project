@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4qogj0p1j8rr"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="1_56ov5"]
+[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="2_yd6p2"]
+[ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="3_oe8hu"]
+[ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="4_eykfy"]
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_56ov5")
+packed_enemy = Array[PackedScene]([ExtResource("2_yd6p2")])
+mini_boss = ExtResource("3_oe8hu")
+final_boss = ExtResource("3_oe8hu")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Waves" type="Node" parent="."]
+
+[node name="Wave1" type="Node" parent="Waves"]
+script = ExtResource("4_eykfy")
+num_enemies = 100
+
+[node name="Wave2" type="Node" parent="Waves"]
+script = ExtResource("4_eykfy")
+num_enemies = 100
+seconds_between_spawns = 0.5
+
+[node name="Wave3" type="Node" parent="Waves"]
+script = ExtResource("4_eykfy")
+num_enemies = 200
+seconds_between_spawns = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

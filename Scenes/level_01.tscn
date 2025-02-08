@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://iunxjo0xjik0"]
+[gd_scene load_steps=39 format=3 uid="uid://iunxjo0xjik0"]
 
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="1_2n465"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="1_6q7hj"]
@@ -8,9 +8,7 @@
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="1_y7s12"]
 [ext_resource type="PackedScene" uid="uid://dseiori76psbj" path="res://Objects/Scenes/objective.tscn" id="2_34o17"]
 [ext_resource type="MeshLibrary" uid="uid://pnj88ymntxvb" path="res://Scenes/level_01.tres" id="2_60spy"]
-[ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="2_jdutr"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="2_jwnya"]
-[ext_resource type="PackedScene" uid="uid://c1nxoxb048g75" path="res://Objects/Scenes/ladder_out.tscn" id="2_mweys"]
 [ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="2_pxkjo"]
 [ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="3_8lwvn"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d_settings.gd" id="3_quslp"]
@@ -22,9 +20,9 @@
 [ext_resource type="Script" path="res://Util/Strategy/temporary/speed_player_strategy.gd" id="7_tvfck"]
 [ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="8_l1qo0"]
 [ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="9_vsr6t"]
-[ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="19_01mgi"]
-[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/enemy.tscn" id="20_x74ub"]
-[ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="21_rtubr"]
+[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="20_x74ub"]
+[ext_resource type="PackedScene" uid="uid://cergu32hpxp0y" path="res://Objects/Scenes/Enemies/enemy_spawner.tscn" id="22_y14t0"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/spawn_info.gd" id="23_jlemo"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/pickup_radius_player_strategy.gd" id="24_81e1m"]
 [ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="24_mhceg"]
 
@@ -91,10 +89,32 @@ texture = ExtResource("8_l1qo0")
 upgrade_text = "Nothing"
 description = null
 
+[sub_resource type="Resource" id="Resource_5e0gb"]
+script = ExtResource("23_jlemo")
+time_start = 0
+time_end = 60
+enemy = ExtResource("20_x74ub")
+enemy_num = 10
+enemy_spawn_delay = 5
+
+[sub_resource type="Resource" id="Resource_m0ovj"]
+script = ExtResource("23_jlemo")
+time_start = 0
+time_end = 60
+enemy = ExtResource("24_mhceg")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_bqgn6"]
+script = ExtResource("23_jlemo")
+time_start = 0
+time_end = 120
+enemy = ExtResource("20_x74ub")
+enemy_num = 100
+enemy_spawn_delay = 1
+
 [node name="Level_01" type="Node3D"]
 script = ExtResource("1_v0fkc")
-levelLoader = ExtResource("2_jdutr")
-exitLadder = ExtResource("2_mweys")
 PackedObjective = ExtResource("2_34o17")
 
 [node name="Timer" type="Timer" parent="."]
@@ -159,27 +179,6 @@ tile_size = Vector3(50, 1, 50)
 [node name="Player" parent="." instance=ExtResource("1_2n465")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0292, 10, 36.8162)
-
-[node name="Spawner" type="Node3D" parent="."]
-script = ExtResource("19_01mgi")
-packed_enemy = Array[PackedScene]([ExtResource("20_x74ub")])
-
-[node name="Timer" type="Timer" parent="Spawner"]
-autostart = true
-
-[node name="Waves" type="Node" parent="Spawner"]
-
-[node name="Wave1" type="Node" parent="Spawner/Waves"]
-script = ExtResource("21_rtubr")
-
-[node name="Wave2" type="Node" parent="Spawner/Waves"]
-script = ExtResource("21_rtubr")
-num_enemies = 60
-
-[node name="Wave3" type="Node" parent="Spawner/Waves"]
-script = ExtResource("21_rtubr")
-num_enemies = 120
-seconds_between_spawns = 0.5
 
 [node name="Upgrades" type="Node3D" parent="." groups=["Debug"]]
 
@@ -411,10 +410,5 @@ texture = ExtResource("8_l1qo0")
 text = "Nothing"
 font = ExtResource("9_vsr6t")
 
-[node name="Boss_Slime" parent="." instance=ExtResource("24_mhceg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4152, 1.6, 54.5439)
-
-[node name="Boss_Slime2" parent="." instance=ExtResource("24_mhceg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8445, 1.6, 52.5513)
-
-[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[node name="EnemySpawner" parent="." instance=ExtResource("22_y14t0")]
+spawns = Array[ExtResource("23_jlemo")]([SubResource("Resource_5e0gb"), SubResource("Resource_m0ovj"), SubResource("Resource_bqgn6")])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c0qo2bv6v7125"]
 
-[ext_resource type="Script" path="res://Objects/Scripts/enemy.gd" id="1_ylfp5"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_qdlgm"]
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/DropXPComponent.gd" id="2_4hogi"]
 [ext_resource type="PackedScene" uid="uid://cg5juf0ykl0rd" path="res://Objects/Scenes/exp.tscn" id="3_0rokh"]
 [ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="4_sp8tj"]
@@ -111,9 +111,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_ylfp5")
-movement_speed = 4.0
-damage = 4
+script = ExtResource("1_qdlgm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0020752, 0)

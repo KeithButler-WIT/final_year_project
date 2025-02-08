@@ -4,6 +4,9 @@ extends Node3D
 @onready var timer = $Timer
 @onready var camera : Camera3D = get_node("../Player/CameraArm/Camera")
 
+@export var mini_boss : PackedScene
+@export var final_boss : PackedScene
+
 var enemies_remaining_to_spawn
 var enemies_killed_this_wave = 0
 var enemies_killed_total = 0

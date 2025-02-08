@@ -1,6 +1,5 @@
-extends CharacterBody3D
+extends Enemy
 
-class_name Enemy
 
 @export var movement_speed: float = 2.0
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)

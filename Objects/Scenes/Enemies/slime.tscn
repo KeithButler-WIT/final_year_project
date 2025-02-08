@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c5h0xo5axmbxk"]
 
-[ext_resource type="Script" path="res://Objects/Scripts/enemy.gd" id="1_tk1ha"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_tk1ha"]
 [ext_resource type="PackedScene" uid="uid://cg5juf0ykl0rd" path="res://Objects/Scenes/exp.tscn" id="2_qky04"]
 [ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="2_w1tya"]
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/DropXPComponent.gd" id="3_aawd0"]
@@ -106,7 +106,7 @@ _data = {
 "walk_up": SubResource("Animation_34tql")
 }
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="Slime" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_tk1ha")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://vyjqu0cnwc1u"]
 
-[ext_resource type="Script" path="res://Objects/Scripts/enemy.gd" id="1_r67k7"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/enemy.gd" id="1_r67k7"]
 [ext_resource type="PackedScene" uid="uid://cg5juf0ykl0rd" path="res://Objects/Scenes/exp.tscn" id="2_5op8j"]
 [ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="2_lln4s"]
 [ext_resource type="Texture2D" uid="uid://bw3nx7k88oqq5" path="res://Assets/Enemies/wonwon.png" id="4_pxu0b"]

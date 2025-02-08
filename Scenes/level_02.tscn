@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="16_p5a4u"]
 [ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="17_b1u45"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/2D/modifier_2d.gd" id="17_c0tc0"]
-[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/enemy.tscn" id="18_ep6ot"]
+[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="18_ep6ot"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="18_wb5av"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="19_1kksr"]
 [ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="19_6xkn3"]
