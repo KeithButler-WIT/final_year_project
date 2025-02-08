@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bx654nysnlmku" path="res://Objects/Scenes/quest_list.tscn" id="16_mtsq8"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/health_player_strategy.gd" id="17_m584y"]
 [ext_resource type="Script" path="res://Util/Strategy/temporary/turret_damage_player_strategy.gd" id="18_6ns6g"]
-[ext_resource type="PackedScene" uid="uid://dlfi3pmqsr5a4" path="res://Objects/permanent_upgrade_point.tscn" id="18_e845y"]
+[ext_resource type="PackedScene" uid="uid://dlfi3pmqsr5a4" path="res://Objects/Scenes/permanent_upgrade_point.tscn" id="18_e845y"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="18_v4tlj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
