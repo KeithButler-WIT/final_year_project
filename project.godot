@@ -85,6 +85,7 @@ import/fbx/enabled=false
 player=""
 Persist="Gets Saved"
 Debug=""
+enemy=""
 
 [input]
 

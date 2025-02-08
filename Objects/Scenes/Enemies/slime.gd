@@ -77,7 +77,7 @@ func change_screen_edge():
 		var distance = global_position.distance_to(navigation_agent.target_position)
 		var direction = global_position.direction_to(navigation_agent.target_position)
 		# TODO: refine values
-		if distance > 20 and distance < 100:
+		if distance > 40 and distance < 200:
 			#print("Direction: ", direction)
 			#print("Distance: ", distance)
 			#print("Moving to other side of screen")

@@ -12,7 +12,7 @@ size = Vector3(0.788818, 1, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5til4"]
 radius = 2.0
 
-[sub_resource type="Animation" id="Animation_ki370"]
+[sub_resource type="Animation" id="Animation_jxcj1"]
 resource_name = "idle"
 length = 1.8
 loop_mode = 1
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_eru43"]
+[sub_resource type="Animation" id="Animation_p04s6"]
 resource_name = "walk_down"
 length = 0.4
 loop_mode = 1
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_pnexs"]
+[sub_resource type="Animation" id="Animation_aasuq"]
 resource_name = "walk_left"
 length = 0.4
 loop_mode = 1
@@ -63,7 +63,7 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_okw2l"]
+[sub_resource type="Animation" id="Animation_qbbev"]
 resource_name = "walk_right"
 length = 0.4
 loop_mode = 1
@@ -80,7 +80,7 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_34tql"]
+[sub_resource type="Animation" id="Animation_nejw0"]
 resource_name = "walk_up"
 length = 0.4
 loop_mode = 1
@@ -97,19 +97,20 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjhjh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rdmtv"]
 _data = {
-"idle": SubResource("Animation_ki370"),
-"walk_down": SubResource("Animation_eru43"),
-"walk_left": SubResource("Animation_pnexs"),
-"walk_right": SubResource("Animation_okw2l"),
-"walk_up": SubResource("Animation_34tql")
+"idle": SubResource("Animation_jxcj1"),
+"walk_down": SubResource("Animation_p04s6"),
+"walk_left": SubResource("Animation_aasuq"),
+"walk_right": SubResource("Animation_qbbev"),
+"walk_up": SubResource("Animation_nejw0")
 }
 
 [node name="Slime" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_tk1ha")
+damage = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0020752, 0)
@@ -147,7 +148,7 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 libraries = {
-"": SubResource("AnimationLibrary_xjhjh")
+"": SubResource("AnimationLibrary_rdmtv")
 }
 
 [connection signal="timeout" from="PathUpdateTimer" to="." method="_on_PathUpdateTimer_timeout"]

@@ -28,6 +28,7 @@ var msec_to_min = func(msec):
 
 
 func _process(_delta):
+	print("ENEMIES: ", get_tree().get_nodes_in_group("enemy").size())
 	update_exp_bar()
 	update_hp_bar()
 	#print("Time Left: %d" % msec_to_min.call(Time.get_ticks_msec() - time_start))
