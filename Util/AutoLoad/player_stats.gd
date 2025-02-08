@@ -50,9 +50,9 @@ enum MISSION {
 
 var current_mission = MISSION.NONE
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	load_game()
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+	#load_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
