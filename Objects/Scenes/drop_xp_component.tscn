@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dthsgmianr0o5"]
+
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/DropXPComponent.gd" id="1_dp4t0"]
+[ext_resource type="PackedScene" uid="uid://cg5juf0ykl0rd" path="res://Objects/Scenes/exp.tscn" id="2_0rphy"]
+
+[node name="DropXPComponent" type="Node"]
+script = ExtResource("1_dp4t0")
+exp_packed = ExtResource("2_0rphy")
+num_exp_to_drop = 10

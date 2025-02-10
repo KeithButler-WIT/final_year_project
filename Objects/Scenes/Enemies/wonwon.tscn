@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ceklyksm3l4sl"]
+[gd_scene load_steps=13 format=3 uid="uid://bv7q4b8hjxoa0"]
 
-[ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_6kjkt"]
-[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/drop_xp_component.tscn" id="2_4nvmm"]
-[ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="3_dnhth"]
-[ext_resource type="Texture2D" uid="uid://dbdgv7mr5blec" path="res://Assets/Enemies/MiniAswang-Free.png" id="4_eo2op"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_4qinl"]
+[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/drop_xp_component.tscn" id="2_no6n2"]
+[ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="4_mny2f"]
+[ext_resource type="Texture2D" uid="uid://bw3nx7k88oqq5" path="res://Assets/Enemies/wonwon.png" id="5_shkbd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bllru"]
 size = Vector3(0.788818, 1, 1)
@@ -105,11 +105,11 @@ _data = {
 "walk_up": SubResource("Animation_nejw0")
 }
 
-[node name="Bat" type="CharacterBody3D" groups=["enemy"]]
+[node name="Wonwon" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 7
-script = ExtResource("1_6kjkt")
-movement_speed = 4.0
+script = ExtResource("1_4qinl")
+damage = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0020752, 0)
@@ -122,9 +122,9 @@ avoidance_enabled = true
 wait_time = 0.25
 autostart = true
 
-[node name="DropXPComponent" parent="." instance=ExtResource("2_4nvmm")]
+[node name="DropXPComponent" parent="." instance=ExtResource("2_no6n2")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_dnhth")]
+[node name="HealthComponent" parent="." instance=ExtResource("4_mny2f")]
 max_health = 100
 
 [node name="AttackRadius" type="Area3D" parent="."]
@@ -139,10 +139,9 @@ transform = Transform3D(-4.37114e-08, -0.422618, 0.906308, 0, 0.906308, 0.422618
 pixel_size = 0.02
 shaded = true
 texture_filter = 0
-texture = ExtResource("4_eo2op")
+texture = ExtResource("5_shkbd")
 hframes = 4
 vframes = 3
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 libraries = {

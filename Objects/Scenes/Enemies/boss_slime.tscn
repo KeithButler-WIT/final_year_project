@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://c0qo2bv6v7125"]
 
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_qdlgm"]
-[ext_resource type="Script" path="res://Objects/Scenes/Enemies/DropXPComponent.gd" id="2_4hogi"]
-[ext_resource type="PackedScene" uid="uid://cg5juf0ykl0rd" path="res://Objects/Scenes/exp.tscn" id="3_0rokh"]
+[ext_resource type="PackedScene" uid="uid://rotd8jb75yms" path="res://Objects/Scenes/drop_upgrade_point_component.tscn" id="3_sf2pn"]
+[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/drop_xp_component.tscn" id="4_ca2aa"]
 [ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="4_sp8tj"]
 [ext_resource type="Texture2D" uid="uid://3relrg218lh5" path="res://Assets/Enemies/mm-crawl.png" id="5_qlyra"]
 
@@ -124,10 +124,10 @@ avoidance_enabled = true
 wait_time = 0.25
 autostart = true
 
-[node name="DropXPComponent" type="Node" parent="."]
-script = ExtResource("2_4hogi")
-exp_packed = ExtResource("3_0rokh")
+[node name="DropXPComponent" parent="." instance=ExtResource("4_ca2aa")]
 num_exp_to_drop = 100
+
+[node name="DropUpgradePointComponent" parent="." instance=ExtResource("3_sf2pn")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_sp8tj")]
 max_health = 1000

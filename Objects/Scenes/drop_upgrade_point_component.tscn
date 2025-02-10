@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://rotd8jb75yms"]
+
+[ext_resource type="Script" path="res://Objects/Scenes/drop_upgrade_point_component.gd" id="1_3b6w8"]
+[ext_resource type="PackedScene" uid="uid://dlfi3pmqsr5a4" path="res://Objects/Scenes/permanent_upgrade_point.tscn" id="2_qd57l"]
+
+[node name="DropUpgradePointComponent" type="Node"]
+script = ExtResource("1_3b6w8")
+sprite_packed = ExtResource("2_qd57l")
