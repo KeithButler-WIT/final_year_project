@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ceklyksm3l4sl"]
 
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_6kjkt"]
-[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/drop_xp_component.tscn" id="2_4nvmm"]
+[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/Enemies/drop_xp_component.tscn" id="2_4nvmm"]
 [ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="3_dnhth"]
 [ext_resource type="Texture2D" uid="uid://dbdgv7mr5blec" path="res://Assets/Enemies/MiniAswang-Free.png" id="4_eo2op"]
 

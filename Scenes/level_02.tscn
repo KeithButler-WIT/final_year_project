@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dpqrwxs3o7foe"]
+[gd_scene load_steps=33 format=3 uid="uid://dpqrwxs3o7foe"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_2gtdw"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="2_q28tk"]
@@ -15,21 +15,12 @@
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="13_52l4q"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d_settings.gd" id="14_x7pig"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/tile_info/gridmap_tile_info.gd" id="15_mjn73"]
-[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="16_7q666"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="16_p5a4u"]
-[ext_resource type="Script" path="res://Objects/Scripts/Spawner.gd" id="17_b1u45"]
-[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/2D/modifier_2d.gd" id="17_c0tc0"]
+[ext_resource type="PackedScene" uid="uid://cergu32hpxp0y" path="res://Objects/Scenes/Enemies/enemy_spawner.tscn" id="17_pbva8"]
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="18_ep6ot"]
-[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="18_wb5av"]
-[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/2D/noise_generator/noise_generator_data.gd" id="19_1kksr"]
-[ext_resource type="Script" path="res://Objects/Scripts/Wave.gd" id="19_6xkn3"]
-[ext_resource type="Script" path="res://Objects/Scripts/upgrade.gd" id="20_x8r4r"]
-[ext_resource type="Script" path="res://Util/Strategy/base_bullet_strategy.gd" id="21_mdttn"]
-[ext_resource type="Texture2D" uid="uid://dja28abtr2teg" path="res://Assets/exp.png" id="22_ulpbo"]
-[ext_resource type="Script" path="res://Util/Strategy/temporary/speed_player_strategy.gd" id="23_37e82"]
-[ext_resource type="Texture2D" uid="uid://c1cl3nk53nq2r" path="res://Assets/icon.svg" id="24_ti6fa"]
-[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="25_ue31f"]
-[ext_resource type="Script" path="res://Util/Strategy/temporary/pickup_radius_player_strategy.gd" id="26_uqbl4"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/spawn_info.gd" id="18_mc53s"]
+[ext_resource type="PackedScene" uid="uid://ceklyksm3l4sl" path="res://Objects/Scenes/Enemies/bat.tscn" id="20_v4pab"]
+[ext_resource type="PackedScene" uid="uid://bv7q4b8hjxoa0" path="res://Objects/Scenes/Enemies/wonwon.tscn" id="21_p06p0"]
 [ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="27_07rk6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vay7k"]
@@ -53,9 +44,10 @@ glow_intensity = 0.4
 glow_bloom = 0.02
 glow_blend_mode = 0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8gnhh"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_njf5r"]
+seed = -1908992189
 
-[sub_resource type="Resource" id="Resource_dcyia"]
+[sub_resource type="Resource" id="Resource_wssh5"]
 script = ExtResource("15_mjn73")
 index = 0
 id = ""
@@ -63,8 +55,8 @@ layer = 0
 
 [sub_resource type="Resource" id="Resource_rwyds"]
 script = ExtResource("14_x7pig")
-tile = SubResource("Resource_dcyia")
-noise = SubResource("FastNoiseLite_8gnhh")
+tile = SubResource("Resource_wssh5")
+noise = SubResource("FastNoiseLite_njf5r")
 infinite = true
 world_size = Vector2i(3, 3)
 height_offset = 0
@@ -74,38 +66,37 @@ air_layer = false
 falloff_enabled = false
 modifiers = Array[ExtResource("13_52l4q")]([])
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qeovm"]
-fractal_type = 3
+[sub_resource type="Resource" id="Resource_5e0gb"]
+script = ExtResource("18_mc53s")
+time_start = 0
+time_end = 300
+enemy = ExtResource("18_ep6ot")
+enemy_num = 10
+enemy_spawn_delay = 20
 
-[sub_resource type="Resource" id="Resource_mjku1"]
-resource_name = "Settings"
-script = ExtResource("18_wb5av")
-tiles = Array[ExtResource("19_1kksr")]([])
-noise = SubResource("FastNoiseLite_qeovm")
-infinite = true
-falloff_enabled = false
-modifiers = Array[ExtResource("17_c0tc0")]([])
+[sub_resource type="Resource" id="Resource_y51wl"]
+script = ExtResource("18_mc53s")
+time_start = 120
+time_end = 160
+enemy = ExtResource("20_v4pab")
+enemy_num = 5
+enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_08e56"]
-script = ExtResource("21_mdttn")
-texture = ExtResource("22_ulpbo")
-upgrade_text = "Speed"
+[sub_resource type="Resource" id="Resource_l4euj"]
+script = ExtResource("18_mc53s")
+time_start = 0
+time_end = 10
+enemy = ExtResource("21_p06p0")
+enemy_num = 2
+enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_akrmw"]
-script = ExtResource("23_37e82")
-increase = 1.0
-texture = ExtResource("24_ti6fa")
-upgrade_text = "Nothing"
-description = null
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ywknh"]
-
-[sub_resource type="Resource" id="Resource_32lkq"]
-script = ExtResource("26_uqbl4")
-increase = 0.2
-texture = ExtResource("24_ti6fa")
-upgrade_text = "Nothing"
-description = null
+[sub_resource type="Resource" id="Resource_m0ovj"]
+script = ExtResource("18_mc53s")
+time_start = 1
+time_end = 3000
+enemy = ExtResource("27_07rk6")
+enemy_num = 1
+enemy_spawn_delay = 300
 
 [node name="Level_02" type="Node3D"]
 script = ExtResource("1_2gtdw")
@@ -142,9 +133,6 @@ offset_top = -29.0
 [node name="level_up_menu" parent="Control" instance=ExtResource("8_66n8w")]
 layout_mode = 1
 
-[node name="World" type="Node3D" parent="."]
-visible = false
-
 [node name="Ground" type="GridMap" parent="."]
 mesh_library = ExtResource("9_eahfd")
 cell_size = Vector3(100, 1, 100)
@@ -172,281 +160,9 @@ settings = SubResource("Resource_rwyds")
 chunk_size = Vector3i(3, 3, 3)
 tile_size = Vector3(100, 1, 100)
 
-[node name="NoiseGenerator" type="Node" parent="."]
-script = ExtResource("16_7q666")
-settings = SubResource("Resource_mjku1")
-
 [node name="Player" parent="." instance=ExtResource("16_p5a4u")]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.0292, 10, 36.8162)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.0292, 10, 12.8162)
 
-[node name="Spawner" type="Node3D" parent="."]
-script = ExtResource("17_b1u45")
-packed_enemy = Array[PackedScene]([ExtResource("18_ep6ot")])
-
-[node name="Timer" type="Timer" parent="Spawner"]
-autostart = true
-
-[node name="Waves" type="Node" parent="Spawner"]
-
-[node name="Wave1" type="Node" parent="Spawner/Waves"]
-script = ExtResource("19_6xkn3")
-
-[node name="Wave2" type="Node" parent="Spawner/Waves"]
-script = ExtResource("19_6xkn3")
-num_enemies = 60
-
-[node name="Wave3" type="Node" parent="Spawner/Waves"]
-script = ExtResource("19_6xkn3")
-num_enemies = 120
-seconds_between_spawns = 0.5
-
-[node name="Upgrades" type="Node3D" parent="." groups=["Debug"]]
-
-[node name="Upgrade" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 41.29)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_akrmw")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade2" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 39.6999)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_akrmw")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade2"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade2"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade2"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade3" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 37.5703)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_akrmw")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade3"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade3"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade3"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade4" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 35.3581)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_akrmw")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade4"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade4"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade4"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade5" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 33.0634)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_akrmw")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade5"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade5"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade5"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade6" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 31.1527)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_akrmw")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade6"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade6"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade6"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade7" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 41.29)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_32lkq")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade7"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade7"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade7"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade8" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 39.6999)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_32lkq")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade8"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade8"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade8"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade9" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 37.5703)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_32lkq")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade9"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade9"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade9"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade10" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 35.3581)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_32lkq")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade10"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade10"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade10"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade11" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 33.0634)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_32lkq")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade11"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade11"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade11"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Upgrade12" type="Area3D" parent="Upgrades" node_paths=PackedStringArray("upgrade_label", "sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2948, 1.42148, 31.1527)
-script = ExtResource("20_x8r4r")
-upgrade_label = NodePath("UpgradeLabel")
-sprite = NodePath("Sprite3D")
-bullet_strategy = SubResource("Resource_08e56")
-player_strategy = SubResource("Resource_32lkq")
-needs_update = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Upgrades/Upgrade12"]
-shape = SubResource("BoxShape3D_ywknh")
-
-[node name="Sprite3D" type="Sprite3D" parent="Upgrades/Upgrade12"]
-billboard = 1
-texture = ExtResource("24_ti6fa")
-
-[node name="UpgradeLabel" type="Label3D" parent="Upgrades/Upgrade12"]
-text = "Nothing"
-font = ExtResource("25_ue31f")
-
-[node name="Boss_Slime" parent="." instance=ExtResource("27_07rk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9645, 1.6, 51.6915)
-
-[node name="Boss_Slime2" parent="." instance=ExtResource("27_07rk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4213, 1.6, 15.1584)
-
-[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[node name="EnemySpawner" parent="." instance=ExtResource("17_pbva8")]
+spawns = Array[ExtResource("18_mc53s")]([SubResource("Resource_5e0gb"), SubResource("Resource_y51wl"), SubResource("Resource_l4euj"), SubResource("Resource_m0ovj")])

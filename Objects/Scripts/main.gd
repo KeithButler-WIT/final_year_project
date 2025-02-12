@@ -28,7 +28,7 @@ var msec_to_min = func(msec):
 
 
 func _process(_delta):
-	print("ENEMIES: ", get_tree().get_nodes_in_group("enemy").size())
+	#print("ENEMIES: ", get_tree().get_nodes_in_group("enemy").size())
 	update_exp_bar()
 	update_hp_bar()
 	#print("Time Left: %d" % msec_to_min.call(Time.get_ticks_msec() - time_start))
@@ -76,6 +76,8 @@ func _on_objective_complete() -> void:
 	print("CURRENT NUMBER	: ", current_num)
 	# TODO change to path
 	level_loader.LEVEL_SCENE = "res://Scenes/level_0%d%s" % [current_num+1, ".tscn"]
+	if !level_loader.LEVEL_SCENE:
+		level_loader.LEVEL_SCENE = "res://Scenes/hub_world.tscn"
 	add_child(level_loader)
 	# Back To Hub
 	var exit_ladder = exitLadder.instantiate()

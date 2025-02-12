@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bv7q4b8hjxoa0"]
 
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/slime.gd" id="1_4qinl"]
-[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/drop_xp_component.tscn" id="2_no6n2"]
+[ext_resource type="PackedScene" uid="uid://dthsgmianr0o5" path="res://Objects/Scenes/Enemies/drop_xp_component.tscn" id="2_no6n2"]
 [ext_resource type="PackedScene" uid="uid://mv6hrc7iftrg" path="res://Objects/Scenes/HealthComponent.tscn" id="4_mny2f"]
 [ext_resource type="Texture2D" uid="uid://bw3nx7k88oqq5" path="res://Assets/Enemies/wonwon.png" id="5_shkbd"]
 

@@ -4,7 +4,7 @@ extends Node3D
 @export var spawns : Array[SpawnInfo] = []
 
 @onready var player = %Player
-@onready var camera : Camera3D = get_node("../Player/CameraArm/Camera")
+@onready var camera : Camera3D = player.get_node("CameraArm/Camera")
 
 var time = 0
 

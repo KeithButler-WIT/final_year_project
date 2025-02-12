@@ -1,0 +1,168 @@
+[gd_scene load_steps=33 format=3 uid="uid://bhck5lkxrsj15"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_ur0w5"]
+[ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="2_21n7x"]
+[ext_resource type="PackedScene" uid="uid://c1nxoxb048g75" path="res://Objects/Scenes/ladder_out.tscn" id="3_1swlt"]
+[ext_resource type="PackedScene" uid="uid://dseiori76psbj" path="res://Objects/Scenes/objective.tscn" id="4_uyksy"]
+[ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="5_5jn41"]
+[ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="6_tfcei"]
+[ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="7_xumbq"]
+[ext_resource type="PackedScene" uid="uid://cbhl3vg4rafl2" path="res://Objects/Scenes/level_up_menu.tscn" id="8_gj2gd"]
+[ext_resource type="MeshLibrary" uid="uid://hcgvyu0ovucm" path="res://Scenes/level_03.tres" id="9_lymc2"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/renderers/3D/gridmap_gaea_renderer.gd" id="10_j8tfx"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="11_dvlcj"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="12_na431"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/modifiers/3D/modifier_3d.gd" id="13_dg7lv"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d_settings.gd" id="14_f4w3h"]
+[ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/tile_info/gridmap_tile_info.gd" id="15_am2ri"]
+[ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="16_1t47d"]
+[ext_resource type="PackedScene" uid="uid://cergu32hpxp0y" path="res://Objects/Scenes/Enemies/enemy_spawner.tscn" id="17_7buls"]
+[ext_resource type="Script" path="res://Objects/Scenes/Enemies/spawn_info.gd" id="18_t5kor"]
+[ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="19_oqunr"]
+[ext_resource type="PackedScene" uid="uid://ceklyksm3l4sl" path="res://Objects/Scenes/Enemies/bat.tscn" id="20_n6dsx"]
+[ext_resource type="PackedScene" uid="uid://bv7q4b8hjxoa0" path="res://Objects/Scenes/Enemies/wonwon.tscn" id="21_t3sqs"]
+[ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="22_qsry2"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vay7k"]
+panorama = ExtResource("5_5jn41")
+
+[sub_resource type="Sky" id="Sky_o63wv"]
+sky_material = SubResource("PanoramaSkyMaterial_vay7k")
+
+[sub_resource type="Environment" id="Environment_mh6h8"]
+background_mode = 2
+sky = SubResource("Sky_o63wv")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.02
+glow_blend_mode = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_njf5r"]
+seed = -1908992189
+
+[sub_resource type="Resource" id="Resource_wssh5"]
+script = ExtResource("15_am2ri")
+index = 0
+id = ""
+layer = 0
+
+[sub_resource type="Resource" id="Resource_rwyds"]
+script = ExtResource("14_f4w3h")
+tile = SubResource("Resource_wssh5")
+noise = SubResource("FastNoiseLite_njf5r")
+infinite = true
+world_size = Vector2i(3, 3)
+height_offset = 0
+height_intensity = 0
+min_height = 0
+air_layer = false
+falloff_enabled = false
+modifiers = Array[ExtResource("13_dg7lv")]([])
+
+[sub_resource type="Resource" id="Resource_5e0gb"]
+script = ExtResource("18_t5kor")
+time_start = 0
+time_end = 300
+enemy = ExtResource("19_oqunr")
+enemy_num = 10
+enemy_spawn_delay = 20
+
+[sub_resource type="Resource" id="Resource_y51wl"]
+script = ExtResource("18_t5kor")
+time_start = 120
+time_end = 160
+enemy = ExtResource("20_n6dsx")
+enemy_num = 5
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_l4euj"]
+script = ExtResource("18_t5kor")
+time_start = 0
+time_end = 10
+enemy = ExtResource("21_t3sqs")
+enemy_num = 2
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_m0ovj"]
+script = ExtResource("18_t5kor")
+time_start = 1
+time_end = 3000
+enemy = ExtResource("22_qsry2")
+enemy_num = 1
+enemy_spawn_delay = 300
+
+[node name="Level_03" type="Node3D"]
+script = ExtResource("1_ur0w5")
+levelLoader = ExtResource("2_21n7x")
+exitLadder = ExtResource("3_1swlt")
+PackedObjective = ExtResource("4_uyksy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1800.0
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mh6h8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.75225, 0)
+shadow_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpUi" parent="Control" instance=ExtResource("6_tfcei")]
+layout_mode = 1
+
+[node name="HpUi" parent="Control" instance=ExtResource("7_xumbq")]
+layout_mode = 1
+offset_top = -29.0
+
+[node name="level_up_menu" parent="Control" instance=ExtResource("8_gj2gd")]
+layout_mode = 1
+
+[node name="Ground" type="GridMap" parent="."]
+mesh_library = ExtResource("9_lymc2")
+cell_size = Vector3(100, 1, 100)
+collision_layer = 64
+collision_mask = 71
+bake_navigation = true
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridmapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("grid_map", "generator")]
+script = ExtResource("10_j8tfx")
+grid_map = NodePath("../Ground")
+generator = NodePath("../HeightmapGenerator3D")
+
+[node name="ChunkLoader3D" type="Node3D" parent="." node_paths=PackedStringArray("generator", "actor")]
+script = ExtResource("11_dvlcj")
+generator = NodePath("../HeightmapGenerator3D")
+actor = NodePath("../Player")
+
+[node name="HeightmapGenerator3D" type="Node" parent="."]
+script = ExtResource("12_na431")
+settings = SubResource("Resource_rwyds")
+chunk_size = Vector3i(3, 3, 3)
+tile_size = Vector3(100, 1, 100)
+
+[node name="Player" parent="." instance=ExtResource("16_1t47d")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.0292, 10, 12.8162)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("17_7buls")]
+spawns = Array[ExtResource("18_t5kor")]([SubResource("Resource_5e0gb"), SubResource("Resource_y51wl"), SubResource("Resource_l4euj"), SubResource("Resource_m0ovj")])
