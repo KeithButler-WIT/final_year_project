@@ -1,16 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b67quibb16v2t"]
+[gd_scene load_steps=7 format=3 uid="uid://b67quibb16v2t"]
 
 [ext_resource type="Texture2D" uid="uid://dm0ym04vu5642" path="res://Assets/Goblin/gobu walk.png" id="1_40k28"]
-[ext_resource type="Texture2D" uid="uid://eaial1f3r3c6" path="res://Assets/variousretrotextures/Wood_0.png" id="1_md6d5"]
 [ext_resource type="Script" path="res://Objects/Scripts/shop.gd" id="1_oegu0"]
-[ext_resource type="Material" uid="uid://tcqkeryjoqhl" path="res://Objects/Scenes/Materials/wood_wall.tres" id="1_uj7xu"]
-[ext_resource type="Material" uid="uid://o8nliy0v6o5w" path="res://Objects/Scenes/Materials/stone_wall.tres" id="1_web07"]
-[ext_resource type="Material" uid="uid://b5e0xjge8prof" path="res://Objects/Scenes/Materials/cobble.tres" id="3_j066g"]
 [ext_resource type="PackedScene" uid="uid://bdoblesinc0dt" path="res://Objects/Scenes/interactable_component.tscn" id="7_3xb2i"]
 [ext_resource type="PackedScene" uid="uid://bqkh5crffd41y" path="res://Objects/Scenes/skill_tree.tscn" id="8_t8tn6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22urq"]
-albedo_texture = ExtResource("1_md6d5")
+[ext_resource type="PackedScene" uid="uid://beq4oqrw6fj4d" path="res://Assets/shop.blend" id="9_iot1t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwosu"]
 font_size = 64
@@ -20,45 +14,11 @@ outline_color = Color(0, 0, 0, 1)
 [node name="upgradeShop" type="Node3D"]
 script = ExtResource("1_oegu0")
 
-[node name="Model" type="Node3D" parent="."]
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 2, -2)
-layers = 128
-material_override = ExtResource("1_web07")
-use_collision = true
-size = Vector3(6, 4, 1)
-material = SubResource("StandardMaterial3D_22urq")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
-layers = 128
-material_override = ExtResource("1_web07")
-use_collision = true
-size = Vector3(6, 4, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
-layers = 128
-material_override = ExtResource("3_j066g")
-use_collision = true
-size = Vector3(1, 1, 4)
-
-[node name="roof" type="CSGBox3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
-layers = 128
-material_override = ExtResource("1_uj7xu")
-size = Vector3(6, 1, 7)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 0)
-layers = 128
-material_override = ExtResource("1_web07")
-use_collision = true
-size = Vector3(1, 4, 5)
+[node name="shop" parent="." instance=ExtResource("9_iot1t")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 2)
 
 [node name="shopKeeperSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -2)
 pixel_size = 0.15
 billboard = 2
 shaded = true
@@ -89,7 +49,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InteractableComponent" parent="." instance=ExtResource("7_3xb2i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
 
 [node name="SkillTree" parent="." instance=ExtResource("8_t8tn6")]
 visible = false

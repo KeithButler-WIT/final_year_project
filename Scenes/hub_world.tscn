@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/Scripts/hubworld.gd" id="1_56qar"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="2_6ck2a"]
+[ext_resource type="PackedScene" uid="uid://cl8i0l6tnssey" path="res://Objects/Scenes/pause_menu.tscn" id="2_ehy16"]
 [ext_resource type="PackedScene" uid="uid://ba76hwii6uwvd" path="res://Objects/save_player_stats.tscn" id="2_t0q4r"]
 [ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="3_83tsm"]
 [ext_resource type="Script" path="res://Objects/Scripts/TutorialHints.gd" id="5_4elcs"]
@@ -20,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dlfi3pmqsr5a4" path="res://Objects/Scenes/permanent_upgrade_point.tscn" id="18_e845y"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="18_v4tlj"]
 [ext_resource type="PackedScene" uid="uid://cug1b5km7qual" path="res://Assets/fence/fence.glb" id="20_131uq"]
-[ext_resource type="PackedScene" uid="uid://beq4oqrw6fj4d" path="res://Assets/shop.blend" id="21_4s7wg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ql0d3"]
 panorama = ExtResource("2_6ck2a")
@@ -90,6 +90,7 @@ description = null
 
 [node name="HubWorld" type="Node3D"]
 script = ExtResource("1_56qar")
+pause_menu = ExtResource("2_ehy16")
 
 [node name="SavePlayerStats" parent="." instance=ExtResource("2_t0q4r")]
 
@@ -2612,9 +2613,6 @@ transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 
 [node name="fence18" parent="Fences" instance=ExtResource("20_131uq")]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -25.9761, -0.5, 16.3772)
 
-[node name="fence19" parent="Fences" instance=ExtResource("20_131uq")]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -29.9761, -0.5, 16.3772)
-
 [node name="fence20" parent="Fences" instance=ExtResource("20_131uq")]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -33.9761, -0.5, 16.3772)
 
@@ -2629,12 +2627,3 @@ transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 
 
 [node name="fence24" parent="Fences" instance=ExtResource("20_131uq")]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -5.97613, -0.5, 16.3772)
-
-[node name="shop" parent="." instance=ExtResource("21_4s7wg")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.34938, -0.434526, 4.72307)
-
-[node name="shop2" parent="." instance=ExtResource("21_4s7wg")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.79731, -0.434526, 0.962603)
-
-[node name="shop3" parent="." instance=ExtResource("21_4s7wg")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.34938, -0.434526, -2.66288)

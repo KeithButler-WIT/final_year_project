@@ -29,7 +29,6 @@ func _process(_delta):
 		gun_controller.shoot()
 	if has_node("TurretPlacingComponent") and Input.is_action_pressed("turret_place"):
 		$TurretPlacingComponent.place_turret()
-	
 	if has_node("ObjectiveArrowComponent"):
 		if has_node("../Objective"):
 			pass
