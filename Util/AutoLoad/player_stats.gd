@@ -1,44 +1,44 @@
 extends Node
 
 # Variables used as permanent upgrades
-var starting_max_health = 10
-var starting_num_turrets_placeable = 1
-var starting_num_weapons = 1
-var starting_turrent_attack_speed = 1
-var starting_pickup_radius = 1
-var starting_movement_speed = 5
-var starting_turret_damage = 1
+var starting_max_health := 10
+var starting_num_turrets_placeable := 1
+var starting_num_weapons := 1
+var starting_turrent_attack_speed := 1
+var starting_pickup_radius := 1
+var starting_movement_speed := 5
+var starting_turret_damage := 1
 
 # Player stats # These reset every mission
-var max_health = starting_max_health
-var current_health = max_health
-var num_turrets_placeable = starting_num_turrets_placeable
-var num_weapons = starting_num_weapons
-var turret_attack_speed = starting_turrent_attack_speed
-var pickup_radius = starting_pickup_radius
-var level = 1
-var experience = 0
-var exp_to_next_level = 10
-var movement_speed = starting_movement_speed
-var turret_damage = starting_turret_damage
-var player_skill = 1
+var max_health := starting_max_health
+var current_health := max_health
+var num_turrets_placeable := starting_num_turrets_placeable
+var num_weapons := starting_num_weapons
+var turret_attack_speed := starting_turrent_attack_speed
+var pickup_radius := starting_pickup_radius
+var level := 1
+var experience := 0
+var exp_to_next_level := 10
+var movement_speed := starting_movement_speed
+var turret_damage := starting_turret_damage
+var player_skill := 1
 
 
 # Global stats # These get saved
-var time_played = 0
-var total_kills = 0
-var total_damage_taken = 0
-var total_damage_given = 0
-var total_health_recovered = 0
-var deaths = 0
-var turrets_placed = 0
-var highest_level = 0
-var total_experience_gained = 0
-var missions_completed = 0
-var upgrade_points_spent = 0
-var upgrade_point = 0
-var upgrade_choices = 3
-var upgrades_picked = []
+var time_played := 0
+var total_kills := 0
+var total_damage_taken := 0
+var total_damage_given := 0
+var total_health_recovered := 0
+var deaths := 0
+var turrets_placed := 0
+var highest_level := 0
+var total_experience_gained := 0
+var missions_completed := 0
+var upgrade_points_spent := 0
+var upgrade_point := 0
+var upgrade_choices := 3
+var upgrades_picked := []
 
 enum MISSION {
 	LOOTING,
@@ -48,7 +48,7 @@ enum MISSION {
 	NONE,
 }
 
-var current_mission = MISSION.NONE
+var current_mission : MISSION = MISSION.NONE
 
 ## Called when the node enters the scene tree for the first time.
 #func _ready():

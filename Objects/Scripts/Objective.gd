@@ -2,11 +2,11 @@ extends Node3D
 
 signal complete
 
-@onready var countdownTimer = $Control/ObjectiveCountdown
-@onready var timer = $Timer
-@onready var rock = $rock
-@onready var rock_animation = $rock/AnimationPlayer
-@onready var rock_shake = $rock/ShakerComponent3D
+@onready var countdownTimer := $Control/ObjectiveCountdown
+@onready var timer := $Timer
+@onready var rock := $rock
+@onready var rock_animation : AnimationPlayer = $rock/AnimationPlayer
+@onready var rock_shake : ShakerComponent3D = $rock/ShakerComponent3D
 
 
 # Called when the node enters the scene tree for the first time.

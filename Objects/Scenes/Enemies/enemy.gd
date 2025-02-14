@@ -5,13 +5,13 @@ class_name Enemy
 
 @export var movement_speed: float = 2.0
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
-@export var attack_speed_multiplier = 5
+@export var attack_speed_multiplier := 5
 
 #@export var player : CharacterBody3D
 @onready var player: CharacterBody3D = $"../Player"
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 #@onready var attack_timer = $AttackTimer
-@onready var animationPlayer = $Character/AnimationPlayer
+@onready var animationPlayer : AnimationPlayer = $Character/AnimationPlayer
 
 var attack_target: Vector3
 var return_target: Vector3
@@ -23,7 +23,7 @@ enum state {
 	RESTING,
 }
 
-var current_state = state.SEEKING
+var current_state := state.SEEKING
 
 @export var damage:float = 1.0;
 

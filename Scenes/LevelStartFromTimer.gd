@@ -3,8 +3,8 @@ extends Node3D
 @export var LEVEL_SCENE : String
 @export var use_timer : bool = false
 
-@onready var timer = $LevelStartTimer
-@onready var countdownLabel = $Control/ObjectiveCountdown
+@onready var timer := $LevelStartTimer
+@onready var countdownLabel := $Control/ObjectiveCountdown
 
 func _ready():
 	countdownLabel.visible = false

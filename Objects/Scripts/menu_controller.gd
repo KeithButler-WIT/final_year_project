@@ -6,9 +6,9 @@ extends Control
 # Check out Colorblind addon for godot : https://github.com/paulloz/godot-colorblindness
 #--
 
-@onready var Resolution_ob = get_node("%Resolution_Optionbutton")
-@onready var OptionContainer = get_node("%OptionContainer")
-@onready var MainContainer = get_node("%MainContainer")
+@onready var Resolution_ob := get_node("%Resolution_Optionbutton")
+@onready var OptionContainer := get_node("%OptionContainer")
+@onready var MainContainer := get_node("%MainContainer")
 
 # Config file
 # Move it into a singleton 

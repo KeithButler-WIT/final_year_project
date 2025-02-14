@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var questList:Control = $QuestList
-var main_ui = []
+var main_ui := []
 @export var pause_menu: PackedScene
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 	
 	main_ui.append(questList)
 
-var time_elapsed = 0.0
+var time_elapsed := 0.0
 
 func _process(delta: float) -> void:
 	time_elapsed += delta

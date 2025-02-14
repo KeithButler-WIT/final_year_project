@@ -5,24 +5,24 @@ class_name BaseLevel
 @export var levelLoader : PackedScene
 @export var exitLadder : PackedScene
 @export var PackedObjective : PackedScene
-@export var objectives_needed = 2
-var objectives_completed = 0
+@export var objectives_needed : int = 2
+var objectives_completed : int = 0
 
-@onready var exp_bar = $Control/ExpUi/Bar
-@onready var exp_label = $Control/ExpUi/Label
-@onready var hp_bar = $Control/HpUi/Bar
-@onready var hp_label = $Control/HpUi/Label
+@onready var exp_bar := $Control/ExpUi/Bar
+@onready var exp_label := $Control/ExpUi/Label
+@onready var hp_bar := $Control/HpUi/Bar
+@onready var hp_label := $Control/HpUi/Label
 
-var time_start = 0
+var time_start := 0
 
 
-var sec_to_min = func(sec):
+var sec_to_min := func(sec):
 	return sec / 60
 
-var msec_to_min = func(msec):
+var msec_to_min := func(msec):
 	return msec / 60  / 60 / 60
 
-var time_elapsed = 0.0
+var time_elapsed := 0.0
 
 
 func update_exp_bar():

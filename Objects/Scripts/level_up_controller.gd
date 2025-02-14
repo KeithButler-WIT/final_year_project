@@ -1,10 +1,10 @@
 extends Control
 
 
-@onready var main_container = $MainContainer
-@onready var upgrades = []
+@onready var main_container := $MainContainer
+@onready var upgrades := []
 @onready var upgrade
-@onready var upgrade_list = []
+@onready var upgrade_list := []
 
 
 func _ready():

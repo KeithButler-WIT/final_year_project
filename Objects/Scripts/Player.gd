@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const LEVEL_SCENE_PATH: String = "res://levels/hub_world.tscn"
 
-@onready var gun_controller = $GunController
+@onready var gun_controller := $GunController
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
