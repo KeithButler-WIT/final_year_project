@@ -21,7 +21,7 @@ var experience = 0
 var exp_to_next_level = 10
 var movement_speed = starting_movement_speed
 var turret_damage = starting_turret_damage
-var player_skill = 5
+var player_skill = 1
 
 
 # Global stats # These get saved
@@ -60,19 +60,13 @@ func _process(_delta):
 	pass
 
 func decrease_skill(skill):
-	if player_skill < skill:
-		player_skill = 1
-	else:
-		player_skill -= skill
+	player_skill += clamp(player_skill-skill,1,100)
 
 func increase_skill(skill):
-	player_skill += skill
+	player_skill += clamp(player_skill+skill,1,100)
 
 func set_skill(skill):
-	if player_skill <= 0:
-		player_skill = 1
-	else:
-		player_skill = skill
+	player_skill = clamp(skill,1,100)
 
 func reset():
 	### Resets the player stats after dying ###

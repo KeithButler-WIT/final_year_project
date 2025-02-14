@@ -20,10 +20,6 @@ var upgrades: Array[BasePlayerStrategy] = []
 var permanent_upgrades: Array[BasePlayerStrategy] = []
 
 
-func _ready():
-	pass
-
-
 func _process(_delta):
 	if Input.is_action_pressed("primary_action"):
 		gun_controller.shoot()
@@ -34,7 +30,6 @@ func _process(_delta):
 			pass
 
 func _physics_process(delta):
-	# TODO: run every 0.5 seconds
 	# Add the gravity.
 	if not is_on_floor():
 		$".".velocity.y -= gravity * delta

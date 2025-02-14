@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="1_6q7hj"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/renderers/3D/gridmap_gaea_renderer.gd" id="1_2606m"]
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_sddlb"]
-[ext_resource type="Script" path="res://Objects/Scripts/main.gd" id="1_v0fkc"]
+[ext_resource type="Script" path="res://Objects/Scripts/Levels/main.gd" id="1_v0fkc"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="1_y7s12"]
 [ext_resource type="PackedScene" uid="uid://dseiori76psbj" path="res://Objects/Scenes/objective.tscn" id="2_34o17"]
 [ext_resource type="MeshLibrary" uid="uid://pnj88ymntxvb" path="res://Scenes/level_01.tres" id="2_60spy"]
@@ -132,8 +132,13 @@ levelLoader = ExtResource("2_cwgww")
 exitLadder = ExtResource("3_3q7ho")
 PackedObjective = ExtResource("2_34o17")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1800.0
+[node name="SpawnObjectiveTimer" type="Timer" parent="."]
+wait_time = 300.0
+autostart = true
+
+[node name="SpawnExitTimer" type="Timer" parent="."]
+wait_time = 900.0
+one_shot = true
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -424,3 +429,6 @@ script = ExtResource("1_y7s12")
 settings = SubResource("Resource_g05t2")
 chunk_size = Vector3i(3, 3, 3)
 tile_size = Vector3(50, 1, 50)
+
+[connection signal="timeout" from="SpawnObjectiveTimer" to="." method="_on_spawn_objective_timer_timeout"]
+[connection signal="timeout" from="SpawnExitTimer" to="." method="_on_spawn_exit_timer_timeout"]

@@ -25,8 +25,12 @@ enum state {
 
 var current_state = state.SEEKING
 
-@export var damage = 1;
+@export var damage:float = 1.0;
 
+
+func _ready() -> void:
+	damage = damage * (1+(PlayerStats.player_skilll/100))
+	movement_speed = movement_speed * (1+(PlayerStats.player_skill/100))
 
 func _on_health_died_signal():
 	if get_node_or_null("DropXPComponent"):

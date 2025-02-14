@@ -2613,9 +2613,6 @@ transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 
 [node name="fence18" parent="Fences" instance=ExtResource("20_131uq")]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -25.9761, -0.5, 16.3772)
 
-[node name="fence20" parent="Fences" instance=ExtResource("20_131uq")]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -33.9761, -0.5, 16.3772)
-
 [node name="fence21" parent="Fences" instance=ExtResource("20_131uq")]
 transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -17.9761, -0.5, 16.3772)
 
