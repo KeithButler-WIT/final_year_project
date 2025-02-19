@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b36i3lpy45exm"]
+
+[ext_resource type="Script" path="res://Util/Components/Flow Field/flow_field_manager.gd" id="1_rr3ec"]
+
+[node name="FlowFieldManager" type="Node3D"]
+script = ExtResource("1_rr3ec")

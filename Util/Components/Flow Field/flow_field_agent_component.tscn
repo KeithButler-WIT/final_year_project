@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgsx7pr2xtf6r"]
+
+[ext_resource type="Script" path="res://Util/Components/Flow Field/flow_field_agent_component.gd" id="1_1h6kb"]
+
+[node name="FlowFieldAgentComponent" type="Node3D"]
+script = ExtResource("1_1h6kb")
