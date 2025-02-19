@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dpqrwxs3o7foe"]
+[gd_scene load_steps=36 format=3 uid="uid://dpqrwxs3o7foe"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Levels/main.gd" id="1_2gtdw"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="2_q28tk"]
@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bcyd664prgb4g" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="5_phc27"]
 [ext_resource type="PackedScene" uid="uid://c7pmx6dfhxcq3" path="res://Objects/Scenes/ExpUI.tscn" id="6_fy5mb"]
 [ext_resource type="PackedScene" uid="uid://bf3qe3idoftky" path="res://Objects/Scenes/HpUI.tscn" id="7_u6kia"]
+[ext_resource type="PackedScene" uid="uid://tfji8f3gercc" path="res://Objects/Scenes/Enemies/Jorg.tscn" id="8_0skg8"]
 [ext_resource type="PackedScene" uid="uid://cbhl3vg4rafl2" path="res://Objects/Scenes/level_up_menu.tscn" id="8_66n8w"]
 [ext_resource type="MeshLibrary" uid="uid://bwllu62odxtev" path="res://Scenes/level_02.tres" id="9_eahfd"]
+[ext_resource type="PackedScene" uid="uid://bxgof80y6vsmi" path="res://Objects/Scenes/Enemies/chomp.tscn" id="9_t5c7d"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/renderers/3D/gridmap_gaea_renderer.gd" id="10_0885k"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/others/chunk_loader_3d.gd" id="11_k55xf"]
 [ext_resource type="Script" path="res://addons/Gaea-1.3.2/addons/gaea/generators/3D/heightmap_generator_3d/heightmap_generator_3d.gd" id="12_ar3cp"]
@@ -20,8 +22,48 @@
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="18_ep6ot"]
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/spawn_info.gd" id="18_mc53s"]
 [ext_resource type="PackedScene" uid="uid://ceklyksm3l4sl" path="res://Objects/Scenes/Enemies/bat.tscn" id="20_v4pab"]
-[ext_resource type="PackedScene" uid="uid://bv7q4b8hjxoa0" path="res://Objects/Scenes/Enemies/wonwon.tscn" id="21_p06p0"]
+[ext_resource type="PackedScene" uid="uid://b36i3lpy45exm" path="res://Util/Components/Flow Field/flow_field_manager.tscn" id="24_ico36"]
 [ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="27_07rk6"]
+
+[sub_resource type="Resource" id="Resource_m0ovj"]
+script = ExtResource("18_mc53s")
+time_start = 1
+time_end = 3000
+enemy = ExtResource("27_07rk6")
+enemy_num = 1
+enemy_spawn_delay = 300
+
+[sub_resource type="Resource" id="Resource_ydh8k"]
+script = ExtResource("18_mc53s")
+time_start = 60
+time_end = 3000
+enemy = ExtResource("8_0skg8")
+enemy_num = 20
+enemy_spawn_delay = 60
+
+[sub_resource type="Resource" id="Resource_7seve"]
+script = ExtResource("18_mc53s")
+time_start = 120
+time_end = 3000
+enemy = ExtResource("9_t5c7d")
+enemy_num = 10
+enemy_spawn_delay = 120
+
+[sub_resource type="Resource" id="Resource_po7kb"]
+script = ExtResource("18_mc53s")
+time_start = 0
+time_end = 3000
+enemy = ExtResource("18_ep6ot")
+enemy_num = 5
+enemy_spawn_delay = 30
+
+[sub_resource type="Resource" id="Resource_bvhgw"]
+script = ExtResource("18_mc53s")
+time_start = 300
+time_end = 3000
+enemy = ExtResource("20_v4pab")
+enemy_num = 20
+enemy_spawn_delay = 300
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vay7k"]
 panorama = ExtResource("5_phc27")
@@ -66,43 +108,14 @@ air_layer = false
 falloff_enabled = false
 modifiers = Array[ExtResource("13_52l4q")]([])
 
-[sub_resource type="Resource" id="Resource_5e0gb"]
-script = ExtResource("18_mc53s")
-time_start = 0
-time_end = 300
-enemy = ExtResource("18_ep6ot")
-enemy_num = 10
-enemy_spawn_delay = 20
-
-[sub_resource type="Resource" id="Resource_y51wl"]
-script = ExtResource("18_mc53s")
-time_start = 120
-time_end = 160
-enemy = ExtResource("20_v4pab")
-enemy_num = 5
-enemy_spawn_delay = 1
-
-[sub_resource type="Resource" id="Resource_l4euj"]
-script = ExtResource("18_mc53s")
-time_start = 0
-time_end = 10
-enemy = ExtResource("21_p06p0")
-enemy_num = 2
-enemy_spawn_delay = 1
-
-[sub_resource type="Resource" id="Resource_m0ovj"]
-script = ExtResource("18_mc53s")
-time_start = 1
-time_end = 3000
-enemy = ExtResource("27_07rk6")
-enemy_num = 1
-enemy_spawn_delay = 300
-
 [node name="Level_02" type="Node3D"]
 script = ExtResource("1_2gtdw")
 levelLoader = ExtResource("2_q28tk")
 exitLadder = ExtResource("3_k5m85")
 PackedObjective = ExtResource("4_nestq")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("17_pbva8")]
+spawns = Array[ExtResource("18_mc53s")]([SubResource("Resource_m0ovj"), SubResource("Resource_ydh8k"), SubResource("Resource_7seve"), SubResource("Resource_po7kb"), SubResource("Resource_bvhgw")])
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1800.0
@@ -164,5 +177,9 @@ tile_size = Vector3(100, 1, 100)
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.0292, 10, 12.8162)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("17_pbva8")]
-spawns = Array[ExtResource("18_mc53s")]([SubResource("Resource_5e0gb"), SubResource("Resource_y51wl"), SubResource("Resource_l4euj"), SubResource("Resource_m0ovj")])
+[node name="FlowFieldManager" parent="." node_paths=PackedStringArray("grid_map", "flow_field_gridmap", "target") instance=ExtResource("24_ico36")]
+field_size = Vector3(64, 1, 64)
+grid_map = NodePath("../Ground")
+flow_field_gridmap = NodePath("../Ground")
+target = NodePath("../Player")
+show_debug_arrows = true

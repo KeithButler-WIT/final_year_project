@@ -21,7 +21,7 @@ func _process(_delta):
 func _on_level_start_timer_timeout():
 	print("LOAD THE LEVEL: TIMER TIMEOUT")
 	#print(LEVEL_SCENE.resource_path)
-	Global.goto_scene(load(LEVEL_SCENE).resource_path)
+	Global.goto_loading_screen(LEVEL_SCENE)
 
 
 func _on_level_start_area_body_entered(_body):

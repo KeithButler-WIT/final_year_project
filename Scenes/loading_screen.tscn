@@ -1,7 +1,40 @@
 [gd_scene load_steps=2 format=3 uid="uid://f5uhc6dw7sqp"]
 
-[ext_resource type="PackedScene" uid="uid://b2sf6pmwefh8o" path="res://Objects/Scenes/Player/player.tscn" id="1_wty6f"]
+[ext_resource type="Script" path="res://Scenes/loading_screen.gd" id="1_eewiv"]
 
-[node name="LoadingScreen" type="Node3D"]
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+script = ExtResource("1_eewiv")
 
-[node name="Player" parent="." instance=ExtResource("1_wty6f")]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 2
+offset_left = 250.0
+offset_right = 900.0
+offset_bottom = 650.0
+
+[node name="Percentage" type="Label" parent="VSplitContainer"]
+layout_mode = 2
+text = "100%"
+
+[node name="Tip" type="Label" parent="VSplitContainer"]
+layout_mode = 2
+text = "Did you know that ..."
+
+[node name="ProgressBar" type="ProgressBar" parent="VSplitContainer"]
+layout_mode = 2
