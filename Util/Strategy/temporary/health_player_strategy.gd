@@ -11,3 +11,4 @@ func _init() -> void:
 
 func apply_upgrade(_player: Player):
 	PlayerStats.max_health += increase
+	PlayerStats.current_health = clamp(PlayerStats.current_health+increase, 0, PlayerStats.max_health)
