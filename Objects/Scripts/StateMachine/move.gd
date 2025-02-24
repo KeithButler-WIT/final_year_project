@@ -16,6 +16,14 @@ func exit():
 	# Go back to the last state
 	fsm.back()
 
+
+var audio_player:AudioStreamPlayer
+
+func play_sound():
+	if audio_player == null or !audio_player.playing: # TODO lower volume
+		audio_player = SoundManager.play_sound(load("res://Assets/Sounds/Footsteps.wav"))
+
+
 func _physics_process(_delta):
 	SPEED = PlayerStats.movement_speed
 
@@ -32,6 +40,8 @@ func _physics_process(_delta):
 		PLAYER.velocity.z = move_toward(PLAYER.velocity.z, 0, SPEED)
 
 	PLAYER.move_and_slide()
+	
+	play_sound()
 
 	if Input.is_action_pressed("move_left"): 
 		CHARACTER.flip_h = false

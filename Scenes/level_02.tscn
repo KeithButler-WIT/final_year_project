@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dpqrwxs3o7foe"]
+[gd_scene load_steps=35 format=3 uid="uid://dpqrwxs3o7foe"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Levels/main.gd" id="1_2gtdw"]
 [ext_resource type="PackedScene" uid="uid://bfxjgn3gj3y3t" path="res://Objects/Scenes/level_loader.tscn" id="2_q28tk"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://c5h0xo5axmbxk" path="res://Objects/Scenes/Enemies/slime.tscn" id="18_ep6ot"]
 [ext_resource type="Script" path="res://Objects/Scenes/Enemies/spawn_info.gd" id="18_mc53s"]
 [ext_resource type="PackedScene" uid="uid://ceklyksm3l4sl" path="res://Objects/Scenes/Enemies/bat.tscn" id="20_v4pab"]
-[ext_resource type="PackedScene" uid="uid://b36i3lpy45exm" path="res://Util/Components/Flow Field/flow_field_manager.tscn" id="24_ico36"]
 [ext_resource type="PackedScene" uid="uid://c0qo2bv6v7125" path="res://Objects/Scenes/Enemies/boss_slime.tscn" id="27_07rk6"]
 
 [sub_resource type="Resource" id="Resource_m0ovj"]
@@ -176,10 +175,3 @@ tile_size = Vector3(100, 1, 100)
 [node name="Player" parent="." instance=ExtResource("16_p5a4u")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.0292, 10, 12.8162)
-
-[node name="FlowFieldManager" parent="." node_paths=PackedStringArray("grid_map", "flow_field_gridmap", "target") instance=ExtResource("24_ico36")]
-field_size = Vector3(64, 1, 64)
-grid_map = NodePath("../Ground")
-flow_field_gridmap = NodePath("../Ground")
-target = NodePath("../Player")
-show_debug_arrows = true

@@ -3,7 +3,7 @@ extends Control
 
 @onready var Tree_Root:TextureButton = $ColorRect/SkillButton
 @onready var upgrade_nodes = get_tree().get_nodes_in_group("UpgradeButton")
-
+@onready var point_count_label = $HSplitContainer/point_count_label
 
 func _ready() -> void:
 	#grab_focus()
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	$point_count_label.text = str(PlayerStats.upgrade_point)
+	point_count_label.text = str(PlayerStats.upgrade_point)
 
 
 func _on_reset_button_pressed() -> void:

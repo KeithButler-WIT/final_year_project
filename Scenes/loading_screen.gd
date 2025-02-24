@@ -3,11 +3,11 @@ extends Control
 
 var next_scene = Global.next_scene
 var progress := []
-var scene_load_status = 0
+var scene_load_status := 0
 
-@onready var percentage_label = $VSplitContainer/Percentage
-@onready var tip_label = $VSplitContainer/Tip
-@onready var progress_bar = $VSplitContainer/ProgressBar
+@onready var percentage_label := $VSplitContainer/Percentage
+@onready var tip_label := $VSplitContainer/Tip
+@onready var progress_bar := $VSplitContainer/ProgressBar
 
 func _ready() -> void:
 	next_scene = Global.next_scene

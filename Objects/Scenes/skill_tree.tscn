@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqkh5crffd41y"]
+[gd_scene load_steps=34 format=3 uid="uid://bqkh5crffd41y"]
 
 [ext_resource type="PackedScene" uid="uid://da2unl4ljf3mb" path="res://Objects/Scenes/skill_button.tscn" id="1_4ggoj"]
 [ext_resource type="Script" path="res://Objects/Scripts/skill_tree.gd" id="1_joyul"]
@@ -9,15 +9,84 @@
 [ext_resource type="Texture2D" uid="uid://d365gd46yq8m" path="res://Assets/icons/base-turret-up-icon.png" id="6_xa3bp"]
 [ext_resource type="Texture2D" uid="uid://b1efuvhp4h56w" path="res://Assets/icons/base-damage-up-icon.png" id="7_0fe5j"]
 [ext_resource type="Script" path="res://Util/Strategy/permanent/starting_upgrade_choice_player_strategy.gd" id="7_ngplg"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_num_turrets_player_strategy.gd" id="7_sw4ca"]
+[ext_resource type="Texture2D" uid="uid://csf8fqv0yoaov" path="res://Assets/icons/base-turret-attack-speed-icon.png" id="8_jk8pc"]
 [ext_resource type="Texture2D" uid="uid://duyxlwal1h3cp" path="res://Assets/icons/base-pickup-radius-icon.png" id="9_2j0p3"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_turret_attack_speed_player_strategy.gd" id="9_2yx8n"]
 [ext_resource type="Script" path="res://Util/Strategy/permanent/starting_pickup_radius_player_strategy.gd" id="10_suew1"]
+[ext_resource type="Texture2D" uid="uid://cx7fu5pdtxncg" path="res://Assets/icons/base-turret-damage-icon.png" id="10_wh4vu"]
 [ext_resource type="Texture2D" uid="uid://dxvbawrt2cyax" path="res://Assets/icons/base-health-regen-icon.png" id="11_kfoo1"]
+[ext_resource type="Script" path="res://Util/Strategy/permanent/starting_turret_damage_player_strategy.gd" id="11_u1pbj"]
+[ext_resource type="Texture2D" uid="uid://bm0ypdyjsurci" path="res://Assets/images/upgrade_point.png" id="12_2ghmt"]
 
 [sub_resource type="Resource" id="Resource_a733c"]
 script = ExtResource("3_tgmyb")
 increase = 10.0
 texture = ExtResource("4_oi3ef")
 upgrade_text = "Speed"
+description = null
+
+[sub_resource type="Resource" id="Resource_2bmm4"]
+script = ExtResource("7_sw4ca")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_mf0tw"]
+script = ExtResource("9_2yx8n")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_3kiw5"]
+script = ExtResource("9_2yx8n")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_diask"]
+script = ExtResource("9_2yx8n")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_tp78y"]
+script = ExtResource("9_2yx8n")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_oylcv"]
+script = ExtResource("11_u1pbj")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_oqu2s"]
+script = ExtResource("7_sw4ca")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_2wfyh"]
+script = ExtResource("7_sw4ca")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
+description = null
+
+[sub_resource type="Resource" id="Resource_pxtcx"]
+script = ExtResource("7_sw4ca")
+increase = 1.0
+texture = ExtResource("4_oi3ef")
+upgrade_text = "Nothing"
 description = null
 
 [sub_resource type="Resource" id="Resource_ux7sk"]
@@ -89,6 +158,8 @@ offset_top = -268.0
 offset_bottom = -140.0
 disabled = true
 texture_normal = ExtResource("6_xa3bp")
+maxLevel = 1
+upgrade = SubResource("Resource_2bmm4")
 
 [node name="SkillButton6" parent="ColorRect/SkillButton/SkillButton2" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -97,12 +168,16 @@ offset_top = -232.0
 offset_right = -7.0
 offset_bottom = -104.0
 disabled = true
+texture_normal = ExtResource("8_jk8pc")
+upgrade = SubResource("Resource_mf0tw")
 
 [node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_top = -262.0
 offset_bottom = -134.0
 disabled = true
+texture_normal = ExtResource("8_jk8pc")
+upgrade = SubResource("Resource_3kiw5")
 
 [node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -111,12 +186,16 @@ offset_top = -208.0
 offset_right = -34.0
 offset_bottom = -80.0
 disabled = true
+texture_normal = ExtResource("8_jk8pc")
+upgrade = SubResource("Resource_diask")
 
 [node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_left = -210.0
 offset_right = -82.0
 disabled = true
+texture_normal = ExtResource("8_jk8pc")
+upgrade = SubResource("Resource_tp78y")
 
 [node name="SkillButton7" parent="ColorRect/SkillButton/SkillButton2" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -125,12 +204,16 @@ offset_top = -232.0
 offset_right = 256.0
 offset_bottom = -104.0
 disabled = true
+texture_normal = ExtResource("10_wh4vu")
+upgrade = SubResource("Resource_oylcv")
 
 [node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton2/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_top = -262.0
 offset_bottom = -134.0
 disabled = true
+texture_normal = ExtResource("10_wh4vu")
+upgrade = SubResource("Resource_oqu2s")
 
 [node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton2/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -139,12 +222,16 @@ offset_top = -208.0
 offset_right = 291.0
 offset_bottom = -80.0
 disabled = true
+texture_normal = ExtResource("10_wh4vu")
+upgrade = SubResource("Resource_2wfyh")
 
 [node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton2/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_left = 237.0
 offset_right = 365.0
 disabled = true
+texture_normal = ExtResource("10_wh4vu")
+upgrade = SubResource("Resource_pxtcx")
 
 [node name="SkillButton6" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -204,12 +291,14 @@ offset_top = 128.0
 offset_right = 330.0
 offset_bottom = 256.0
 disabled = true
+texture_normal = ExtResource("7_0fe5j")
 
 [node name="SkillButton8" parent="ColorRect/SkillButton/SkillButton3/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
 offset_left = 230.0
 offset_right = 358.0
 disabled = true
+texture_normal = ExtResource("7_0fe5j")
 
 [node name="SkillButton9" parent="ColorRect/SkillButton/SkillButton3/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -218,6 +307,7 @@ offset_top = 212.0
 offset_right = 284.0
 offset_bottom = 340.0
 disabled = true
+texture_normal = ExtResource("7_0fe5j")
 
 [node name="SkillButton10" parent="ColorRect/SkillButton/SkillButton3/SkillButton7" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -226,6 +316,7 @@ offset_top = 212.0
 offset_right = 74.0
 offset_bottom = 340.0
 disabled = true
+texture_normal = ExtResource("7_0fe5j")
 
 [node name="SkillButton4" parent="ColorRect/SkillButton" instance=ExtResource("1_4ggoj")]
 layout_mode = 0
@@ -390,15 +481,22 @@ offset_bottom = 628.0
 text = "Reset
 Upgrades"
 
-[node name="point_count_label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.999
-anchor_bottom = 1.0
-offset_left = 976.0
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 0
+offset_left = 979.0
 offset_top = 568.0
-offset_right = -101.848
-offset_bottom = -20.0
+offset_right = 1041.0
+offset_bottom = 628.0
+
+[node name="Sprite2D" type="Sprite2D" parent="HSplitContainer"]
+z_index = 5
+position = Vector2(-24.5, 24.5)
+scale = Vector2(0.617188, 0.617188)
+texture = ExtResource("12_2ghmt")
+
+[node name="point_count_label" type="Label" parent="HSplitContainer"]
+z_index = 5
+layout_mode = 2
 text = "000"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,7 +1,10 @@
 extends Enemy
 
 
-func _ready():
+func _ready() -> void:
+	damage = damage * (1+(PlayerStats.player_skill/100))
+	movement_speed = movement_speed * (1+(PlayerStats.player_skill/100))
+
 	animationPlayer.play("idle")
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.

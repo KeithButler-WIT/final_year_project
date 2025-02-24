@@ -5,7 +5,7 @@ class_name Enemy
 
 @export var movement_speed: float = 2.0
 var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
-@export var attack_speed_multiplier := 5
+@export var attack_speed_multiplier :float = 5.0
 
 #@export var player : CharacterBody3D
 @onready var player: CharacterBody3D = $"../Player"
@@ -29,15 +29,15 @@ var current_state := state.SEEKING
 
 
 func _ready() -> void:
-	damage = damage * (1+(PlayerStats.player_skilll/100))
+	damage = damage * (1+(PlayerStats.player_skill/100))
 	movement_speed = movement_speed * (1+(PlayerStats.player_skill/100))
 
-func _on_health_died_signal():
+func _on_health_died_signal() -> void:
 	if get_node_or_null("DropXPComponent"):
 		$DropXPComponent.spawn()
 	if get_node_or_null("DropUpgradePointComponent"):
 		$DropUpgradePointComponent.spawn()
-	var tween = get_tree().create_tween().bind_node(self)
+	var tween := get_tree().create_tween().bind_node(self)
 	#tween.set_parallel(true)
 	tween.tween_property($Character, "modulate", Color.RED, 0.2)
 	tween.tween_property($Character, "scale", Vector3(1,0,1), 0.2)
@@ -45,10 +45,10 @@ func _on_health_died_signal():
 		tween.tween_callback(self.queue_free)
 
 
-func change_screen_edge():
+func change_screen_edge() -> Vector3:
 	if navigation_agent.target_position:
-		var distance = global_position.distance_to(navigation_agent.target_position)
-		var direction = global_position.direction_to(navigation_agent.target_position)
+		var distance := global_position.distance_to(navigation_agent.target_position)
+		var direction := global_position.direction_to(navigation_agent.target_position)
 		# TODO: refine values
 		if distance > 40 and distance < 200:
 			#print("Direction: ", direction)
