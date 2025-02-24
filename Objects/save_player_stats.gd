@@ -2,29 +2,29 @@ extends Node3D
 
 
 # Variables used as permanent upgrades
-var starting_max_health = PlayerStats.starting_max_health
-var starting_num_turrets_placeable = PlayerStats.starting_num_turrets_placeable
-var starting_num_weapons = PlayerStats.starting_num_weapons
-var starting_turrent_attack_speed = PlayerStats.starting_turrent_attack_speed
-var starting_pickup_radius = PlayerStats.starting_pickup_radius
-var starting_movement_speed = PlayerStats.starting_movement_speed
-var starting_turret_damage = PlayerStats.starting_turret_damage
+var starting_max_health := PlayerStats.starting_max_health
+var starting_num_turrets_placeable := PlayerStats.starting_num_turrets_placeable
+var starting_num_weapons := PlayerStats.starting_num_weapons
+var starting_turrent_attack_speed := PlayerStats.starting_turrent_attack_speed
+var starting_pickup_radius := PlayerStats.starting_pickup_radius
+var starting_movement_speed := PlayerStats.starting_movement_speed
+var starting_turret_damage := PlayerStats.starting_turret_damage
 
 # Global stats # These get saved
-var time_played = PlayerStats.time_played
-var total_kills = PlayerStats.total_kills
-var total_damage_taken = PlayerStats.total_damage_taken
-var total_damage_given = PlayerStats.total_damage_given
-var total_health_recovered = PlayerStats.total_health_recovered
-var deaths = PlayerStats.deaths
-var turrets_placed = PlayerStats.turrets_placed
-var highest_level = PlayerStats.highest_level
-var total_experience_gained = PlayerStats.total_experience_gained
-var missions_completed = PlayerStats.missions_completed
-var upgrade_points_spent = PlayerStats.upgrade_points_spent
-var upgrade_point = PlayerStats.upgrade_point
-var upgrade_choices = PlayerStats.upgrade_choices
-var upgrades_picked = PlayerStats.upgrades_picked
+var time_played := PlayerStats.time_played
+var total_kills := PlayerStats.total_kills
+var total_damage_taken := PlayerStats.total_damage_taken
+var total_damage_given := PlayerStats.total_damage_given
+var total_health_recovered := PlayerStats.total_health_recovered
+var deaths := PlayerStats.deaths
+var turrets_placed := PlayerStats.turrets_placed
+var highest_level := PlayerStats.highest_level
+var total_experience_gained := PlayerStats.total_experience_gained
+var missions_completed := PlayerStats.missions_completed
+var upgrade_points_spent := PlayerStats.upgrade_points_spent
+var upgrade_point := PlayerStats.upgrade_point
+var upgrade_choices := PlayerStats.upgrade_choices
+var upgrades_picked := PlayerStats.upgrades_picked
 
 
 func _ready() -> void:
@@ -78,7 +78,7 @@ func update_gameplay_stats() -> void:
 
 
 # Save data # https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
-func save():
+func save() -> Dictionary:
 	update_upgrade_stats()
 	update_gameplay_stats()
 	var save_dict = {
